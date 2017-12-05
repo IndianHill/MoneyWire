@@ -1,0 +1,3 @@
+rootProject.name = 'MoneyWire'
+
+include ':app'
