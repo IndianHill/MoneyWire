@@ -1,0 +1,41 @@
+[debug] [2017-12-23T20:52:08.149Z] ----------------------------------------------------------------------
+[debug] [2017-12-23T20:52:08.152Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2017-12-23T20:52:08.152Z] CLI Version:   3.16.0
+[debug] [2017-12-23T20:52:08.152Z] Platform:      darwin
+[debug] [2017-12-23T20:52:08.152Z] Node Version:  v8.9.3
+[debug] [2017-12-23T20:52:08.153Z] Time:          Sun Dec 24 2017 02:22:08 GMT+0530 (IST)
+[debug] [2017-12-23T20:52:08.153Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-12-23T20:52:08.172Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-12-23T20:52:08.172Z] > authorizing via signed-in user
+[debug] [2017-12-23T20:52:08.173Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-12-23T20:52:08.174Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/xK_uXJqWyH3vbSIaWqf9QQNIt_hAzrRKofMbCMVdpiw',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sun Dec 24 2017 02:22:08 GMT+0530 (IST)
+[debug] [2017-12-23T20:52:08.505Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-23T20:52:08.520Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/app-moneywire  
+  
+ Sun Dec 24 2017 02:22:08 GMT+0530 (IST)
+[debug] [2017-12-23T20:52:09.772Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-23T20:52:09.773Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/app-moneywire/tokens  
+  
+ Sun Dec 24 2017 02:22:09 GMT+0530 (IST)
+[debug] [2017-12-23T20:52:10.894Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/sagarmusale/Development/MoneyWire/web'...
+[info] 
+[debug] [2017-12-23T20:52:10.896Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/app-moneywire  
+  
+ Sun Dec 24 2017 02:22:10 GMT+0530 (IST)
+[debug] [2017-12-23T20:52:12.422Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-23T20:52:12.424Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/84141118544/clients/_:getWebAppConfig  
+  
+ Sun Dec 24 2017 02:22:12 GMT+0530 (IST)
+[debug] [2017-12-23T20:52:14.104Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: ./
+[info] ✔  hosting: Local server: http://localhost:5000
+
