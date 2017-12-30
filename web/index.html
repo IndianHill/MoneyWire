@@ -29,6 +29,49 @@ limitations under the License.
   <script src="/__/firebase/init.js"></script>
   <script type="text/javascript">
     /**
+     * Function called when clicking the Login/Logout button.
+     */
+    // [START buttoncallback]
+    function googleSignIn() {
+      if (!firebase.auth().currentUser) {
+        // [START createprovider]
+        var provider = new firebase.auth.GoogleAuthProvider();
+        // [END createprovider]
+        // [START addscopes]
+        provider.addScope('https://www.googleapis.com/auth/userinfo.profile');
+        // [END addscopes]
+        // [START signin]
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          var token = result.credential.accessToken;
+          // The signed-in user info.
+          var user = result.user;
+          // [START_EXCLUDE]
+          document.getElementById('quickstart-oauthtoken').textContent = token;
+          // [END_EXCLUDE]
+        }).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // The email of the user's account used.
+          var email = error.email;
+          // The firebase.auth.AuthCredential type that was used.
+          var credential = error.credential;
+          // [START_EXCLUDE]
+          if (errorCode === 'auth/account-exists-with-different-credential') {
+            alert('You have already signed up with a different auth provider for that email.');
+            // If you are using multiple auth providers on your app you should handle linking
+            // the user's accounts here.
+          } else {
+            console.error(error);
+          }
+          // [END_EXCLUDE]
+        });
+        // [END signin]
+      }
+    }
+
+    /**
     * Function to sing out of session
     */
     function userSignOut() {
@@ -70,6 +113,7 @@ limitations under the License.
 
       // Event listeners
       document.getElementById('btn-sign-out').addEventListener('click', userSignOut, false);
+      document.getElementById('btn-google-sing-in').addEventListener('click', googleSignIn, false);
     }
     window.onload = function() {
       initApp();
@@ -108,7 +152,7 @@ limitations under the License.
 
           <span>
             <a href="phone-visible.html"><img src="img/sign_in_mobile.png" style="height: 9%; width: 9%;"/></a>
-            <a href="google-popup.html"><img src="img/sign_in_google.png" style="height: 10%; width: 10%;"/></a>
+            <a id='btn-google-sing-in'><img src="img/sign_in_google.png" style="height: 10%; width: 10%;"/></a>
           </span>
         </div>
       </div>
