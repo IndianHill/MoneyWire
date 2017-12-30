@@ -41,8 +41,7 @@ buck-out/
 \.buckd/
 *.keystore
 
-# sidhanth's local file
-example.http
+firebase-debug.log
 
 # fastlane
 #
