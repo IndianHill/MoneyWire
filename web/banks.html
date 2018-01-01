@@ -15,7 +15,7 @@ limitations under the License.
 <head>
   <meta charset=utf-8 />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moneywire</title>
+  <title>Banks</title>
 
   <!-- Material Design Theming -->
   <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
@@ -27,37 +27,32 @@ limitations under the License.
   <script src="/__/firebase/4.0.0/firebase-app.js"></script>
   <script src="/__/firebase/4.0.0/firebase-auth.js"></script>
   <script src="/__/firebase/init.js"></script>
+  <script src="firebase/googleLogin.js"></script>
+  <script src="firebase/userHelper.js"></script>
+  <script src="helpers/globalHelper.js"></script>
   <script type="text/javascript">
+
     /**
-    * Function to sing out of session
-    */
+     * On user sign in
+     */
+    function userSignIn() {
+        // User is signed in
+        document.getElementById('btn-sign-out').hidden = false;
+        document.getElementById('panel-login').hidden = true;
+        document.getElementById('panel-banks').hidden = false;
+    }
+
+    /**
+     * On user sign out
+     */
     function userSignOut() {
-      if (firebase.auth().currentUser) {
-        firebase.auth().signOut();
-      }
-    }
+        // User is not signed in
+        document.getElementById('btn-sign-out').hidden = true;
+        document.getElementById('panel-login').hidden = false;
+        document.getElementById('panel-banks').hidden = true;
 
-    /**
-    * Returns username or mobile number
-    */
-    function getUserName() {
-      var user = firebase.auth().currentUser
-      if (user.displayName) {
-        return user.displayName
-      } else if (user.email) {
-        return user.email
-      }else if (user.phoneNumber) {
-        return user.phoneNumber
-      } else {
-        return 'User'
-      }
-    }
-
-    /**
-    * Updates the User profile information
-    */
-    function updateUserInfoUI() {
-      document.getElementById('lbl-username').textContent = getUserName()
+        // Loading home page
+        window.setTimeout(loadHomePage, 3000)
     }
 
     /**
@@ -66,29 +61,18 @@ limitations under the License.
      *    out, and that is where we update the UI.
      */
     function initApp() {
+
+      // Registering for firebase user auth state change
+      registerUserAuthenticationStateChange()
+      
+      // Initialization
       document.getElementById('btn-sign-out').hidden = true;
       document.getElementById('panel-login').hidden = false;
-      // Listening for auth state changes.
-      // [START authstatelistener]
-      firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-          document.getElementById('btn-sign-out').hidden = false;
-          document.getElementById('panel-login').hidden = true;
-          document.getElementById('panel-user-info').hidden = false;
-          document.getElementById('welcome-note').textContent = "Welcome "+getUserName()+"..!!";
-          updateUserInfoUI()
-        } else {
-          // User is signed out.
-          document.getElementById('btn-sign-out').hidden = true;
-          document.getElementById('panel-login').hidden = false;
-          document.getElementById('panel-user-info').hidden = true;
-        }
-      });
-
+      
       // Event listeners
-      document.getElementById('btn-sign-out').addEventListener('click', userSignOut, false);
-      document.getElementById('btn-google-sing-in').addEventListener('click', googleSignIn, false);
+      document.getElementById('btn-sign-out').addEventListener('click', makeUserSignOut, false);
     }
+
     window.onload = function() {
       initApp();
     };
@@ -102,7 +86,7 @@ limitations under the License.
     <div>
       <div class="mdl-grid">
           <div class="mdl-cell mdl-cell--9-col">
-              <a href="\" class="mdl-button mdl-js-button mdl-color-text--white" id="btn-home">MONEYWIRE</a>
+                <a href="\" class="mdl-button mdl-js-button mdl-color-text--white" id="btn-home">MONEYWIRE</a>
           </div>
           <div class="mdl-cell mdl-cell--3-col" >
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--white" id="btn-sign-out">SIGN-OUT</button>
@@ -113,9 +97,11 @@ limitations under the License.
   <div class="mdl-layout__drawer mdl-color--light-blue-700 mdl-color-text--white">
       <span class="mdl-layout-title">MONEYWIRE</span>
       <nav class="mdl-navigation">
-        <a class="mdl-navigation__link mdl-color-text--white" href="">BANKS</a>
-        <a class="mdl-navigation__link mdl-color-text--white" href="">BRANCH</a>
-        <a class="mdl-navigation__link mdl-color-text--white" href="">PROFILE</a>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link mdl-color-text--white" href="banks.html">BANKS</a>
+                <a class="mdl-navigation__link mdl-color-text--white" href="branch.html">BRANCH</a>
+                <a class="mdl-navigation__link mdl-color-text--white" href="profile.html">PROFILE</a>
+            </nav>
       </nav>
   </div>
 
@@ -125,27 +111,22 @@ limitations under the License.
       <!-- Container for the Table of content -->
       <div id='panel-login' class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
         <div class="mdl-card__title mdl-color--light-blue-600 mdl-color-text--white">
-          <h2 class="mdl-card__title-text">Log In</h2>
+          <h2 class="mdl-card__title-text">Log-In Required</h2>
         </div>
         <div class="mdl-card__supporting-text mdl-color-text--grey-600">
           <p>
-            Please log in to access portal.
+            Please log in to access portal. Loading login page...
           </p>
-
-          <span>
-            <a href="phone-visible.html"><img src="img/sign_in_mobile.png" style="height: 9%; width: 9%;"/></a>
-            <a id='btn-google-sing-in'><img src="img/sign_in_google.png" style="height: 10%; width: 10%;"/></a>
-          </span>
         </div>
       </div>
 
       <!-- Container for the Table of content -->
-      <div id='panel-user-info' class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+      <div id='panel-banks' class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
         <div class="mdl-card__title mdl-color--light-blue-600 mdl-color-text--white">
-          <h2 id='welcome-note' class="mdl-card__title-text">Log In</h2>
+          <h2 class="mdl-card__title-text">Banks</h2>
         </div>
         <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-          Please check banks and branches from menu.
+            All banks are here.
         </div>
       </div>
 
