@@ -27,27 +27,37 @@ limitations under the License.
   <script src="/__/firebase/4.0.0/firebase-app.js"></script>
   <script src="/__/firebase/4.0.0/firebase-auth.js"></script>
   <script src="/__/firebase/init.js"></script>
-  <script src="firebase/googleLogin.js"></script>
-  <script src="firebase/userHelper.js"></script>
   <script type="text/javascript">
-
     /**
-     * On user sign in
-     */
-    function userSignIn() {
-      document.getElementById('btn-sign-out').hidden = false;
-      document.getElementById('panel-login').hidden = true;
-      document.getElementById('panel-user-info').hidden = false;
-      document.getElementById('welcome-note').textContent = "Welcome "+getUserName()+"..!!";
+    * Function to sing out of session
+    */
+    function userSignOut() {
+      if (firebase.auth().currentUser) {
+        firebase.auth().signOut();
+      }
     }
 
     /**
-     * On user sign out
-     */
-    function userSignOut() {
-      document.getElementById('btn-sign-out').hidden = true;
-      document.getElementById('panel-login').hidden = false;
-      document.getElementById('panel-user-info').hidden = true;
+    * Returns username or mobile number
+    */
+    function getUserName() {
+      var user = firebase.auth().currentUser
+      if (user.displayName) {
+        return user.displayName
+      } else if (user.email) {
+        return user.email
+      }else if (user.phoneNumber) {
+        return user.phoneNumber
+      } else {
+        return 'User'
+      }
+    }
+
+    /**
+    * Updates the User profile information
+    */
+    function updateUserInfoUI() {
+      document.getElementById('lbl-username').textContent = getUserName()
     }
 
     /**
@@ -56,19 +66,29 @@ limitations under the License.
      *    out, and that is where we update the UI.
      */
     function initApp() {
-
-      // Registering for firebase user auth state change
-      registerUserAuthenticationStateChange()
-      
-      // Initialization
       document.getElementById('btn-sign-out').hidden = true;
       document.getElementById('panel-login').hidden = false;
-      
+      // Listening for auth state changes.
+      // [START authstatelistener]
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          document.getElementById('btn-sign-out').hidden = false;
+          document.getElementById('panel-login').hidden = true;
+          document.getElementById('panel-user-info').hidden = false;
+          document.getElementById('welcome-note').textContent = "Welcome "+getUserName()+"..!!";
+          updateUserInfoUI()
+        } else {
+          // User is signed out.
+          document.getElementById('btn-sign-out').hidden = true;
+          document.getElementById('panel-login').hidden = false;
+          document.getElementById('panel-user-info').hidden = true;
+        }
+      });
+
       // Event listeners
-      document.getElementById('btn-sign-out').addEventListener('click', makeUserSignOut, false);
+      document.getElementById('btn-sign-out').addEventListener('click', userSignOut, false);
       document.getElementById('btn-google-sing-in').addEventListener('click', googleSignIn, false);
     }
-
     window.onload = function() {
       initApp();
     };
