@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "app-moneywire"
+    "default": "app-moneywire",
+    "app-moneywire": "app-moneywire"
   }
 }

@@ -24,12 +24,15 @@ limitations under the License.
 
   <link rel="stylesheet" href="css/main.css">
 
-  <script src="/__/firebase/4.0.0/firebase-app.js"></script>
-  <script src="/__/firebase/4.0.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
   <script src="/__/firebase/init.js"></script>
+  <script src="firebase/firebaseInit.js"></script>
   <script src="firebase/googleLogin.js"></script>
   <script src="firebase/userHelper.js"></script>
   <script src="helpers/globalHelper.js"></script>
+  <script src="firebase/collections/banks.js"></script>
   <script type="text/javascript">
 
     /**
@@ -40,6 +43,7 @@ limitations under the License.
         document.getElementById('btn-sign-out').hidden = false;
         document.getElementById('panel-login').hidden = true;
         document.getElementById('panel-banks').hidden = false;
+        getAllBanks()
     }
 
     /**
@@ -62,6 +66,8 @@ limitations under the License.
      */
     function initApp() {
 
+      //firebaseApp = initializeFirebaseApp()
+
       // Registering for firebase user auth state change
       registerUserAuthenticationStateChange()
       
@@ -74,6 +80,7 @@ limitations under the License.
     }
 
     window.onload = function() {
+      var firebaseApp;
       initApp();
     };
   </script>

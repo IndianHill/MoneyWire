@@ -1,0 +1,11 @@
+{
+    "indexes": [
+        {
+            "collectionId": "bank",
+            "fields": [
+              { "fieldPath": "bankName", "mode": "ASCENDING" },
+              { "fieldPath": "bankCreated", "mode": "DESCENDING" }
+            ]
+        }
+    ]
+  }
