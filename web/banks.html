@@ -35,6 +35,8 @@ limitations under the License.
   <script src="firebase/collections/banks.js"></script>
   <script type="text/javascript">
 
+    var allBanks = [];
+
     /**
      * On user sign in
      */
@@ -57,6 +59,56 @@ limitations under the License.
 
         // Loading home page
         window.setTimeout(loadHomePage, 3000)
+    }
+
+    /**
+     *  After successful retrival of banks this function will get call
+     */
+    function successfullyFetchedBanks(banks) {
+      console.log('total banks:'+banks.length)
+      banks.forEach(bank => {
+        console.log('key:'+bank.key+' name:'+bank.bankName);
+      });
+      allBanks = banks;
+      updateBanksUI(banks);
+    }
+
+    /**
+     *  Show banks on UI
+     */
+    function updateBanksUI(banks) {
+        banks.forEach(bank => {
+          addBankRow(bank.key, bank.bankName, bank.bankCustomerCare, bank.bankWebsite)
+        });
+    }
+
+    function addBankRow(bankKey, bankName, bankCustomerCare, bankWebsite) {
+        //Get the reference of the Table's TBODY element.
+        var tBody = document.getElementById("banks-list").getElementsByTagName("TBODY")[0];
+ 
+        //Add Row.
+        row = tBody.insertRow(-1);
+
+        //Add Name cell.
+        var cell = row.insertCell(-1);
+        cell.classList.add('mdl-data-table__cell--non-numeric');  
+        cell.innerHTML = bankName;
+
+        //Add Customer Care cell.
+        cell = row.insertCell(-1);
+        cell.innerHTML = bankCustomerCare;
+
+        //Add Social cell.
+        cell = row.insertCell(-1);
+        cell.innerHTML = bankWebsite;
+
+        //Add Button cell.
+        // cell = row.insertCell(-1);
+        // var btnRemove = document.createElement("INPUT");
+        // btnRemove.type = "button";
+        // btnRemove.value = "Remove";
+        // btnRemove.setAttribute("onclick", "Remove(this);");
+        // cell.appendChild(btnRemove);
     }
 
     /**
@@ -106,7 +158,6 @@ limitations under the License.
       <nav class="mdl-navigation">
             <nav class="mdl-navigation">
                 <a class="mdl-navigation__link mdl-color-text--white" href="banks.html">BANKS</a>
-                <a class="mdl-navigation__link mdl-color-text--white" href="branch.html">BRANCH</a>
                 <a class="mdl-navigation__link mdl-color-text--white" href="profile.html">PROFILE</a>
             </nav>
       </nav>
@@ -132,13 +183,20 @@ limitations under the License.
         <div class="mdl-card__title mdl-color--light-blue-600 mdl-color-text--white">
             <h2 class="mdl-cell mdl-cell--9-col mdl-card__title-text">Banks</h2>
             <div class="mdl-cell mdl-cell--3-col">
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--white" id="btn-add-bank">ADD</button>
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--white" id="btn-upload-csv">UPLOAD</button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--white" id="btn-add-bank">CREATE BANK</button>
             </div>
         </div>
-        <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-            All banks are here.
-        </div>
+        <table id="banks-list" class="mdl-data-table mdl-js-data-table mdl-cell mdl-cell--12-col">
+          <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">Bank Name</th>
+              <th>Customer Care</th>
+              <th>Social</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
       </div>
 
     </div>

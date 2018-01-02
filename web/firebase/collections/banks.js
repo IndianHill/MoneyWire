@@ -9,8 +9,12 @@ function getAllBanks() {
     firestore = firebase.firestore();
     firestore.collection(cl_banks).get().then((querySnapshot) => {
         console.log('Banks data received.')
+        allBanks = []
         querySnapshot.forEach((doc) => {
-            console.log(`${doc.id} => ${doc.data()}`);
+            bankData = doc.data()
+            bankData.key = doc.id
+            allBanks.push(bankData)
         });
+        successfullyFetchedBanks(allBanks)
     });
 }
