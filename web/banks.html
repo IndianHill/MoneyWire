@@ -21,6 +21,7 @@ limitations under the License.
   <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+  <script src="jquery-3.2.1.min.js"></script>
 
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/banks.css">
@@ -133,6 +134,14 @@ limitations under the License.
       });
     }
 
+    /*
+     *  On click of create bank
+     */
+    function sendDataToCreateBank() {
+        serializeInputs = $('#bank-info').find('input').serialize();
+        console.log('Serialized data:'+serializeInputs);
+    }
+
     /**
      * initApp handles setting up UI event listeners and registering Firebase auth listeners:
      *  - firebase.auth().onAuthStateChanged: This listener is called when the user is signed in or
@@ -152,6 +161,7 @@ limitations under the License.
       // Event listeners
       document.getElementById('btn-sign-out').addEventListener('click', makeUserSignOut, false);
       document.getElementById('btn-add-bank').addEventListener('click', showCreateBankDialog, false);
+      $('#btn-create-bank').click(sendDataToCreateBank);
     }
 
     window.onload = function() {
@@ -225,7 +235,7 @@ limitations under the License.
     </div>
     <dialog class="mdl-dialog dialog-container">
       <h4 class="mdl-dialog__title mdl-cell mdl-cell--12-col mdl-typography--text-center">Create Bank</h4>
-      <div class="mdl-dialog__content mdl-grid">
+      <div id="bank-info" class="mdl-dialog__content mdl-grid">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
           <input class="mdl-textfield__input" type="text" id="bank-name">
           <label class="mdl-textfield__label" for="bank-name">Bank Name</label>
@@ -256,9 +266,13 @@ limitations under the License.
           <input class="mdl-textfield__input" type="text" id="bank-twitter">
           <label class="mdl-textfield__label" for="bank-twitter">Twitter</label>
         </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+          <input class="mdl-textfield__input" type="text" id="bank-linkedin">
+          <label class="mdl-textfield__label" for="bank-linkedin">LinkedIn</label>
+        </div>
       </div>
       <div class="mdl-dialog__actions">
-        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color-text--white mdl-color--light-blue-700">Create</button>
+        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color-text--white mdl-color--light-blue-700" id="btn-create-bank">Create</button>
         <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect close">Cancel</button>
       </div>
     </dialog>
