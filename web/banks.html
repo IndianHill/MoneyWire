@@ -135,11 +135,59 @@ limitations under the License.
     }
 
     /*
+     *  Collect all data
+     */
+    function collectBankData() {
+
+      var bank_obj = {};
+
+      // Bank Name
+      bank_obj.name = $('#bank-name').val()
+      if (bank_obj.name.length == 0) {
+        alert('Bank name is required.')
+        return
+      }
+
+      // Bank Website
+      bank_obj.website = $('#bank-website').val()
+      if (bank_obj.website.length == 0) {
+        alert('Bank website url is required.')
+        return
+      }
+
+      // Customer Care
+      bank_obj.customer_care = $('#bank-customer-care').val()
+      if (bank_obj.customer_care.length == 0) {
+        alert('Bank customer care number is required.')
+        return
+      }
+
+      // Toll Free Number
+      bank_obj.toll_free_number = $('#bank-toll-free').val()
+
+      // Facebook
+      bank_obj.fb = $('#bank-fb').val()
+
+      // Google+
+      bank_obj.google_plus = $('#bank-g+').val()
+
+      // Twitter
+      bank_obj.twitter = $('#bank-twitter').val()
+
+      // LinkedIn
+      bank_obj.linkedin = $('#bank-linkedin').val()
+
+      console.log('Bank Values are:'+JSON.stringify(bank_obj));
+
+      return bank_obj;
+
+    }
+
+    /*
      *  On click of create bank
      */
     function sendDataToCreateBank() {
-        serializeInputs = $('#bank-info').find('input').serialize();
-        console.log('Serialized data:'+serializeInputs);
+        bank_data = collectBankData()
     }
 
     /**
@@ -233,20 +281,20 @@ limitations under the License.
         </table>
       </div>
     </div>
-    <dialog class="mdl-dialog dialog-container">
+    <dialog id="bank-info" class="mdl-dialog dialog-container">
       <h4 class="mdl-dialog__title mdl-cell mdl-cell--12-col mdl-typography--text-center">Create Bank</h4>
-      <div id="bank-info" class="mdl-dialog__content mdl-grid">
+      <div class="mdl-dialog__content mdl-grid">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
           <input class="mdl-textfield__input" type="text" id="bank-name">
-          <label class="mdl-textfield__label" for="bank-name">Bank Name</label>
+          <label class="mdl-textfield__label" for="bank-name">Bank Name*</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
-          <input class="mdl-textfield__input" type="text" id="bank-web">
-          <label class="mdl-textfield__label" for="bank-web">Bank Website</label>
+          <input class="mdl-textfield__input" type="text" id="bank-website">
+          <label class="mdl-textfield__label" for="bank-web">Bank Website*</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
           <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="bank-customer-care">
-          <label class="mdl-textfield__label" for="bank-customer-care">Customer Care</label>
+          <label class="mdl-textfield__label" for="bank-customer-care">Customer Care*</label>
           <span class="mdl-textfield__error">Input is not a number!</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
