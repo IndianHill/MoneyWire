@@ -94,11 +94,11 @@ limitations under the License.
      */
     function updateBanksUI(banks) {
         banks.forEach(bank => {
-          addBankRow(bank.key, bank.bankName, bank.bankCustomerCare, bank.bankWebsite)
+          addBankRow(bank.key, bank.bankName, bank.bankCustomerCare, bank.bankWebsite, bank.bankFacebook, bank.bankGooglePlus, bank.bankTwitter, bank.bankLinkedIn)
         });
     }
 
-    function addBankRow(bankKey, bankName, bankCustomerCare, bankWebsite) {
+    function addBankRow(bankKey, bankName, bankCustomerCare, bankWebsite, bankfb, bankGooglePlus, bankTwitter, bankLinkedin) {
         //Get the reference of the Table's TBODY element.
         var tBody = document.getElementById("banks-list").getElementsByTagName("TBODY")[0];
  
@@ -116,7 +116,7 @@ limitations under the License.
 
         //Add Social cell.
         cell = row.insertCell(-1);
-        cell.innerHTML = bankWebsite;
+        cell.innerHTML = getSocialCell(bankWebsite, bankfb, bankGooglePlus, bankTwitter, bankLinkedin)
 
         //Add Button cell.
         // cell = row.insertCell(-1);
@@ -125,6 +125,41 @@ limitations under the License.
         // btnRemove.value = "Remove";
         // btnRemove.setAttribute("onclick", "Remove(this);");
         // cell.appendChild(btnRemove);
+    }
+
+
+    /*
+     *  Getting social cell which contains links for social sites
+     */
+    function getSocialCell(website, fb, googleplus, twitter, linkedin) {
+      innerHTML = ""
+      
+      // Web
+      if (website.length > 0) {
+        innerHTML += "<a href='"+website+"'><img src='img/ic_web.png' style='width:24px; height:24px; margin:2px;' /></a>"
+      }
+
+      // FB
+      if (fb.length > 0) {
+        innerHTML += "<a href='"+fb+"'><img src='img/ic_fb.png' style='width:24px; height:24px; margin:2px;' /></a>"
+      }
+
+      // G+
+      if (googleplus.length > 0) {
+        innerHTML += "<a href='"+googleplus+"'><img src='img/ic_google_plus.png' style='width:24px; height:24px; margin:2px;' /></a>"
+      }
+
+      // Twitter
+      if (twitter.length > 0) {
+        innerHTML += "<a href='"+twitter+"'><img src='img/ic_twitter.png' style='width:24px; height:24px; margin:2px;' /></a>"
+      }
+
+      // LinkedIn
+      if (linkedin.length > 0) {
+        innerHTML += "<a href='"+linkedin+"'><img src='img/ic_linkedin.png' style='width:24px; height:24px; margin:2px;' /></a>"
+      }
+
+      return innerHTML
     }
 
     /**
