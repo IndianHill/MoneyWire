@@ -68,20 +68,24 @@ limitations under the License.
      *  After successful retrival of banks this function will get call
      */
     function successfullyFetchedBanks(banks) {
+      allBanks = []
+      $("#banks-list > tbody").empty();
       document.getElementById('spinner').classList.remove("is-active");
       console.log('total banks:'+banks.length)
       banks.forEach(bank => {
         console.log('key:'+bank.key+' name:'+bank.bankName);
       });
       allBanks = banks;
-      updateBanksUI(banks);
+      updateBanksUI(allBanks);
     }
 
     /**
      *  After failure retrival of banks this function will get call
      */
      function failedToFetchedBanks(err) {
-        document.getElementById('spinner').classList.remove("is-active");
+      allBanks = []
+      $("#banks-list > tbody").empty();
+      document.getElementById('spinner').classList.remove("is-active");
         // Update UI for error
     }
 
@@ -156,20 +160,20 @@ limitations under the License.
       }
 
       // Customer Care
-      bank_obj.customer_care = $('#bank-customer-care').val()
-      if (bank_obj.customer_care.length == 0) {
+      bank_obj.customerCare = $('#bank-customer-care').val()
+      if (bank_obj.customerCare.length == 0) {
         alert('Bank customer care number is required.')
         return
       }
 
       // Toll Free Number
-      bank_obj.toll_free_number = $('#bank-toll-free').val()
+      bank_obj.tollFree = $('#bank-toll-free').val()
 
       // Facebook
       bank_obj.fb = $('#bank-fb').val()
 
       // Google+
-      bank_obj.google_plus = $('#bank-g+').val()
+      bank_obj.googlePlus = $('#bank-google-plus').val()
 
       // Twitter
       bank_obj.twitter = $('#bank-twitter').val()
@@ -186,8 +190,59 @@ limitations under the License.
     /*
      *  On click of create bank
      */
-    function sendDataToCreateBank() {
+     function sendDataToCreateBank() {
+        document.getElementById('create-bank-spinner').classList.add("is-active");
         bank_data = collectBankData()
+        createBank(bank_data)
+    }
+
+    /*
+     *  Successfully Added bank
+     */
+    function bankCreatedSuccessfully(bank_data) {
+      console.log('Bank created');
+      var dialog = document.querySelector('dialog');
+      dialog.close()
+      clearBankForm()
+      getAllBanks()
+      document.getElementById('create-bank-spinner').classList.remove("is-active");
+    }
+
+    /*
+     *  Error while creating bank
+     */
+    function errorWhileCreatingBank(error) {
+      console.log('ERROR: create bank:'+JSON.stringify(error));
+      document.getElementById('create-bank-spinner').classList.remove("is-active");
+    }
+
+    /*
+     *  Clears out form data
+     */ 
+    function clearBankForm() {
+      // Bank Name
+      $('#bank-name').val("")
+
+      // Bank Website
+      $('#bank-website').val("")
+
+      // Customer Care
+      $('#bank-customer-care').val("")
+
+      // Toll Free Number
+      $('#bank-toll-free').val("")
+
+      // Facebook
+      $('#bank-fb').val("")
+
+      // Google+
+      $('#bank-google-plus').val("")
+
+      // Twitter
+      $('#bank-twitter').val("")
+
+      // LinkedIn
+      $('#bank-linkedin').val("")
     }
 
     /**
@@ -263,7 +318,7 @@ limitations under the License.
       <div id='panel-banks' class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
         <div class="mdl-card__title mdl-color--light-blue-600 mdl-color-text--white">
             <h2 class="mdl-cell mdl-cell--10-col mdl-card__title-text">Banks</h2>
-            <div id="spinner" class="mdl-spinner mdl-js-spinner"></div>
+            <div id="spinner" class="mdl-spinner mdl-js-spinner mdl-spinner--single-color"></div>
             <div class="mdl-cell mdl-cell--2-col">
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--white" id="btn-add-bank">CREATE BANK</button>
             </div>
@@ -307,8 +362,8 @@ limitations under the License.
           <label class="mdl-textfield__label" for="bank-fb">Facebook</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
-          <input class="mdl-textfield__input" type="text" id="bank-g+">
-          <label class="mdl-textfield__label" for="bank-G+">Google+</label>
+          <input class="mdl-textfield__input" type="text" id="bank-google-plus">
+          <label class="mdl-textfield__label" for="bank-google-plus">Google+</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
           <input class="mdl-textfield__input" type="text" id="bank-twitter">
@@ -320,6 +375,7 @@ limitations under the License.
         </div>
       </div>
       <div class="mdl-dialog__actions">
+        <div id="create-bank-spinner" class="mdl-spinner mdl-js-spinner"></div>
         <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color-text--white mdl-color--light-blue-700" id="btn-create-bank">Create</button>
         <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect close">Cancel</button>
       </div>
