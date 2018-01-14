@@ -72,9 +72,6 @@ limitations under the License.
       $("#banks-list > tbody").empty();
       document.getElementById('spinner').classList.remove("is-active");
       console.log('total banks:'+banks.length)
-      banks.forEach(bank => {
-        console.log('key:'+bank.key+' name:'+bank.bankName);
-      });
       allBanks = banks;
       updateBanksUI(allBanks);
     }
@@ -87,6 +84,20 @@ limitations under the License.
       $("#banks-list > tbody").empty();
       document.getElementById('spinner').classList.remove("is-active");
         // Update UI for error
+    }
+
+    /**
+     *  Edit bank
+     */
+    function editBank(bankKey) {
+      console.log('Edit bank:'+bankKey);
+    }
+
+    /**
+     *  Delete bank
+     */
+    function deleteBank(bankKey) {
+      console.log('Delete bank:'+bankKey);
     }
 
     /**
@@ -107,26 +118,74 @@ limitations under the License.
 
         //Add Name cell.
         var cell = row.insertCell(-1);
+        cell.style = "text-align:left";
         cell.classList.add('mdl-data-table__cell--non-numeric');  
         cell.innerHTML = bankName;
 
         //Add Customer Care cell.
         cell = row.insertCell(-1);
+        cell.style = "text-align:center";
         cell.innerHTML = bankCustomerCare;
 
         //Add Social cell.
         cell = row.insertCell(-1);
+        cell.style = "text-align:center";
         cell.innerHTML = getSocialCell(bankWebsite, bankfb, bankGooglePlus, bankTwitter, bankLinkedin)
 
-        //Add Button cell.
-        // cell = row.insertCell(-1);
-        // var btnRemove = document.createElement("INPUT");
+        // Add Action Cell
+        addActionCellForRow(row, bankKey);
         // btnRemove.type = "button";
         // btnRemove.value = "Remove";
         // btnRemove.setAttribute("onclick", "Remove(this);");
         // cell.appendChild(btnRemove);
     }
 
+    /*
+     *  Getting action cell
+     */
+    function addActionCellForRow(row, bankKey) {
+
+      cell = row.insertCell(-1);
+      cell.style = "text-align:center";
+
+      var btnBranches = document.createElement("INPUT");
+      btnBranches.value = "BRANCHES";
+      btnBranches.type = "button";
+      btnBranches.classList.add('mdl-button');  
+      btnBranches.classList.add('mdl-js-button');  
+      btnBranches.classList.add('mdl-button--raised');  
+      btnBranches.classList.add('mdl-js-ripple-effect');  
+      btnBranches.classList.add('mdl-color--white');   
+      //btnBranches.setAttribute("onclick", editBank(bankKey));
+      cell.appendChild(btnBranches);
+
+      var btnEdit = document.createElement("INPUT");
+      btnEdit.value = "EDIT";
+      btnEdit.type = "button";
+      btnEdit.classList.add('mdl-button');  
+      btnEdit.classList.add('mdl-js-button');  
+      btnEdit.classList.add('mdl-button--raised');  
+      btnEdit.classList.add('mdl-js-ripple-effect');  
+      btnEdit.classList.add('mdl-color--white');   
+      btnEdit.style = "margin-left: 8px;"
+      //btnEdit.setAttribute("onclick", editBank(bankKey));
+      cell.appendChild(btnEdit);
+
+      var btnDelete = document.createElement("INPUT");
+      btnDelete.value = "DELETE";
+      btnDelete.type = "button";
+      btnDelete.classList.add('mdl-button');  
+      btnDelete.classList.add('mdl-js-button');  
+      btnDelete.classList.add('mdl-button--raised');  
+      btnDelete.classList.add('mdl-js-ripple-effect');  
+      btnDelete.classList.add('mdl-color--red');  
+      btnDelete.classList.add('mdl-color-text--white'); 
+      btnDelete.style = "margin-left: 8px;"
+      //btnDelete.setAttribute("onclick", "deleteBank(bankKey)");
+      cell.appendChild(btnDelete);
+
+      return cell
+    }
 
     /*
      *  Getting social cell which contains links for social sites
@@ -361,9 +420,10 @@ limitations under the License.
         <table id="banks-list" class="mdl-data-table mdl-js-data-table mdl-cell mdl-cell--12-col">
           <thead>
             <tr>
-              <th class="mdl-data-table__cell--non-numeric">Bank Name</th>
-              <th>Customer Care</th>
-              <th>Social</th>
+              <th style="text-align:left;" class="mdl-data-table__cell--non-numeric">Bank Name</th>
+              <th style="text-align:center;">Customer Care</th>
+              <th style="text-align:center;">Social</th>
+              <th style="text-align:center;">Actions</th>
             </tr>
           </thead>
           <tbody>
