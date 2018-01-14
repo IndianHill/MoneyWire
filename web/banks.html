@@ -101,6 +101,13 @@ limitations under the License.
     }
 
     /**
+     *  Load Branches
+     */
+     function loadBranches(bankKey) {
+      console.log('Load branches of bank:'+bankKey);
+    }
+
+    /**
      *  Show banks on UI
      */
     function updateBanksUI(banks) {
@@ -134,10 +141,6 @@ limitations under the License.
 
         // Add Action Cell
         addActionCellForRow(row, bankKey);
-        // btnRemove.type = "button";
-        // btnRemove.value = "Remove";
-        // btnRemove.setAttribute("onclick", "Remove(this);");
-        // cell.appendChild(btnRemove);
     }
 
     /*
@@ -156,7 +159,7 @@ limitations under the License.
       btnBranches.classList.add('mdl-button--raised');  
       btnBranches.classList.add('mdl-js-ripple-effect');  
       btnBranches.classList.add('mdl-color--white');   
-      //btnBranches.setAttribute("onclick", editBank(bankKey));
+      btnBranches.setAttribute("onclick", "loadBranches('"+bankKey+"')");
       cell.appendChild(btnBranches);
 
       var btnEdit = document.createElement("INPUT");
@@ -168,7 +171,7 @@ limitations under the License.
       btnEdit.classList.add('mdl-js-ripple-effect');  
       btnEdit.classList.add('mdl-color--white');   
       btnEdit.style = "margin-left: 8px;"
-      //btnEdit.setAttribute("onclick", editBank(bankKey));
+      btnEdit.setAttribute("onclick", "editBank('"+bankKey+"')");
       cell.appendChild(btnEdit);
 
       var btnDelete = document.createElement("INPUT");
@@ -181,7 +184,7 @@ limitations under the License.
       btnDelete.classList.add('mdl-color--red');  
       btnDelete.classList.add('mdl-color-text--white'); 
       btnDelete.style = "margin-left: 8px;"
-      //btnDelete.setAttribute("onclick", "deleteBank(bankKey)");
+      btnDelete.setAttribute("onclick", "deleteBank('"+bankKey+"')");
       cell.appendChild(btnDelete);
 
       return cell
