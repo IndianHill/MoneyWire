@@ -38,9 +38,6 @@ limitations under the License.
   <script type="text/javascript">
 
     var allBanks = [];
-    var allBanksDict = {};
-    var isEditMode = false;
-    var editingBankKey = '';
 
     /**
      * On user sign in
@@ -76,10 +73,6 @@ limitations under the License.
       document.getElementById('spinner').classList.remove("is-active");
       console.log('total banks:'+banks.length)
       allBanks = banks;
-      allBanksDict = {};
-      allBanks.forEach(function (bank) {
-        allBanksDict[bank.key] = bank;
-      });
       updateBanksUI(allBanks);
     }
 
@@ -97,9 +90,7 @@ limitations under the License.
      *  Edit bank
      */
     function editBank(bankKey) {
-      bankData = allBanksDict[bankKey];
-      console.log('Edit bank:'+JSON.stringify(bankData));
-      showEditBankDialog(bankData);
+      console.log('Edit bank:'+bankKey);
     }
 
     /**
@@ -237,46 +228,11 @@ limitations under the License.
      * Show Dialog for create bank
     */
     function showCreateBankDialog() {
-      isEditMode = false;
-      $('#modal-title').data('Create Bank');
       var dialog = document.querySelector('dialog');
-      $('.mdl-textfield__input').parent().removeClass('is-focused');
       dialog.showModal();
       dialog.querySelector('.close').addEventListener('click', function() {
-        clearBankForm();
         dialog.close();
       });
-    }
-
-    /**
-     * Show Dialog for edit bank
-    */
-    function showEditBankDialog(bankData) {
-      isEditMode = true;
-      $('#modal-title').data('Edit Bank');
-      var dialog = document.querySelector('dialog');
-      updateModalData(bankData);
-      editingBankKey = bankData.key;
-      $('.mdl-textfield__input').parent().addClass('is-focused');
-      dialog.showModal();
-      dialog.querySelector('.close').addEventListener('click', function() {
-        clearBankForm();
-        dialog.close();
-      });
-    }
-
-    /*
-     *  Updating modal data
-     */
-    function updateModalData(bankData) {
-      $('#bank-name').val(bankData.bankName);
-      $('#bank-website').val(bankData.bankWebsite);
-      $('#bank-customer-care').val(bankData.bankCustomerCare);
-      $('#bank-toll-free').val(bankData.bankTollFree);
-      $('#bank-fb').val(bankData.bankFacebook);
-      $('#bank-google-plus').val(bankData.bankGooglePlus);
-      $('#bank-twitter').val(bankData.bankTwitter);
-      $('#bank-linkedin').val(bankData.bankLinkedIn);
     }
 
     /*
@@ -334,13 +290,7 @@ limitations under the License.
      function sendDataToCreateBank() {
         document.getElementById('create-bank-spinner').classList.add("is-active");
         bank_data = collectBankData()
-        if (isEditMode){
-          console.log('Updating bank data..:'+editingBankKey);
-          updateBank(bank_data, editingBankKey);
-        } else {
-          console.log('Creating bank..');
-          createBank(bank_data)
-        }
+        createBank(bank_data)
     }
 
     /*
@@ -360,26 +310,6 @@ limitations under the License.
      */
     function errorWhileCreatingBank(error) {
       console.log('ERROR: create bank:'+JSON.stringify(error));
-      document.getElementById('create-bank-spinner').classList.remove("is-active");
-    }
-
-    /*
-     *  Successfully Bank updated
-     */
-     function bankUpdatedSuccessfully() {
-      console.log('Bank Updated..');
-      var dialog = document.querySelector('dialog');
-      dialog.close()
-      clearBankForm()
-      getAllBanks()
-      document.getElementById('create-bank-spinner').classList.remove("is-active");
-    }
-
-    /*
-     *  Error while updating bank
-     */
-    function errorWhileUpdatingBank(error) {
-      console.log('ERROR: update bank:'+JSON.stringify(error));
       document.getElementById('create-bank-spinner').classList.remove("is-active");
     }
 
@@ -505,7 +435,7 @@ limitations under the License.
       </div>
     </div>
     <dialog id="bank-info" class="mdl-dialog dialog-container">
-      <h4 id="modal-title" class="mdl-dialog__title mdl-cell mdl-cell--12-col mdl-typography--text-center">Create Bank</h4>
+      <h4 class="mdl-dialog__title mdl-cell mdl-cell--12-col mdl-typography--text-center">Create Bank</h4>
       <div class="mdl-dialog__content mdl-grid">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
           <input class="mdl-textfield__input" type="text" id="bank-name">

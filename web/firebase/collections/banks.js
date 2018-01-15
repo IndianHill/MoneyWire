@@ -25,7 +25,6 @@ function getAllBanks() {
 function createBank(bankData) {
     var user = firebase.auth().currentUser;
     firestore = firebase.firestore();
-    currentTime = (new Date).getTime();
     firestore.collection(cl_banks).add({
         "bankName": bankData.name,
         "bankWebsite": bankData.website,
@@ -47,5 +46,33 @@ function createBank(bankData) {
     .catch(function(error) {
         console.log("Error creating bank: "+error);
         errorWhileCreatingBank(error);
+    });
+}
+
+/*
+ *  Updating bank 
+ */
+function updateBank(bankData, key) {
+    var user = firebase.auth().currentUser;
+    firestore = firebase.firestore();
+    firestore.collection(cl_banks).doc(key).update({
+        "bankName": bankData.name,
+        "bankWebsite": bankData.website,
+        "bankCustomerCare": bankData.customerCare,
+        "bankTollFree": bankData.tollFree,
+        "bankFacebook": bankData.fb,
+        "bankGooglePlus": bankData.googlePlus,
+        "bankTwitter": bankData.twitter,
+        "bankLinkedIn": bankData.linkedin,
+        "bankUpdatedBy": user.uid,
+        "bankUpdated": firebase.firestore.FieldValue.serverTimestamp()
+    })
+    .then(function() {
+        console.log("Bank successfully updated");
+        bankUpdatedSuccessfully();
+    })
+    .catch(function(error) {
+        console.log("Error in updating bank: "+error);
+        errorWhileUpdatingBank(error);
     });
 }
