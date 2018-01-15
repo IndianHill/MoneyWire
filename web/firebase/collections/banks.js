@@ -76,3 +76,17 @@ function updateBank(bankData, key) {
         errorWhileUpdatingBank(error);
     });
 }
+
+/**
+ * Delete Bank
+ */
+function deleteBankEntry(key) {
+    firestore = firebase.firestore();
+    firestore.collection(cl_banks).doc(key).delete().then(function() {
+        console.log("Bank successfully deleted!");
+        bankDeletedSuccessfully();
+    }).catch(function(error) {
+        console.error("Error deleting bank: ", error);
+        errorWhileDeletingBank(error);
+    });
+}

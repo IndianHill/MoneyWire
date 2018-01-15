@@ -107,6 +107,7 @@ limitations under the License.
      */
     function deleteBank(bankKey) {
       console.log('Delete bank:'+bankKey);
+      deleteBankEntry(bankKey);
     }
 
     /**
@@ -380,6 +381,24 @@ limitations under the License.
      */
     function errorWhileUpdatingBank(error) {
       console.log('ERROR: update bank:'+JSON.stringify(error));
+      document.getElementById('create-bank-spinner').classList.remove("is-active");
+    }
+
+    /*
+     *  Successfully Bank deleted
+     */
+     function bankDeletedSuccessfully() {
+      console.log('Bank deleted..');
+      clearBankForm();
+      getAllBanks();
+    }
+
+    /*
+     *  Error while updating bank
+     */
+    function errorWhileDeletingBank(error) {
+      console.log('ERROR: delete bank:'+JSON.stringify(error));
+      alert('Error while deleting document:'+error.name);
       document.getElementById('create-bank-spinner').classList.remove("is-active");
     }
 
