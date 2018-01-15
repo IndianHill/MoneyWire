@@ -238,7 +238,7 @@ limitations under the License.
     */
     function showCreateBankDialog() {
       isEditMode = false;
-      $('#modal-title').data('Create Bank');
+      document.getElementById("modal-title").innerHTML = 'Create Bank';
       var dialog = document.querySelector('dialog');
       $('.mdl-textfield__input').parent().removeClass('is-focused');
       dialog.showModal();
@@ -253,7 +253,7 @@ limitations under the License.
     */
     function showEditBankDialog(bankData) {
       isEditMode = true;
-      $('#modal-title').data('Edit Bank');
+      document.getElementById("modal-title").innerHTML = 'Edit Bank';
       var dialog = document.querySelector('dialog');
       updateModalData(bankData);
       editingBankKey = bankData.key;
@@ -544,7 +544,7 @@ limitations under the License.
       </div>
       <div class="mdl-dialog__actions">
         <div id="create-bank-spinner" class="mdl-spinner mdl-js-spinner"></div>
-        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color-text--white mdl-color--light-blue-700" id="btn-create-bank">Create</button>
+        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color-text--white mdl-color--light-blue-700" id="btn-create-bank">SAVE</button>
         <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect close">Cancel</button>
       </div>
     </dialog>
