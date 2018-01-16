@@ -24,9 +24,7 @@ function loadBranchForBank(bankKey) {
  */
 function getUrlParams() {
     let query = window.location.search.substring(1);
-    console.log('Query Str:'+query);
     let params = parse_query_string(query);
-    console.log('Params:'+params);
     return params;
 }
 

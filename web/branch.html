@@ -34,6 +34,7 @@ limitations under the License.
   <script src="firebase/userHelper.js"></script>
   <script src="helpers/globalHelper.js"></script>
   <script src="firebase/collections/banks.js"></script>
+  <script src="firebase/collections/branches.js"></script>
   <script type="text/javascript">
 
     var bankDetails = {};
@@ -69,7 +70,6 @@ limitations under the License.
      */
     function getBankKey() {
         params = getUrlParams()
-        console.log('Bank-key:'+params.bank);
         if (!params.bank) {
             alert('No bank selected.');
             loadBanksPage();
@@ -82,10 +82,11 @@ limitations under the License.
      */
     function successfullyFetchedBankDetails(bankData) {
         document.getElementById('spinner').classList.remove("is-active");
-        console.log('Bank Data:'+JSON.stringify(bankData));
 
         bankDetails = bankData;
         document.getElementById("panel-title").innerHTML = bankDetails.bankName + " - Branches";
+
+        getBranchesOfBank(getBankKey());
     }
 
     /**

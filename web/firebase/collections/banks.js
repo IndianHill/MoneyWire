@@ -98,7 +98,6 @@ function getBankDetails(key) {
     firestore = firebase.firestore();
     firestore.collection(cl_banks).doc(key).get().then(function(doc) {
         if (doc.exists) {
-            console.log("Document data:", doc.data());
             successfullyFetchedBankDetails(doc.data());
         } else {
             console.log("No such document!");
