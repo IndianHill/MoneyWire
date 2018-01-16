@@ -15,7 +15,7 @@ limitations under the License.
 <head>
   <meta charset=utf-8 />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Banks</title>
+  <title>Branches</title>
 
   <!-- Material Design Theming -->
   <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
@@ -24,7 +24,6 @@ limitations under the License.
   <script src="jquery-3.2.1.min.js"></script>
 
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/banks.css">
 
   <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
@@ -37,7 +36,7 @@ limitations under the License.
   <script src="firebase/collections/banks.js"></script>
   <script type="text/javascript">
 
-    var allBanks = [];
+    var bankDetails = {};
 
     /**
      * On user sign in
@@ -46,9 +45,10 @@ limitations under the License.
         // User is signed in
         document.getElementById('btn-sign-out').hidden = false;
         document.getElementById('panel-login').hidden = true;
-        document.getElementById('panel-banks').hidden = false;
+        document.getElementById('panel-branch').hidden = false;
+        bankKey = getBankKey();
         document.getElementById('spinner').classList.add("is-active");
-        getAllBanks()
+        getBankDetails(bankKey);
     }
 
     /**
@@ -58,288 +58,43 @@ limitations under the License.
         // User is not signed in
         document.getElementById('btn-sign-out').hidden = true;
         document.getElementById('panel-login').hidden = false;
-        document.getElementById('panel-banks').hidden = true;
+        document.getElementById('panel-branch').hidden = true;
 
         // Loading home page
         window.setTimeout(loadHomePage, 3000)
     }
 
     /**
-     *  After successful retrival of banks this function will get call
+     *  Get bank-key from location
      */
-    function successfullyFetchedBanks(banks) {
-      allBanks = []
-      $("#banks-list > tbody").empty();
-      document.getElementById('spinner').classList.remove("is-active");
-      console.log('total banks:'+banks.length)
-      allBanks = banks;
-      updateBanksUI(allBanks);
+    function getBankKey() {
+        params = getUrlParams()
+        console.log('Bank-key:'+params.bank);
+        if (!params.bank) {
+            alert('No bank selected.');
+            loadBanksPage();
+        }
+        return params.bank;
     }
 
     /**
-     *  After failure retrival of banks this function will get call
+     *  After successful retrival of bank details
      */
-     function failedToFetchedBanks(err) {
-      allBanks = []
-      $("#banks-list > tbody").empty();
-      document.getElementById('spinner').classList.remove("is-active");
-        // Update UI for error
+    function successfullyFetchedBankDetails(bankData) {
+        document.getElementById('spinner').classList.remove("is-active");
+        console.log('Bank Data:'+JSON.stringify(bankData));
+
+        bankDetails = bankData;
+        document.getElementById("panel-title").innerHTML = bankDetails.bankName + " - Branches";
     }
 
     /**
-     *  Edit bank
+     *  After failure retrival of bank details
      */
-    function editBank(bankKey) {
-      console.log('Edit bank:'+bankKey);
-    }
-
-    /**
-     *  Delete bank
-     */
-    function deleteBank(bankKey) {
-      console.log('Delete bank:'+bankKey);
-    }
-
-    /**
-     *  Load Branches
-     */
-     function loadBranches(bankKey) {
-      console.log('Load branches of bank:'+bankKey);
-    }
-
-    /**
-     *  Show banks on UI
-     */
-    function updateBanksUI(banks) {
-        banks.forEach(bank => {
-          addBankRow(bank.key, bank.bankName, bank.bankCustomerCare, bank.bankWebsite, bank.bankFacebook, bank.bankGooglePlus, bank.bankTwitter, bank.bankLinkedIn)
-        });
-    }
-
-    function addBankRow(bankKey, bankName, bankCustomerCare, bankWebsite, bankfb, bankGooglePlus, bankTwitter, bankLinkedin) {
-        //Get the reference of the Table's TBODY element.
-        var tBody = document.getElementById("banks-list").getElementsByTagName("TBODY")[0];
- 
-        //Add Row.
-        row = tBody.insertRow(-1);
-
-        //Add Name cell.
-        var cell = row.insertCell(-1);
-        cell.style = "text-align:left";
-        cell.classList.add('mdl-data-table__cell--non-numeric');  
-        cell.innerHTML = bankName;
-
-        //Add Customer Care cell.
-        cell = row.insertCell(-1);
-        cell.style = "text-align:center";
-        cell.innerHTML = bankCustomerCare;
-
-        //Add Social cell.
-        cell = row.insertCell(-1);
-        cell.style = "text-align:center";
-        cell.innerHTML = getSocialCell(bankWebsite, bankfb, bankGooglePlus, bankTwitter, bankLinkedin)
-
-        // Add Action Cell
-        addActionCellForRow(row, bankKey);
-    }
-
-    /*
-     *  Getting action cell
-     */
-    function addActionCellForRow(row, bankKey) {
-
-      cell = row.insertCell(-1);
-      cell.style = "text-align:center";
-
-      var btnBranches = document.createElement("INPUT");
-      btnBranches.value = "BRANCHES";
-      btnBranches.type = "button";
-      btnBranches.classList.add('mdl-button');  
-      btnBranches.classList.add('mdl-js-button');  
-      btnBranches.classList.add('mdl-button--raised');  
-      btnBranches.classList.add('mdl-js-ripple-effect');  
-      btnBranches.classList.add('mdl-color--white');   
-      btnBranches.setAttribute("onclick", "loadBranches('"+bankKey+"')");
-      cell.appendChild(btnBranches);
-
-      var btnEdit = document.createElement("INPUT");
-      btnEdit.value = "EDIT";
-      btnEdit.type = "button";
-      btnEdit.classList.add('mdl-button');  
-      btnEdit.classList.add('mdl-js-button');  
-      btnEdit.classList.add('mdl-button--raised');  
-      btnEdit.classList.add('mdl-js-ripple-effect');  
-      btnEdit.classList.add('mdl-color--white');   
-      btnEdit.style = "margin-left: 8px;"
-      btnEdit.setAttribute("onclick", "editBank('"+bankKey+"')");
-      cell.appendChild(btnEdit);
-
-      var btnDelete = document.createElement("INPUT");
-      btnDelete.value = "DELETE";
-      btnDelete.type = "button";
-      btnDelete.classList.add('mdl-button');  
-      btnDelete.classList.add('mdl-js-button');  
-      btnDelete.classList.add('mdl-button--raised');  
-      btnDelete.classList.add('mdl-js-ripple-effect');  
-      btnDelete.classList.add('mdl-color--red');  
-      btnDelete.classList.add('mdl-color-text--white'); 
-      btnDelete.style = "margin-left: 8px;"
-      btnDelete.setAttribute("onclick", "deleteBank('"+bankKey+"')");
-      cell.appendChild(btnDelete);
-
-      return cell
-    }
-
-    /*
-     *  Getting social cell which contains links for social sites
-     */
-    function getSocialCell(website, fb, googleplus, twitter, linkedin) {
-      innerHTML = ""
-      
-      // Web
-      if (website.length > 0) {
-        innerHTML += "<a href='"+website+"'><img src='img/ic_web.png' style='width:24px; height:24px; margin:2px;' /></a>"
-      }
-
-      // FB
-      if (fb.length > 0) {
-        innerHTML += "<a href='"+fb+"'><img src='img/ic_fb.png' style='width:24px; height:24px; margin:2px;' /></a>"
-      }
-
-      // G+
-      if (googleplus.length > 0) {
-        innerHTML += "<a href='"+googleplus+"'><img src='img/ic_google_plus.png' style='width:24px; height:24px; margin:2px;' /></a>"
-      }
-
-      // Twitter
-      if (twitter.length > 0) {
-        innerHTML += "<a href='"+twitter+"'><img src='img/ic_twitter.png' style='width:24px; height:24px; margin:2px;' /></a>"
-      }
-
-      // LinkedIn
-      if (linkedin.length > 0) {
-        innerHTML += "<a href='"+linkedin+"'><img src='img/ic_linkedin.png' style='width:24px; height:24px; margin:2px;' /></a>"
-      }
-
-      return innerHTML
-    }
-
-    /**
-     * Show Dialog for create bank
-    */
-    function showCreateBankDialog() {
-      var dialog = document.querySelector('dialog');
-      dialog.showModal();
-      dialog.querySelector('.close').addEventListener('click', function() {
-        dialog.close();
-      });
-    }
-
-    /*
-     *  Collect all data
-     */
-    function collectBankData() {
-
-      var bank_obj = {};
-
-      // Bank Name
-      bank_obj.name = $('#bank-name').val()
-      if (bank_obj.name.length == 0) {
-        alert('Bank name is required.')
-        return
-      }
-
-      // Bank Website
-      bank_obj.website = $('#bank-website').val()
-      if (bank_obj.website.length == 0) {
-        alert('Bank website url is required.')
-        return
-      }
-
-      // Customer Care
-      bank_obj.customerCare = $('#bank-customer-care').val()
-      if (bank_obj.customerCare.length == 0) {
-        alert('Bank customer care number is required.')
-        return
-      }
-
-      // Toll Free Number
-      bank_obj.tollFree = $('#bank-toll-free').val()
-
-      // Facebook
-      bank_obj.fb = $('#bank-fb').val()
-
-      // Google+
-      bank_obj.googlePlus = $('#bank-google-plus').val()
-
-      // Twitter
-      bank_obj.twitter = $('#bank-twitter').val()
-
-      // LinkedIn
-      bank_obj.linkedin = $('#bank-linkedin').val()
-
-      console.log('Bank Values are:'+JSON.stringify(bank_obj));
-
-      return bank_obj;
-
-    }
-
-    /*
-     *  On click of create bank
-     */
-     function sendDataToCreateBank() {
-        document.getElementById('create-bank-spinner').classList.add("is-active");
-        bank_data = collectBankData()
-        createBank(bank_data)
-    }
-
-    /*
-     *  Successfully Added bank
-     */
-    function bankCreatedSuccessfully(bank_data) {
-      console.log('Bank created');
-      var dialog = document.querySelector('dialog');
-      dialog.close()
-      clearBankForm()
-      getAllBanks()
-      document.getElementById('create-bank-spinner').classList.remove("is-active");
-    }
-
-    /*
-     *  Error while creating bank
-     */
-    function errorWhileCreatingBank(error) {
-      console.log('ERROR: create bank:'+JSON.stringify(error));
-      document.getElementById('create-bank-spinner').classList.remove("is-active");
-    }
-
-    /*
-     *  Clears out form data
-     */ 
-    function clearBankForm() {
-      // Bank Name
-      $('#bank-name').val("")
-
-      // Bank Website
-      $('#bank-website').val("")
-
-      // Customer Care
-      $('#bank-customer-care').val("")
-
-      // Toll Free Number
-      $('#bank-toll-free').val("")
-
-      // Facebook
-      $('#bank-fb').val("")
-
-      // Google+
-      $('#bank-google-plus').val("")
-
-      // Twitter
-      $('#bank-twitter').val("")
-
-      // LinkedIn
-      $('#bank-linkedin').val("")
+    function failedToFetchBankDetails(err) {
+        document.getElementById('spinner').classList.remove("is-active");
+        console.log('Error while getting bank details:'+err.name);
+        alert("Error while getting bank details: "+err.name);
     }
 
     /**
@@ -360,8 +115,7 @@ limitations under the License.
       
       // Event listeners
       document.getElementById('btn-sign-out').addEventListener('click', makeUserSignOut, false);
-      document.getElementById('btn-add-bank').addEventListener('click', showCreateBankDialog, false);
-      $('#btn-create-bank').click(sendDataToCreateBank);
+      
     }
 
     window.onload = function() {
@@ -412,72 +166,17 @@ limitations under the License.
       </div>
 
       <!-- Container for the Table of content -->
-      <div id='panel-banks' class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+      <div id='panel-branch' class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
         <div class="mdl-card__title mdl-color--light-blue-600 mdl-color-text--white">
-            <h2 class="mdl-cell mdl-cell--10-col mdl-card__title-text">Banks</h2>
+            <h2 id="panel-title" class="mdl-cell mdl-cell--8-col mdl-card__title-text">Branches</h2>
             <div id="spinner" class="mdl-spinner mdl-js-spinner mdl-spinner--single-color"></div>
-            <div class="mdl-cell mdl-cell--2-col">
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--white" id="btn-add-bank">CREATE BANK</button>
+            <div class="mdl-cell mdl-cell--4-col">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--white" id="btn-add-branch">ADD BRANCH</button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--white" id="btn-upload-csv">UPLOAD CSV</button>
             </div>
         </div>
-        <table id="banks-list" class="mdl-data-table mdl-js-data-table mdl-cell mdl-cell--12-col">
-          <thead>
-            <tr>
-              <th style="text-align:left;" class="mdl-data-table__cell--non-numeric">Bank Name</th>
-              <th style="text-align:center;">Customer Care</th>
-              <th style="text-align:center;">Social</th>
-              <th style="text-align:center;">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-          </tbody>
-        </table>
       </div>
     </div>
-    <dialog id="bank-info" class="mdl-dialog dialog-container">
-      <h4 class="mdl-dialog__title mdl-cell mdl-cell--12-col mdl-typography--text-center">Create Bank</h4>
-      <div class="mdl-dialog__content mdl-grid">
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
-          <input class="mdl-textfield__input" type="text" id="bank-name">
-          <label class="mdl-textfield__label" for="bank-name">Bank Name*</label>
-        </div>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
-          <input class="mdl-textfield__input" type="text" id="bank-website">
-          <label class="mdl-textfield__label" for="bank-web">Bank Website*</label>
-        </div>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
-          <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="bank-customer-care">
-          <label class="mdl-textfield__label" for="bank-customer-care">Customer Care*</label>
-          <span class="mdl-textfield__error">Input is not a number!</span>
-        </div>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
-          <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="bank-toll-free">
-          <label class="mdl-textfield__label" for="bank-toll-free">Toll Free Number</label>
-          <span class="mdl-textfield__error">Input is not a number!</span>
-        </div>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
-          <input class="mdl-textfield__input" type="text" id="bank-fb">
-          <label class="mdl-textfield__label" for="bank-fb">Facebook</label>
-        </div>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
-          <input class="mdl-textfield__input" type="text" id="bank-google-plus">
-          <label class="mdl-textfield__label" for="bank-google-plus">Google+</label>
-        </div>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
-          <input class="mdl-textfield__input" type="text" id="bank-twitter">
-          <label class="mdl-textfield__label" for="bank-twitter">Twitter</label>
-        </div>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
-          <input class="mdl-textfield__input" type="text" id="bank-linkedin">
-          <label class="mdl-textfield__label" for="bank-linkedin">LinkedIn</label>
-        </div>
-      </div>
-      <div class="mdl-dialog__actions">
-        <div id="create-bank-spinner" class="mdl-spinner mdl-js-spinner"></div>
-        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color-text--white mdl-color--light-blue-700" id="btn-create-bank">Create</button>
-        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect close">Cancel</button>
-      </div>
-    </dialog>
   </main>
 </div>
 </body>

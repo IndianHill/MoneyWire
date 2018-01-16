@@ -90,3 +90,24 @@ function deleteBankEntry(key) {
         errorWhileDeletingBank(error);
     });
 }
+
+/**
+ *  Get bank details
+ */
+function getBankDetails(key) {
+    firestore = firebase.firestore();
+    firestore.collection(cl_banks).doc(key).get().then(function(doc) {
+        if (doc.exists) {
+            console.log("Document data:", doc.data());
+            successfullyFetchedBankDetails(doc.data());
+        } else {
+            console.log("No such document!");
+            error = {}
+            error.name = "No Bank found."
+            failedToFetchBankDetails(error);
+        }
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+        failedToFetchBankDetails(error);
+    });
+}
