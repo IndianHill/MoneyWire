@@ -24,6 +24,7 @@ limitations under the License.
   <script src="jquery-3.2.1.min.js"></script>
 
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/banks.css">
 
   <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
@@ -99,24 +100,53 @@ limitations under the License.
     }
 
     /**
+     * Show Dialog for create branch
+    */
+    function showCreateBranchDialog() {
+        isEditMode = false;
+        document.getElementById("modal-title").innerHTML = 'Create Branch';
+        var dialog = document.querySelector('dialog');
+        $('.mdl-textfield__input').parent().removeClass('is-focused');
+        dialog.showModal();
+        dialog.querySelector('.close').addEventListener('click', function() {
+            clearBranchForm();
+            dialog.close();
+        });
+    }
+
+    /*
+     *  Clears out form data
+     */ 
+    function clearBranchForm() {
+        $('#branch-name').val("");
+        $('#branch-street').val("");
+        $('#branch-city').val("");
+        $('#branch-district').val("");
+        $('#branch-state').val("");
+        $('#branch-pin-code').val("");
+        $('#branch-contact-number').val("");
+        $('#branch-ifsc').val("");
+        $('#branch-micr').val("");
+    }
+
+    /**
      * initApp handles setting up UI event listeners and registering Firebase auth listeners:
      *  - firebase.auth().onAuthStateChanged: This listener is called when the user is signed in or
      *    out, and that is where we update the UI.
      */
     function initApp() {
-
-      //firebaseApp = initializeFirebaseApp()
-
-      // Registering for firebase user auth state change
-      registerUserAuthenticationStateChange()
-      
-      // Initialization
-      document.getElementById('btn-sign-out').hidden = true;
-      document.getElementById('panel-login').hidden = false;
-      
-      // Event listeners
-      document.getElementById('btn-sign-out').addEventListener('click', makeUserSignOut, false);
-      
+        // Registering for firebase user auth state change
+        registerUserAuthenticationStateChange()
+        
+        // Initialization
+        document.getElementById('btn-sign-out').hidden = true;
+        document.getElementById('panel-login').hidden = false;
+        
+        // Event listeners
+        document.getElementById('btn-sign-out').addEventListener('click', makeUserSignOut, false);
+        $('#btn-add-branch').click(function(){
+            showCreateBranchDialog();
+        });
     }
 
     window.onload = function() {
@@ -176,8 +206,70 @@ limitations under the License.
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--white" id="btn-upload-csv">UPLOAD CSV</button>
             </div>
         </div>
+        <table id="branch-list" class="mdl-data-table mdl-js-data-table mdl-cell mdl-cell--12-col">
+            <thead>
+              <tr>
+                <th style="text-align:left;" class="mdl-data-table__cell--non-numeric">Name</th>
+                <th style="text-align:center;">Address</th>
+                <th style="text-align:center;">IFSC</th>
+                <th style="text-align:center;">MICR</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
       </div>
     </div>
+    <dialog id="branch-info" class="mdl-dialog dialog-container">
+        <h4 id="modal-title" class="mdl-dialog__title mdl-cell mdl-cell--12-col mdl-typography--text-center">Create Branch</h4>
+        <div class="mdl-dialog__content mdl-grid">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                <input class="mdl-textfield__input" type="text" id="branch-name">
+                <label class="mdl-textfield__label" for="branch-name">Branch Name</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                <input class="mdl-textfield__input" type="text" id="branch-street">
+                <label class="mdl-textfield__label" for="branch-street">Street</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                <input class="mdl-textfield__input" type="text" id="branch-city">
+                <label class="mdl-textfield__label" for="branch-city">City/Town</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                <input class="mdl-textfield__input" type="text" id="branch-district">
+                <label class="mdl-textfield__label" for="branch-district">District</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                <input class="mdl-textfield__input" type="text" id="branch-state">
+                <label class="mdl-textfield__label" for="branch-state">State</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="branch-pin-code">
+                <label class="mdl-textfield__label" for="branch-pin-code">Pin Code</label>
+                <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="branch-contact-number">
+                <label class="mdl-textfield__label" for="branch-contact-number">Contact Number</label>
+                <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="branch-ifsc">
+                <label class="mdl-textfield__label" for="branch-ifsc">IFSC Code</label>
+                <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="branch-micr">
+                <label class="mdl-textfield__label" for="branch-micr">MICR Code</label>
+                <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+        </div>
+        <div class="mdl-dialog__actions">
+            <div id="create-branch-spinner" class="mdl-spinner mdl-js-spinner"></div>
+            <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color-text--white mdl-color--light-blue-700" id="btn-create-branch">SAVE</button>
+            <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect close">Cancel</button>
+        </div>
+      </dialog>
   </main>
 </div>
 </body>
