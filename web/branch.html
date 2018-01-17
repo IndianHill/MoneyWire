@@ -114,6 +114,42 @@ limitations under the License.
         });
     }
 
+    /**
+     *  Collect branch data
+     **/
+    function collectBranchData() {
+        name = $('#branch-name').val();
+        street = $('#branch-street').val();
+        city = $('#branch-city').val();
+        district = $('#branch-district').val();
+        state = $('#branch-state').val();
+        pinCode = $('#branch-pin-code').val();
+        contactNumber = $('#branch-contact-number').val();
+        ifscCode = $('#branch-ifsc').val();
+        micrCode = $('#branch-micr').val();
+
+        fullAddress = getFullAddress(name, street, city, district, state, pinCode);
+    }
+
+    /**
+     *  Generate full address
+     **/
+    function getFullAddress(name, street, city, district, state, pinCode) {
+
+        if (name.length == 0 || street.length == 0 || city.length == 0 || district == 0 || state == 0 || pinCode == 0) {
+            alert('Please enter all fields of address (Street/City/District/State/Pin Code)');
+            return ""
+        }
+
+    }
+
+    /**
+     * On Click of save of branch
+     **/
+    function sendDataToCreateBranch() {
+        branchData = collectBranchData()
+    }
+
     /*
      *  Clears out form data
      */ 
@@ -147,6 +183,9 @@ limitations under the License.
         $('#btn-add-branch').click(function(){
             showCreateBranchDialog();
         });
+        $('#btn-save-branch').click(function(){
+            sendDataToCreateBranch();
+        })
     }
 
     window.onload = function() {
@@ -266,7 +305,7 @@ limitations under the License.
         </div>
         <div class="mdl-dialog__actions">
             <div id="create-branch-spinner" class="mdl-spinner mdl-js-spinner"></div>
-            <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color-text--white mdl-color--light-blue-700" id="btn-create-branch">SAVE</button>
+            <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color-text--white mdl-color--light-blue-700" id="btn-save-branch">SAVE</button>
             <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect close">Cancel</button>
         </div>
       </dialog>
