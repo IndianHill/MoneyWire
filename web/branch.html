@@ -21,6 +21,7 @@ limitations under the License.
   <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDhrAm8bI3Eg2g1IzYMDFQAmZfb12RzxtQ"></script>
   <script src="jquery-3.2.1.min.js"></script>
 
   <link rel="stylesheet" href="css/main.css">
@@ -85,9 +86,10 @@ limitations under the License.
         document.getElementById('spinner').classList.remove("is-active");
 
         bankDetails = bankData;
+        bankDetails.key = getBankKey();
         document.getElementById("panel-title").innerHTML = bankDetails.bankName + " - Branches";
 
-        getBranchesOfBank(getBankKey());
+        getBranchesOfBank(bankDetails.key);
     }
 
     /**
@@ -97,6 +99,22 @@ limitations under the License.
         document.getElementById('spinner').classList.remove("is-active");
         console.log('Error while getting bank details:'+err.name);
         alert("Error while getting bank details: "+err.name);
+    }
+
+    /**
+     *  Branch successfully created
+     */
+     function branchCreatedSuccessfully(branchData) {
+        document.getElementById('create-branch-spinner').classList.remove("is-active");
+    }
+
+    /**
+     *  Branch creation failure
+     */
+    function errorWhileCreatingBranch(err) {
+        document.getElementById('create-branch-spinner').classList.remove("is-active");
+        console.log('Error while getting branch details:'+err.name);
+        alert("Error while getting branch details: "+err.name);
     }
 
     /**
@@ -129,6 +147,28 @@ limitations under the License.
         micrCode = $('#branch-micr').val();
 
         fullAddress = getFullAddress(name, street, city, district, state, pinCode);
+        if(fullAddress.length == 0) {
+            return false
+        }
+        
+        if (contactNumber.length == 0 || ifscCode.length != 11 || micrCode.length != 9) {
+            alert('Please enter valid data for contact number/IFSC(4-Alphabets, 7-Numbers)/MICR(9-Numbers)');
+            return false
+        }
+
+        branchObj = {};
+        branchObj.name = name;
+        branchObj.street = street;
+        branchObj.city = city;
+        branchObj.district = district;
+        branchObj.state = state;
+        branchObj.pinCode = pinCode;
+        branchObj.contactNumber = contactNumber;
+        branchObj.ifscCode = ifscCode;
+        branchObj.micrCode = micrCode;
+        branchObj.fullAddress = fullAddress;
+        
+        return branchObj;
     }
 
     /**
@@ -136,18 +176,50 @@ limitations under the License.
      **/
     function getFullAddress(name, street, city, district, state, pinCode) {
 
-        if (name.length == 0 || street.length == 0 || city.length == 0 || district == 0 || state == 0 || pinCode == 0) {
-            alert('Please enter all fields of address (Street/City/District/State/Pin Code)');
+        if (name.length == 0 || street.length == 0 || city.length == 0 || district.length == 0 || state.length == 0 || pinCode.length != 6) {
+            alert('Please enter correct fields of address (Street/City/District/State/Pin Code - 6 digits)');
             return ""
         }
 
+        var fullAdd = "";
+        fullAdd += name;
+        fullAdd += ", " + street;
+        fullAdd += ", " + city;
+        if(city != district) {
+            fullAdd += ", " + district;
+        }
+        fullAdd += ", " + state;
+        fullAdd += " - " + pinCode;
+
+        return fullAdd;
     }
+
+    // /**
+    //  *  Convert address to lat-lang
+    //  */
+    // function convertAddressToLatLng(address) {
+        
+    //     var geocoder = new google.maps.Geocoder();
+    //     geocoder.geocode( { 'address': address} , function(results, status) {
+    //         if (status == google.maps.GeocoderStatus.OK) {
+    //             var latitude = results[0].geometry.location.lat();
+    //             var longitude = results[0].geometry.location.lng();
+    //             console.log("Address: "+address+" lat:"+latitude+" lng:"+longitude);
+    //             alert("Address: "+address+" lat:"+latitude+" lng:"+longitude);
+    //         } 
+    //     });
+    //     console.log("outside of the geocoder.")
+    // }
 
     /**
      * On Click of save of branch
      **/
     function sendDataToCreateBranch() {
         branchData = collectBranchData()
+        if (branchData) {
+            document.getElementById('create-branch-spinner').classList.add("is-active");
+            createBankBranch(branchData, bankDetails.key);
+        }
     }
 
     /*
@@ -293,7 +365,7 @@ limitations under the License.
                 <span class="mdl-textfield__error">Input is not a number!</span>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
-                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="branch-ifsc">
+                <input class="mdl-textfield__input" type="text" id="branch-ifsc">
                 <label class="mdl-textfield__label" for="branch-ifsc">IFSC Code</label>
                 <span class="mdl-textfield__error">Input is not a number!</span>
             </div>
