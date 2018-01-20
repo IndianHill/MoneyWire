@@ -42,6 +42,7 @@ limitations under the License.
     var bankDetails = {};
     var banksBranches = [];
     var banksBranchesDict = {};
+    editingBranchKey = "";
 
     /**
      * On user sign in
@@ -117,6 +118,7 @@ limitations under the License.
         bankDetails.key = getBankKey();
         document.getElementById("panel-title").innerHTML = bankDetails.bankName + " - Branches";
 
+        document.getElementById('spinner').classList.add("is-active");
         getBranchesOfBank(bankDetails.key);
     }
 
@@ -132,8 +134,11 @@ limitations under the License.
     /**
      *  Branch successfully created
      */
-     function branchCreatedSuccessfully(branchData) {
+    function branchCreatedSuccessfully(branchData) {
         document.getElementById('create-branch-spinner').classList.remove("is-active");
+        closeCreateBranchDialog();
+        document.getElementById('spinner').classList.add("is-active");
+        getBranchesOfBank(bankDetails.key);
     }
 
     /**
@@ -141,8 +146,29 @@ limitations under the License.
      */
     function errorWhileCreatingBranch(err) {
         document.getElementById('create-branch-spinner').classList.remove("is-active");
+        closeCreateBranchDialog();
         console.log('Error while getting branch details:'+err.name);
         alert("Error while getting branch details: "+err.name);
+    }
+
+    /**
+     *  Branch successfully updated
+     */
+     function branchUpdatedSuccessfully() {
+        document.getElementById('create-branch-spinner').classList.remove("is-active");
+        closeCreateBranchDialog();
+        document.getElementById('spinner').classList.add("is-active");
+        getBranchesOfBank(bankDetails.key);
+    }
+
+    /**
+     *  Branch updation failure
+     */
+    function errorWhileUpdatingBranch(err) {
+        document.getElementById('create-branch-spinner').classList.remove("is-active");
+        closeCreateBranchDialog();
+        console.log('Error while updating branch details:'+err.name);
+        alert("Error while updating branch details: "+err.name);
     }
 
     /**
@@ -224,7 +250,6 @@ limitations under the License.
      *  Add branch details cell
      */
     function addActionCell(branchDetails) {
-        console.log(JSON.stringify(branchDetails));
         cell = row.insertCell(-1);
         cell.style = "text-align:center";
 
@@ -247,6 +272,31 @@ limitations under the License.
      */
     function openEditDialog(branchKey) {
         isEditMode = true;
+        branchDetails = banksBranchesDict[branchKey];
+        document.getElementById("modal-title").innerHTML = 'Edit Branch';
+        var dialog = document.querySelector('dialog');
+        updateModalData(branchDetails);
+        editingBranchKey = branchDetails.key;
+        $('.mdl-textfield__input').parent().addClass('is-focused');
+        dialog.showModal();
+        dialog.querySelector('.close').addEventListener('click', function() {
+            closeCreateBranchDialog();
+        });
+    }
+
+    /**
+     *  Update modal data for edit
+     */
+    function updateModalData(branchDetails) {
+        $('#branch-name').val(branchDetails.name);
+        $('#branch-street').val(branchDetails.street);
+        $('#branch-city').val(branchDetails.city);
+        $('#branch-district').val(branchDetails.district);
+        $('#branch-state').val(branchDetails.state);
+        $('#branch-pin-code').val(branchDetails.pinCode);
+        $('#branch-contact-number').val(branchDetails.contactNumber);
+        $('#branch-ifsc').val(branchDetails.ifsc);
+        $('#branch-micr').val(branchDetails.micr);
     }
 
     /**
@@ -332,10 +382,14 @@ limitations under the License.
      * On Click of save of branch
      **/
     function sendDataToCreateBranch() {
-        branchData = collectBranchData()
+        branchData = collectBranchData();
         if (branchData) {
             document.getElementById('create-branch-spinner').classList.add("is-active");
-            createBankBranch(branchData, bankDetails.key);
+            if (branchData && !isEditMode) {
+                createBankBranch(branchData, bankDetails.key);
+            } else if (branchData) {
+                updateBankBranch(branchData, bankDetails.key, editingBranchKey);
+            }
         }
     }
 

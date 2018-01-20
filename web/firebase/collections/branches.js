@@ -53,3 +53,33 @@ function createBankBranch(branchData, bankKey) {
         errorWhileCreatingBranch(error);
     });
 }
+
+/**
+ *  Update bank's branch
+ */
+function updateBankBranch(branchData, bankKey, branchKey) {
+    var user = firebase.auth().currentUser;
+    firestore = firebase.firestore();
+    firestore.collection(cl_banks).doc(bankKey).collection(cl_branches).doc(branchKey).update({
+        "name": branchData.name,
+        "street": branchData.street,
+        "city": branchData.city,
+        "district": branchData.district,
+        "state": branchData.state,
+        "pinCode": branchData.pinCode,
+        "fullAddress": branchData.fullAddress,
+        "contactNumber": branchData.contactNumber,
+        "ifsc": branchData.ifscCode,
+        "micr": branchData.micrCode,
+        "updatedBy": user.uid,
+        "updatedAt": firebase.firestore.FieldValue.serverTimestamp()
+    })
+    .then(function() {
+        console.log("Branch updated successfully");
+        branchUpdatedSuccessfully();
+    })
+    .catch(function(error) {
+        console.log("Error updating branch: "+error);
+        errorWhileUpdatingBranch(error);
+    });
+}
