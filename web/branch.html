@@ -350,7 +350,9 @@ limitations under the License.
 
         var fullAdd = "";
         fullAdd += name;
-        fullAdd += ", " + street;
+        if(name != street) {
+            fullAdd += ", " + street;
+        }
         fullAdd += ", " + city;
         if(city != district) {
             fullAdd += ", " + district;
