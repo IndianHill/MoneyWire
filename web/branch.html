@@ -40,6 +40,8 @@ limitations under the License.
   <script type="text/javascript">
 
     var bankDetails = {};
+    var banksBranches = [];
+    var banksBranchesDict = {};
 
     /**
      * On user sign in
@@ -77,6 +79,32 @@ limitations under the License.
             loadBanksPage();
         }
         return params.bank;
+    }
+
+    /**
+     *  Successfull Callback: all branches for banks
+     */
+    function successfullyFetchedBranches(branches) {
+        banksBranches = [];
+        $("#branch-list > tbody").empty();
+        document.getElementById('spinner').classList.remove("is-active");
+        console.log('total branches:'+branches.length)
+        banksBranches = branches;
+        banksBranches = {};
+        branches.forEach(function (branch) {
+            banksBranchesDict[branch.key] = branch;
+        });
+        updateBranchList(branches);
+    }
+
+    /**
+     *  Failed Callback: getting all branches of bank
+     */
+    function failedToFetchedBranches(err) {
+        banksBranches = []
+        $("#branch-list > tbody").empty();
+        document.getElementById('spinner').classList.remove("is-active");
+        alert("Error while getting banks branches: "+err.name)
     }
 
     /**
@@ -127,9 +155,98 @@ limitations under the License.
         $('.mdl-textfield__input').parent().removeClass('is-focused');
         dialog.showModal();
         dialog.querySelector('.close').addEventListener('click', function() {
-            clearBranchForm();
-            dialog.close();
+            closeCreateBranchDialog();
         });
+    }
+
+    /**
+     *  Close dialog
+     */
+    function closeCreateBranchDialog() {
+        var dialog = document.querySelector('dialog');
+        clearBranchForm();
+        dialog.close();
+    }
+
+    /**
+     *  Updating branch table list
+     */
+    function updateBranchList(branches) {
+        branches.forEach(branch => {
+            addBranchRow(branch);
+        });
+    }
+
+    /**
+     *  Add branch row
+     */
+    function addBranchRow(branchDetails) {
+        //Get the reference of the Table's TBODY element.
+        var tBody = document.getElementById("branch-list").getElementsByTagName("TBODY")[0];
+ 
+        //Add Row.
+        row = tBody.insertRow(-1);
+
+        //Add Name cell.
+        var cell = row.insertCell(-1);
+        cell.style = "text-align:left";
+        cell.classList.add('mdl-data-table__cell--non-numeric');  
+        cell.innerHTML = branchDetails.name;
+
+        //Add address cell.
+        var cell = row.insertCell(-1);
+        cell.style = "text-align:center; word-wrap: break-word;";
+        cell.classList.add('mdl-data-table__cell--non-numeric');  
+        cell.innerHTML = branchDetails.fullAddress;
+
+        //Add IFSC cell.
+        var cell = row.insertCell(-1);
+        cell.style = "text-align:center";
+        cell.classList.add('mdl-data-table__cell--non-numeric');  
+        cell.innerHTML = branchDetails.ifsc;
+
+        //Add MICR cell.
+        var cell = row.insertCell(-1);
+        cell.style = "text-align:center";
+        cell.classList.add('mdl-data-table__cell--non-numeric');  
+        cell.innerHTML = branchDetails.micr;
+
+        //Add Contact Number cell.
+        var cell = row.insertCell(-1);
+        cell.style = "text-align:center";
+        cell.classList.add('mdl-data-table__cell--non-numeric');  
+        cell.innerHTML = branchDetails.contactNumber;
+
+        addActionCell(branchDetails);
+    }
+
+    /**
+     *  Add branch details cell
+     */
+    function addActionCell(branchDetails) {
+        console.log(JSON.stringify(branchDetails));
+        cell = row.insertCell(-1);
+        cell.style = "text-align:center";
+
+        var btnEdit = document.createElement("INPUT");
+        btnEdit.value = "EDIT";
+        btnEdit.type = "button";
+        btnEdit.classList.add('mdl-button');  
+        btnEdit.classList.add('mdl-js-button');  
+        btnEdit.classList.add('mdl-button--raised');  
+        btnEdit.classList.add('mdl-js-ripple-effect');  
+        btnEdit.classList.add('mdl-color--white');   
+        btnEdit.setAttribute("onclick", "openEditDialog('"+branchDetails.key+"')");
+        cell.appendChild(btnEdit);
+
+        return cell;
+    }
+
+    /*
+     *  Opening edit dialog
+     */
+    function openEditDialog(branchKey) {
+        isEditMode = true;
     }
 
     /**
@@ -324,6 +441,8 @@ limitations under the License.
                 <th style="text-align:center;">Address</th>
                 <th style="text-align:center;">IFSC</th>
                 <th style="text-align:center;">MICR</th>
+                <th style="text-align:center;">Contact Number</th>
+                <th style="text-align:center;">Actions</th>
               </tr>
             </thead>
             <tbody>

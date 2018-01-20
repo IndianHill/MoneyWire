@@ -5,7 +5,7 @@ cl_branches = "branches";
  *  Get branches of Bank
  */
 function getBranchesOfBank(bankKey) {
-    console.log('Fetching branch data of bank:'+bankKey);
+    console.log('Fetching branchs of bank:'+bankKey);
     firestore = firebase.firestore();
     firestore.collection(cl_banks).doc(bankKey).collection(cl_branches).get().then((querySnapshot) => {
         console.log('Branches data received.')
@@ -13,11 +13,13 @@ function getBranchesOfBank(bankKey) {
         querySnapshot.forEach((doc) => {
             branchData = doc.data()
             branchData.key = doc.id
-            allBranches.push(branchData)
-            console.log('Branch:'+doc.id);
+            allBranches.push(branchData);
         });
-        //successfullyFetchedBanks(allBranches)
-    });
+        successfullyFetchedBranches(allBranches);
+    }).catch(function(error) {
+        console.log("Error in fetching branches of bank: "+bankKey+" error: "+error);
+        failedToFetchedBranches(error);
+    });;
 }
 
 /**

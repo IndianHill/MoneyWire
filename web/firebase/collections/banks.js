@@ -16,6 +16,9 @@ function getAllBanks() {
             allBanks.push(bankData)
         });
         successfullyFetchedBanks(allBanks)
+    }).catch(function(error) {
+        console.log("Error getting bank list: "+error);
+        failedToFetchedBanks(error);
     });
 }
 
