@@ -43,6 +43,7 @@ limitations under the License.
     var bankDetails = {};
     var banksBranches = [];
     var banksBranchesDict = {};
+    var uploadingBranchesArr = [];
     editingBranchKey = "";
 
     /**
@@ -173,6 +174,26 @@ limitations under the License.
     }
 
     /**
+     *  Branches uploaded successfully
+     */
+     function branchesUploadedSuccessfully() {
+        document.getElementById('upload-csv-spinner').classList.remove("is-active");
+        closeUploadBranchesDialog();
+        document.getElementById('spinner').classList.add("is-active");
+        getBranchesOfBank(bankDetails.key);
+    }
+
+    /**
+     *  Branches upload failed
+     */
+    function errorWhileUploadingBranches(err) {
+        document.getElementById('upload-csv-spinner').classList.remove("is-active");
+        closeUploadBranchesDialog();
+        console.log('Error while uploading branches:'+err.name);
+        alert("Error while uploading branches: "+err.name);
+    }
+
+    /**
      *  Show upload csv dialog
      */
     function showUploadCSVDialog() {
@@ -197,6 +218,7 @@ limitations under the License.
      */
     function clearCSVInput() {
         $('#files').val("");
+        document.getElementById('file-info').innerHTML = "";
     } 
 
     /**
@@ -377,10 +399,7 @@ limitations under the License.
         }
 
         var fullAdd = "";
-        fullAdd += name;
-        if(name != street) {
-            fullAdd += ", " + street;
-        }
+        fullAdd += street;
         fullAdd += ", " + city;
         if(city != district) {
             fullAdd += ", " + district;
@@ -462,11 +481,125 @@ limitations under the License.
         $('#btn-upload-csv').click(function(){
             showUploadCSVDialog();
         });
+        $('#btn-upload-all').click(function(){
+            uploadBranchesDataToFirestore();
+        });
     }
 
+    // Get pin-code from full-address
+    function getPinCodeFromFullAddress (address) {
+        let splitArr = address.split('-');
+        var pinCode = "";
+        if (splitArr.length > 0) {
+            let lastElementIndex = splitArr.length;
+            pinCode = splitArr[lastElementIndex - 1];
+            pinCode = pinCode.replace(/\s/g,'');
+        }
+        
+        return pinCode;
+    }
+
+    // Get street address from full-address
+    function getStreetFromFullAddress (address, city) {
+        street = "";
+
+        var words = address.toLowerCase().split(city.toLowerCase());
+        street = words[0];
+
+        return street;
+    }
+
+    // Creating raw array to set values in firebase
+    function processCSVArray(dataArr) {
+        let headers = dataArr[0];
+        dataArr.splice(0, 1);
+        var branchArr = [];
+        for(var index in dataArr) {
+            var branchData = {};
+            branchData.ifscCode = dataArr[index][1].replace(/\s/g,'');
+            branchData.micrCode = dataArr[index][2].replace(/\s/g,'');
+            branchData.name = dataArr[index][3];
+            branchData.fullAddress = dataArr[index][4];
+            branchData.contactNumber = dataArr[index][5].replace(/\s/g,'');
+            branchData.city = dataArr[index][6].replace(/\s/g,'');
+            branchData.district = dataArr[index][7].replace(/\s/g,'');
+            branchData.state = dataArr[index][8].replace(/\s/g,'');
+            branchData.pinCode = getPinCodeFromFullAddress(branchData.fullAddress);
+            branchData.street = getStreetFromFullAddress(branchData.fullAddress, branchData.city);
+            branchArr.push(branchData);
+        }
+        console.log('Total items to add:'+branchArr.length);
+        uploadingBranchesArr = branchArr;
+    }
+
+    // Upload branches data to Firestore
+    function uploadBranchesDataToFirestore() {
+        document.getElementById('upload-csv-spinner').classList.add("is-active");
+        addArrayToBranches(uploadingBranchesArr, bankDetails.key);
+    }
+
+    function isAPIAvailable() {
+        // Check for the various File API support.
+        if (window.File && window.FileReader && window.FileList && window.Blob) {
+            // Great success! All the File APIs are supported.
+            return true;
+        } else {
+            // source: File API availability - http://caniuse.com/#feat=fileapi
+            // source: <output> availability - http://html5doctor.com/the-output-element/
+            document.writeln('The HTML5 APIs used in this form are only available in the following browsers:<br />');
+            // 6.0 File API & 13.0 <output>
+            document.writeln(' - Google Chrome: 13.0 or later<br />');
+            // 3.6 File API & 6.0 <output>
+            document.writeln(' - Mozilla Firefox: 6.0 or later<br />');
+            // 10.0 File API & 10.0 <output>
+            document.writeln(' - Internet Explorer: Not supported (partial support expected in 10.0)<br />');
+            // ? File API & 5.1 <output>
+            document.writeln(' - Safari: Not supported<br />');
+            // ? File API & 9.2 <output>
+            document.writeln(' - Opera: Not supported');
+            return false;
+        }
+    }
+
+    function handleFileSelect(evt) {
+        var files = evt.target.files; // FileList object
+        var file = files[0];
+
+        // read the file metadata
+        var output = ''
+            output += '<span style="font-weight:bold;">' + escape(file.name) + '</span><br />\n';
+            output += ' - FileType: ' + (file.type || 'n/a') + '<br />\n';
+            output += ' - FileSize: ' + file.size + ' bytes<br />\n';
+            output += ' - LastModified: ' + (file.lastModifiedDate ? file.lastModifiedDate.toLocaleDateString() : 'n/a') + '<br />\n';
+
+        document.getElementById('file-info').innerHTML = output;
+
+        // read the file contents
+        readCSV(file);
+    }
+
+    function readCSV(file) {
+        var reader = new FileReader();
+        reader.readAsText(file);
+        reader.onload = function(event){
+            var csv = event.target.result;
+            var data = $.csv.toArrays(csv);
+            processCSVArray(data);
+            //console.log(data);
+        };
+        reader.onerror = function(){ alert('Unable to read ' + file.fileName); };
+    }
+
+    // Handling file upload
+    $(document).ready(function() {
+        if(isAPIAvailable()) {
+            $('#files').bind('change', handleFileSelect);
+        }
+    });
+  
     window.onload = function() {
-      var firebaseApp;
-      initApp();
+        var firebaseApp;
+        initApp();
     };
   </script>
 </head>
@@ -587,10 +720,16 @@ limitations under the License.
                 <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect close">Cancel</button>
             </div>
         </dialog>
-        <dialog id="upload-branches" class="mdl-dialog">
+        <dialog id="upload-branches" class="mdl-dialog dialog-container">
             <h4 id="modal-title" class="mdl-dialog__title mdl-cell mdl-cell--12-col mdl-typography--text-center">Upload CSV</h4>
             <div class="mdl-dialog__content mdl-grid">
-                <input type="file" id='files' multiple />
+                <input type="file" id='files' accept=".csv" multiple />
+            </div>
+            <div class="mdl-dialog__content mdl-grid">
+                File Info:<br>
+                <span id='file-info'>
+                    No file selected.
+                </span>
             </div>
             <div class="mdl-dialog__actions">
                 <div id="upload-csv-spinner" class="mdl-spinner mdl-js-spinner"></div>

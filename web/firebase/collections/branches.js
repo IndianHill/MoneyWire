@@ -28,7 +28,7 @@ function getBranchesOfBank(bankKey) {
 function createBankBranch(branchData, bankKey) {
     var user = firebase.auth().currentUser;
     firestore = firebase.firestore();
-    firestore.collection(cl_banks).doc(bankKey).collection(cl_branches).add({
+    firestore.collection(cl_banks).doc(bankKey).collection(cl_branches).doc(branchData.ifscCode).set({
         "name": branchData.name,
         "street": branchData.street,
         "city": branchData.city,
@@ -45,7 +45,7 @@ function createBankBranch(branchData, bankKey) {
         "updatedAt": firebase.firestore.FieldValue.serverTimestamp()
     })
     .then(function(branch) {
-        console.log("Branch successfully created with id:"+branch.id);
+        console.log("Branch successfully created.");
         branchCreatedSuccessfully(branch);
     })
     .catch(function(error) {
@@ -81,5 +81,44 @@ function updateBankBranch(branchData, bankKey, branchKey) {
     .catch(function(error) {
         console.log("Error updating branch: "+error);
         errorWhileUpdatingBranch(error);
+    });
+}
+
+/**
+ *  Upload CSV data to branches
+ */
+function addArrayToBranches(branchesArr, bankKey) {
+    var user = firebase.auth().currentUser;
+    firestore = firebase.firestore();
+    var batch = firestore.batch();
+    var branchRef = firestore.collection(cl_banks).doc(bankKey).collection(cl_branches);
+
+    for(var index in branchesArr) {
+        branchData = branchesArr[index];
+        batch.set(branchRef.doc(branchData.ifscCode), {
+            "name": branchData.name,
+            "street": branchData.street,
+            "city": branchData.city,
+            "district": branchData.district,
+            "state": branchData.state,
+            "pinCode": branchData.pinCode,
+            "fullAddress": branchData.fullAddress,
+            "contactNumber": branchData.contactNumber,
+            "ifsc": branchData.ifscCode,
+            "micr": branchData.micrCode,
+            "createdBy": user.uid,
+            "updatedBy": user.uid,
+            "createdAt": firebase.firestore.FieldValue.serverTimestamp(),
+            "updatedAt": firebase.firestore.FieldValue.serverTimestamp()
+        });
+    }
+
+    batch.commit().then(function() {
+        console.log("Branches uploaded successfully");
+        branchesUploadedSuccessfully();
+    })
+    .catch(function(error) {
+        console.log("Error uploading branches: "+error);
+        errorWhileUploadingBranches(error);
     });
 }
