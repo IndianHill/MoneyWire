@@ -5,62 +5,15 @@
  */
 
 import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-import * as firebase from 'firebase';
-
-// Initialize Firebase
-var firebaseConfig = {
-  apiKey: "AIzaSyDhrAm8bI3Eg2g1IzYMDFQAmZfb12RzxtQ",
-  authDomain: "app-moneywire.firebaseapp.com",
-  databaseURL: "https://app-moneywire.firebaseio.com",
-  projectId: "app-moneywire",
-  storageBucket: "",
-  messagingSenderId: "84141118544"
-};
-const firebaseApp = firebase.initializeApp(firebaseConfig);
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import RootContainer from './App/Container/RootContainer'
+import { AppRegistry } from 'react-native'
 
 export default class App extends Component<{}> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Firebase Initialize Successfull.
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
-    );
-  }
+    render() {
+        return (
+            <RootContainer />
+        );
+    }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+AppRegistry.registerComponent('Moneywire', () => App);
