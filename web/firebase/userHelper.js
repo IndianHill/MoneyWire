@@ -12,15 +12,21 @@
     */
     function getUserName() {
         var user = firebase.auth().currentUser
-        if (user.displayName) {
-            return user.displayName
-        } else if (user.email) {
+        if (user.email) {
             return user.email
         }else if (user.phoneNumber) {
             return user.phoneNumber
         } else {
             return 'User'
         }
+    }
+
+    /**
+     * Returns user display name
+    */
+    function getUserDisplayName() {
+        var user = firebase.auth().currentUser
+        return user.displayName;
     }
 
     /**

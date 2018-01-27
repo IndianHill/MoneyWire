@@ -213,33 +213,33 @@ limitations under the License.
         //Add Row.
         row = tBody.insertRow(-1);
 
-        //Add Name cell.
+        // Add Name cell.
         var cell = row.insertCell(-1);
-        cell.style = "text-align:left";
+        cell.style = "text-align:left;";
         cell.classList.add('mdl-data-table__cell--non-numeric');  
         cell.innerHTML = branchDetails.name;
 
         //Add address cell.
         var cell = row.insertCell(-1);
-        cell.style = "text-align:center; word-wrap: break-word;";
+        cell.style = "text-align:center; word-break: break-all;";
         cell.classList.add('mdl-data-table__cell--non-numeric');  
         cell.innerHTML = branchDetails.fullAddress;
 
         //Add IFSC cell.
         var cell = row.insertCell(-1);
-        cell.style = "text-align:center";
+        cell.style = "text-align:center; ";
         cell.classList.add('mdl-data-table__cell--non-numeric');  
         cell.innerHTML = branchDetails.ifsc;
 
         //Add MICR cell.
         var cell = row.insertCell(-1);
-        cell.style = "text-align:center";
+        cell.style = "text-align:center;";
         cell.classList.add('mdl-data-table__cell--non-numeric');  
         cell.innerHTML = branchDetails.micr;
 
         //Add Contact Number cell.
         var cell = row.insertCell(-1);
-        cell.style = "text-align:center";
+        cell.style = "text-align:center;";
         cell.classList.add('mdl-data-table__cell--non-numeric');  
         cell.innerHTML = branchDetails.contactNumber;
 
@@ -490,15 +490,15 @@ limitations under the License.
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--white" id="btn-upload-csv">UPLOAD CSV</button>
             </div>
         </div>
-        <table id="branch-list" class="mdl-data-table mdl-js-data-table mdl-cell mdl-cell--12-col">
+        <table id="branch-list" class="mdl-data-table mdl-js-data-table mdl-cell mdl-cell--12-col" style="width:99%">
             <thead>
               <tr>
-                <th style="text-align:left;" class="mdl-data-table__cell--non-numeric">Name</th>
-                <th style="text-align:center;">Address</th>
-                <th style="text-align:center;">IFSC</th>
-                <th style="text-align:center;">MICR</th>
-                <th style="text-align:center;">Contact Number</th>
-                <th style="text-align:center;">Actions</th>
+                <th style="text-align:left; " width='20%'>Name</th>
+                <th style="text-align:center; " width='35%'>Address</th>
+                <th style="text-align:center; " width='12%'>IFSC</th>
+                <th style="text-align:center; " width='12%'>MICR</th>
+                <th style="text-align:center; " width='14%'>Contact Number</th>
+                <th style="text-align:center; " width='10%'>Actions</th>
               </tr>
             </thead>
             <tbody>

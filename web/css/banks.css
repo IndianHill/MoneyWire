@@ -3,3 +3,13 @@
     height: 80% !important;
     overflow-y: auto;
 }
+
+table { 
+    table-layout:fixed; 
+    word-break: break-all; 
+}
+
+table td { 
+    overflow:hidden; 
+    word-break: break-all; 
+}
