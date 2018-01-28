@@ -5,6 +5,7 @@ import NavigationRouter from '../Navigation/NavigationRouter';
 import * as firebase from 'firebase';
 import { GoogleSignin } from 'react-native-google-signin';
 import LoadingView from '../Component/LoadingView';
+import { Actions } from 'react-native-router-flux'
 
 // Styles
 import styles from './Styles/LoginStyles'
@@ -16,8 +17,8 @@ class Login extends Component {
     constructor() {
         super();
         this.state = {
-            isLoading: false,
-            currentUser: {},
+            isLoading: true,
+            currentUser: null,
         };
     }
 
@@ -29,10 +30,12 @@ class Login extends Component {
     */
     componentDidMount() {
         this.authSubscription = firebase.auth().onAuthStateChanged((user) => {
+            console.log('User authentication status: LOGGED_IN')
             this.setState({
                 isLoading: false,
                 currentUser: user,
             });
+            Actions.dashboard()
         });
     }
 
