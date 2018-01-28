@@ -16,7 +16,7 @@ class Login extends Component {
     constructor() {
         super();
         this.state = {
-            isLoading: true,
+            isLoading: false,
             currentUser: {},
         };
     }
@@ -30,7 +30,7 @@ class Login extends Component {
     componentDidMount() {
         this.authSubscription = firebase.auth().onAuthStateChanged((user) => {
             this.setState({
-                loading: false,
+                isLoading: false,
                 currentUser: user,
             });
         });
@@ -124,7 +124,7 @@ class Login extends Component {
     renderLoadingView = () => {
         if (this.state.isLoading) {
             return (
-                <LoadingView />
+                <LoadingView color={Colors.primary}/>
             )
         }
     }

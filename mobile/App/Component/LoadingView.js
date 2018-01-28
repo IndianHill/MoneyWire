@@ -3,7 +3,7 @@ import { View, ActivityIndicator, Modal } from 'react-native'
 
 // Styles
 import styles from './Styles/LoadingViewStyles'
-import { Colors } from '../Theme/Index';
+import { Colors } from '../Theme/';
 
 export default class LoadingView extends React.Component {
 
@@ -28,12 +28,13 @@ export default class LoadingView extends React.Component {
     render () {
         return (
             <Modal
-                visible='true'
-                animationType={ 'none' }
-                onRequestClose={() => {}}
+                visible
+                transparent
+                animationType = { 'none' }
+                onRequestClose = {() => {}}
             >
                 <View style={[styles.container, styles.activityIndicatorView]}>
-                    <activityIndicatorView size={ this.getSizeOfIndicator() } color={ this.getColorOfIndicator() } />
+                    <ActivityIndicator size={ this.getSizeOfIndicator() } color={ this.getColorOfIndicator() } />
                 </View>
             </Modal>
         )

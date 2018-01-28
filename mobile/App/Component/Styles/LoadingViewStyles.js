@@ -5,10 +5,10 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: Colors.grey_dark,
     },
     activityIndicatorView: {
         flexDirection: 'row',
         justifyContent: 'center',
+        backgroundColor: Colors.grey_dark,
     }
 })
