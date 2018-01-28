@@ -44,6 +44,18 @@ class Login extends Component {
         this.authSubscription();
     }
 
+    showLoading = () => {
+        this.setState({
+            isLoading: true
+        })
+    }
+
+    hideLoading = () => {
+        this.setState({
+            isLoading: false
+        })
+    }
+
     //--------------------------- FB Login press ---------------------------
     fbLogin = () => {
         console.log('FBLogin');
@@ -59,18 +71,19 @@ class Login extends Component {
         GoogleSignin.hasPlayServices({ autoResolve: true }).then(() => {
             GoogleSignin.configure({
                 scopes: ["https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile"], // what API you want to access on behalf of the user, default is email and profile
-                iosClientId: "",
-                webClientId: ""
+                iosClientId: "84141118544-s358kpfhsfe4s9qmoa2hutbh1sun1vv4.apps.googleusercontent.com"
             }).then(() => {
                 this.signInGoogle();
             })
         })
         .catch((err) => {
+            this.hideLoading()
             console.log("Play services error", err.code, err.message);
         })
     }
 
     signInGoogle = () => {
+        this.showLoading()
         GoogleSignin.signIn()
         .then((data) => {
             console.log('Getting google credentials..')
@@ -82,10 +95,12 @@ class Login extends Component {
             return firebase.auth().signInWithCredential(credential)
         })
         .then((currentUser) => {
+            this.hideLoading()
             console.log('Google login successful..')
             console.info(JSON.stringify(currentUser.toJSON()))
         })
         .catch((error) => {
+            this.hideLoading()
             console.error(`Google login fail with error: ${error}`)
         })
     }
@@ -124,7 +139,7 @@ class Login extends Component {
     renderLoadingView = () => {
         if (this.state.isLoading) {
             return (
-                <LoadingView color={Colors.primary}/>
+                <LoadingView />
             )
         }
     }

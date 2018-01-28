@@ -9,6 +9,6 @@ export default StyleSheet.create({
     activityIndicatorView: {
         flexDirection: 'row',
         justifyContent: 'center',
-        backgroundColor: Colors.grey_dark,
+        backgroundColor: Colors.grey_dark_transperent,
     }
 })
