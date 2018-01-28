@@ -35,7 +35,10 @@ class Login extends Component {
                 isLoading: false,
                 currentUser: user,
             });
-            Actions.dashboard()
+            if (user) {
+                console.log('User:'+JSON.stringify(user))
+                Actions.dashboard()
+            }
         });
     }
 
@@ -74,7 +77,7 @@ class Login extends Component {
         GoogleSignin.hasPlayServices({ autoResolve: true }).then(() => {
             GoogleSignin.configure({
                 scopes: ["https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile"], // what API you want to access on behalf of the user, default is email and profile
-                iosClientId: "84141118544-s358kpfhsfe4s9qmoa2hutbh1sun1vv4.apps.googleusercontent.com"
+                iosClientId: "84141118544-etmgja8bevci3ibi5p1mh4n4psuq3sei.apps.googleusercontent.com"
             }).then(() => {
                 this.signInGoogle();
             })
@@ -104,7 +107,7 @@ class Login extends Component {
         })
         .catch((error) => {
             this.hideLoading()
-            console.error(`Google login fail with error: ${error}`)
+            console.log('Google login fail with error:'+JSON.stringify(error))
         })
     }
 
