@@ -37,5 +37,10 @@ export default StyleSheet.create({
         height: 32,
         width: 20,
         tintColor: Colors.white,
-    }
+    },
+    loadingView: {
+        flex: 1,
+        justifyContent: 'center',
+        flexDirection: 'row',
+    },
 })
