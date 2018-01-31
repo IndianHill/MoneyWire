@@ -6,6 +6,15 @@
               { "fieldPath": "bankName", "mode": "ASCENDING" },
               { "fieldPath": "bankCreated", "mode": "DESCENDING" }
             ]
+        },
+        {
+            "collectionId": "branches",
+            "fields": [
+              { "fieldPath": "name", "mode": "ASCENDING" },
+              { "fieldPath": "city", "mode": "ASCENDING" },
+              { "fieldPath": "ifsc", "mode": "ASCENDING" },
+              { "fieldPath": "pinCode", "mode": "ASCENDING" }
+            ]
         }
     ]
   }
