@@ -502,8 +502,10 @@ limitations under the License.
     // Searching branch
     function searchBranch() {
         let searchText = $('#search_input').val();
-        console.log(searchText);
-        searchBankBranches(searchText, bankDetails.key);
+        if(searchText.length > 0) {
+            console.log(searchText);
+            searchBankBranches(searchText, bankDetails.key);
+        }
     }
 
     // Get pin-code from full-address
