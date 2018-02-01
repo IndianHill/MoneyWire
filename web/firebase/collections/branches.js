@@ -97,14 +97,17 @@ function addArrayToBranches(branchesArr, bankKey) {
         branchData = branchesArr[index];
         batch.set(branchRef.doc(branchData.ifscCode), {
             "name": branchData.name,
+            "lowerName": branchData.name.toLowerCase(),
             "street": branchData.street,
             "city": branchData.city,
+            "lowerCity": branchData.city.toLowerCase(),
             "district": branchData.district,
             "state": branchData.state,
             "pinCode": branchData.pinCode,
             "fullAddress": branchData.fullAddress,
             "contactNumber": branchData.contactNumber,
             "ifsc": branchData.ifscCode,
+            "lowerIfsc": branchData.ifscCode.toLowerCase(),
             "micr": branchData.micrCode,
             "createdBy": user.uid,
             "updatedBy": user.uid,
@@ -121,4 +124,76 @@ function addArrayToBranches(branchesArr, bankKey) {
         console.log("Error uploading branches: "+error);
         errorWhileUploadingBranches(error);
     });
+}
+
+/*
+ *  Get search results for given search text
+ */
+function searchBankBranches(searchText, bankKey) {
+    firestore = firebase.firestore();
+    branchesCollectionRef = firestore.collection(cl_banks).doc(bankKey).collection(cl_branches);
+
+    searchText = searchText.toLowerCase();
+
+    var cityQuery = branchesCollectionRef.where('lowerCity', '==', searchText)
+    var pinCodeQuery = branchesCollectionRef.where('pinCode', '==', searchText)
+    var ifscQuery = branchesCollectionRef.where('lowerIfsc', '==', searchText)
+    var nameQuery = branchesCollectionRef.where('lowerName', '==', searchText)
+
+    cityQuery.get()
+    .then(function(querySnapshot) {
+        cityBranch = []
+        console.log('=====City====')
+        querySnapshot.forEach(function(doc) {
+            cityBranch.push(doc.data())
+            console.log(doc.id, " => ", doc.data());
+        });
+        // Pass to city branch
+    })
+    .catch(function(error) {
+        console.log("Error city matching documents: ", error.name);
+    });
+
+    pinCodeQuery.get()
+    .then(function(querySnapshot) {
+        pinCodeBranch = []
+        console.log('=====Pin====')
+        querySnapshot.forEach(function(doc) {
+            pinCodeBranch.push(doc.data())
+            console.log(doc.id, " => ", doc.data());
+        });
+        // Pass to pin code branch
+    })
+    .catch(function(error) {
+        console.log("Error pincode matching documents: ", error.name);
+    });
+
+    ifscQuery.get()
+    .then(function(querySnapshot) {
+        ifscQueryBranch = []
+        console.log('=====IFSC====')
+        querySnapshot.forEach(function(doc) {
+            ifscQueryBranch.push(doc.data())
+            console.log(doc.id, " => ", doc.data());
+        });
+        // Pass to ifsc code branch
+    })
+    .catch(function(error) {
+        console.log("Error ifsc code matching documents: ", error.name);
+    });
+
+    nameQuery.get()
+    .then(function(querySnapshot) {
+        nameQueryBranch = []
+        console.log('=====Name====')
+        querySnapshot.forEach(function(doc) {
+            nameQueryBranch.push(doc.data())
+            console.log(doc.id, " => ", doc.data());
+        });
+        // Pass to name
+    })
+    .catch(function(error) {
+        console.log("Error name code matching documents: ", error.name);
+    });
+
 }

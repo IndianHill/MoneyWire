@@ -45,6 +45,8 @@ limitations under the License.
     var banksBranchesDict = {};
     var uploadingBranchesArr = [];
     editingBranchKey = "";
+    var searchTypingTimer;                //timer identifier
+    var typingDoneInterval = 2000;  //time in ms, 3 second for example
 
     /**
      * On user sign in
@@ -484,6 +486,24 @@ limitations under the License.
         $('#btn-upload-all').click(function(){
             uploadBranchesDataToFirestore();
         });
+
+        //on keyup, start the countdown
+        $('#search_input').on('keyup', function () {
+            clearTimeout(searchTypingTimer);
+            searchTypingTimer = setTimeout(searchBranch, typingDoneInterval);
+        });
+
+        //on keydown, clear the countdown 
+        $('#search_input').on('keydown', function () {
+            clearTimeout(searchTypingTimer);
+        });
+    }
+
+    // Searching branch
+    function searchBranch() {
+        let searchText = $('#search_input').val();
+        console.log(searchText);
+        searchBankBranches(searchText, bankDetails.key);
     }
 
     // Get pin-code from full-address
