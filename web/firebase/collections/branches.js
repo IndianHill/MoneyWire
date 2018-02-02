@@ -148,7 +148,7 @@ function searchBankBranches(searchText, bankKey) {
             cityBranch.push(doc.data())
             console.log(doc.id, " => ", doc.data());
         });
-        // Pass to city branch
+        successfullySearchedBranch(cityBranch);
     })
     .catch(function(error) {
         console.log("Error city matching documents: ", error.name);
@@ -162,7 +162,7 @@ function searchBankBranches(searchText, bankKey) {
             pinCodeBranch.push(doc.data())
             console.log(doc.id, " => ", doc.data());
         });
-        // Pass to pin code branch
+        successfullySearchedBranch(pinCodeBranch);
     })
     .catch(function(error) {
         console.log("Error pincode matching documents: ", error.name);
@@ -176,7 +176,7 @@ function searchBankBranches(searchText, bankKey) {
             ifscQueryBranch.push(doc.data())
             console.log(doc.id, " => ", doc.data());
         });
-        // Pass to ifsc code branch
+        successfullySearchedBranch(ifscQueryBranch);
     })
     .catch(function(error) {
         console.log("Error ifsc code matching documents: ", error.name);
@@ -190,7 +190,7 @@ function searchBankBranches(searchText, bankKey) {
             nameQueryBranch.push(doc.data())
             console.log(doc.id, " => ", doc.data());
         });
-        // Pass to name
+        successfullySearchedBranch(nameQueryBranch);
     })
     .catch(function(error) {
         console.log("Error name code matching documents: ", error.name);

@@ -45,8 +45,9 @@ limitations under the License.
     var banksBranchesDict = {};
     var uploadingBranchesArr = [];
     editingBranchKey = "";
-    var searchTypingTimer;                //timer identifier
-    var typingDoneInterval = 2000;  //time in ms, 3 second for example
+    var searchTypingTimer;                  //timer identifier
+    var typingDoneInterval = 2000;          //time in ms, 3 second for example
+    var searchedBranches = [];
 
     /**
      * On user sign in
@@ -91,7 +92,6 @@ limitations under the License.
      */
     function successfullyFetchedBranches(branches) {
         banksBranches = [];
-        $("#branch-list > tbody").empty();
         document.getElementById('spinner').classList.remove("is-active");
         console.log('total branches:'+branches.length)
         banksBranches = branches;
@@ -206,6 +206,15 @@ limitations under the License.
         });
     }
 
+    // Search Result
+    function successfullySearchedBranch(branches) {
+        document.getElementById('spinner').classList.remove("is-active");
+        branches.forEach(branch => {
+            searchedBranches.push(branch);
+        });
+        updateBranchList(searchedBranches);
+    }
+
     /**
      *  Close dialog of upload branches
      */
@@ -250,6 +259,7 @@ limitations under the License.
      *  Updating branch table list
      */
     function updateBranchList(branches) {
+        $("#branch-list > tbody").empty();
         branches.forEach(branch => {
             addBranchRow(branch);
         });
@@ -504,7 +514,10 @@ limitations under the License.
         let searchText = $('#search_input').val();
         if(searchText.length > 0) {
             console.log(searchText);
+            document.getElementById('spinner').classList.add("is-active");
+            searchedBranches = [];
             searchBankBranches(searchText, bankDetails.key);
+            $('#search_input').val('');
         }
     }
 
