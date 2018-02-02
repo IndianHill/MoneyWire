@@ -57,6 +57,7 @@ limitations under the License.
         document.getElementById('btn-sign-out').hidden = false;
         document.getElementById('panel-login').hidden = true;
         document.getElementById('panel-branch').hidden = false;
+        document.getElementById('search-view').hidden = false;
         bankKey = getBankKey();
         document.getElementById('spinner').classList.add("is-active");
         getBankDetails(bankKey);
@@ -70,6 +71,7 @@ limitations under the License.
         document.getElementById('btn-sign-out').hidden = true;
         document.getElementById('panel-login').hidden = false;
         document.getElementById('panel-branch').hidden = true;
+        document.getElementById('search-view').hidden = true;
 
         // Loading home page
         window.setTimeout(loadHomePage, 3000)
@@ -95,7 +97,7 @@ limitations under the License.
         document.getElementById('spinner').classList.remove("is-active");
         console.log('total branches:'+branches.length)
         banksBranches = branches;
-        banksBranches = {};
+        // banksBranches = {};
         branches.forEach(function (branch) {
             banksBranchesDict[branch.key] = branch;
         });
@@ -517,7 +519,8 @@ limitations under the License.
             document.getElementById('spinner').classList.add("is-active");
             searchedBranches = [];
             searchBankBranches(searchText, bankDetails.key);
-            $('#search_input').val('');
+        } else {
+            updateBranchList(banksBranches);
         }
     }
 
@@ -668,7 +671,7 @@ limitations under the License.
         <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
 
             <!-- Search branch -->
-            <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop mdl-typography--text-right" style="margin-right: 5%;">
+            <div id='search-view' class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop mdl-typography--text-right" style="margin-right: 5%;">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
                     <label class="mdl-button mdl-js-button mdl-button--icon" for="search_input">
                         <i class="material-icons">search</i>
