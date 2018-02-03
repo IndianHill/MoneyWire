@@ -145,7 +145,9 @@ function searchBankBranches(searchText, bankKey) {
         cityBranch = []
         console.log('=====City====')
         querySnapshot.forEach(function(doc) {
-            cityBranch.push(doc.data())
+            var branch = doc.data()
+            branch.key = doc.id
+            cityBranch.push(branch)
             console.log(doc.id, " => ", doc.data());
         });
         successfullySearchedBranch(cityBranch);
@@ -159,7 +161,9 @@ function searchBankBranches(searchText, bankKey) {
         pinCodeBranch = []
         console.log('=====Pin====')
         querySnapshot.forEach(function(doc) {
-            pinCodeBranch.push(doc.data())
+            var branch = doc.data()
+            branch.key = doc.id
+            pinCodeBranch.push(branch)
             console.log(doc.id, " => ", doc.data());
         });
         successfullySearchedBranch(pinCodeBranch);
@@ -173,7 +177,9 @@ function searchBankBranches(searchText, bankKey) {
         ifscQueryBranch = []
         console.log('=====IFSC====')
         querySnapshot.forEach(function(doc) {
-            ifscQueryBranch.push(doc.data())
+            var branch = doc.data()
+            branch.key = doc.id
+            ifscQueryBranch.push(branch)
             console.log(doc.id, " => ", doc.data());
         });
         successfullySearchedBranch(ifscQueryBranch);
@@ -187,7 +193,9 @@ function searchBankBranches(searchText, bankKey) {
         nameQueryBranch = []
         console.log('=====Name====')
         querySnapshot.forEach(function(doc) {
-            nameQueryBranch.push(doc.data())
+            var branch = doc.data()
+            branch.key = doc.id
+            nameQueryBranch.push(branch)
             console.log(doc.id, " => ", doc.data());
         });
         successfullySearchedBranch(nameQueryBranch);

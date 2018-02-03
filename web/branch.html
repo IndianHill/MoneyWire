@@ -339,6 +339,7 @@ limitations under the License.
         branchDetails = banksBranchesDict[branchKey];
         document.getElementById("modal-title").innerHTML = 'Edit Branch';
         var dialog = document.querySelector('dialog');
+        console.log('BranchKey:'+branchKey+' banksDetailsDict:'+banksBranchesDict);
         updateModalData(branchDetails);
         editingBranchKey = branchDetails.key;
         $('.mdl-textfield__input').parent().addClass('is-focused');
