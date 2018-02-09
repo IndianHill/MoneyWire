@@ -39,6 +39,13 @@ class Dashboard extends Component {
 
     }
 
+    renderLogOutView = () => {
+        return (
+            <View style={styles.logoutViewStyle}>
+            </View>
+        )
+    }
+
     render () {
         return (
             <View style={styles.container}>

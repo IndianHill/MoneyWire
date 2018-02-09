@@ -5,6 +5,7 @@ import { Scene, Router, Stack } from 'react-native-router-flux'
 // Scene
 import Login from '../Container/Login'
 import Dashboard from '../Container/Dashboard'
+import MobileAuth from '../Container/MobileAuth'
 
 class NavigationRouter extends Component {
 
@@ -18,6 +19,7 @@ class NavigationRouter extends Component {
                 <Stack key="root" >
                     <Scene initial key="login" component={Login} title="Login" hideNavBar />
                     <Scene key="dashboard" component={Dashboard} title="Login" hideNavBar />
+                    <Scene key="mobile_auth" component={MobileAuth} title="MobileAuth" hideNavBar />
                 </Stack>
             </Router>
         )

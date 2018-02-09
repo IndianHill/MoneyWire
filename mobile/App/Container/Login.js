@@ -30,13 +30,12 @@ class Login extends Component {
     */
     componentDidMount() {
         this.authSubscription = firebase.auth().onAuthStateChanged((user) => {
-            console.log('User authentication status: LOGGED_IN')
             this.setState({
                 isLoading: false,
                 currentUser: user,
             });
             if (user) {
-                console.log('User:'+JSON.stringify(user))
+                console.log('User authentication status: LOGGED_IN - '+JSON.stringify(user))
                 Actions.dashboard()
             }
         });
@@ -119,6 +118,7 @@ class Login extends Component {
     //--------------------------- Mobile Login Press ---------------------------
     mobileLogin = () => {
         console.log('MobileLogin');
+        Actions.mobile_auth();
     }
 
     //--------------------------- Render UI ---------------------------

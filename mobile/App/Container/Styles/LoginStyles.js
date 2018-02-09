@@ -19,8 +19,8 @@ export default StyleSheet.create({
         position: 'absolute',
         bottom: '10%',
         flexDirection: 'row',
-        marginLeft: '5%',
-        marginRight: '5%',
+        marginLeft: '8%',
+        marginRight: '8%',
         justifyContent: 'space-between',
     },
     loginIconImgView: {
