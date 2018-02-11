@@ -49,6 +49,7 @@ class Dashboard extends Component {
     render () {
         return (
             <View style={styles.container}>
+                <StatusBar barStyle={'light-content'} />
                 { this.renderWelcomeMsg() }
             </View>
         )
