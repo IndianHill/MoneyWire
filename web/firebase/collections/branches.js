@@ -143,10 +143,10 @@ function searchBankBranches(searchText, bankKey) {
 
     searchText = searchText.toLowerCase();
 
-    var cityQuery = branchesCollectionRef.where('lowerCity', '==', searchText)
-    var pinCodeQuery = branchesCollectionRef.where('pinCode', '==', searchText)
-    var ifscQuery = branchesCollectionRef.where('lowerIfsc', '==', searchText)
-    var nameQuery = branchesCollectionRef.where('lowerName', '==', searchText)
+    var cityQuery = branchesCollectionRef.where('lowerCity', '==', searchText).where('bankKey', '==', bankKey)
+    var pinCodeQuery = branchesCollectionRef.where('pinCode', '==', searchText).where('bankKey', '==', bankKey)
+    var ifscQuery = branchesCollectionRef.where('lowerIfsc', '==', searchText).where('bankKey', '==', bankKey)
+    var nameQuery = branchesCollectionRef.where('lowerName', '==', searchText).where('bankKey', '==', bankKey)
 
     cityQuery.get()
     .then(function(querySnapshot) {
@@ -211,5 +211,4 @@ function searchBankBranches(searchText, bankKey) {
     .catch(function(error) {
         console.log("Error name code matching documents: ", error.name);
     });
-
 }
