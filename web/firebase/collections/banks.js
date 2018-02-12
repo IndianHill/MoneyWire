@@ -28,7 +28,8 @@ function getAllBanks() {
 function createBank(bankData) {
     var user = firebase.auth().currentUser;
     firestore = firebase.firestore();
-    firestore.collection(cl_banks).add({
+    firestore.collection(cl_banks).doc(bankData.key).set({
+        "key": bankData.key,
         "bankName": bankData.name,
         "bankWebsite": bankData.website,
         "bankCustomerCare": bankData.customerCare,
@@ -42,9 +43,9 @@ function createBank(bankData) {
         "bankCreated": firebase.firestore.FieldValue.serverTimestamp(),
         "bankUpdated": firebase.firestore.FieldValue.serverTimestamp()
     })
-    .then(function(bank) {
-        console.log("Bank successfully created with id:"+bank.id);
-        bankCreatedSuccessfully(bank);
+    .then(function() {
+        console.log("Bank successfully created");
+        bankCreatedSuccessfully();
     })
     .catch(function(error) {
         console.log("Error creating bank: "+error);

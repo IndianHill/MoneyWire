@@ -7,7 +7,7 @@ cl_branches = "branches";
 function getBranchesOfBank(bankKey) {
     console.log('Fetching branchs of bank:'+bankKey);
     firestore = firebase.firestore();
-    firestore.collection(cl_banks).doc(bankKey).collection(cl_branches).get().then((querySnapshot) => {
+    firestore.collection(cl_branches).where('bankKey', '==', bankKey).get().then((querySnapshot) => {
         console.log('Branches data received.')
         allBranches = []
         querySnapshot.forEach((doc) => {
@@ -28,16 +28,20 @@ function getBranchesOfBank(bankKey) {
 function createBankBranch(branchData, bankKey) {
     var user = firebase.auth().currentUser;
     firestore = firebase.firestore();
-    firestore.collection(cl_banks).doc(bankKey).collection(cl_branches).doc(branchData.ifscCode).set({
+    firestore.collection(cl_branches).doc(branchData.ifscCode.toUpperCase()).set({
+        "bankKey": bankKey,
         "name": branchData.name,
+        "lowerName": branchData.name.toLowerCase(),
         "street": branchData.street,
         "city": branchData.city,
+        "lowerCity": branchData.city.toLowerCase(),
         "district": branchData.district,
         "state": branchData.state,
         "pinCode": branchData.pinCode,
         "fullAddress": branchData.fullAddress,
         "contactNumber": branchData.contactNumber,
         "ifsc": branchData.ifscCode,
+        "lowerIfsc": branchData.ifscCode.toLowerCase(),
         "micr": branchData.micrCode,
         "createdBy": user.uid,
         "updatedBy": user.uid,
@@ -57,19 +61,22 @@ function createBankBranch(branchData, bankKey) {
 /**
  *  Update bank's branch
  */
-function updateBankBranch(branchData, bankKey, branchKey) {
+function updateBankBranch(branchData, branchKey) {
     var user = firebase.auth().currentUser;
     firestore = firebase.firestore();
-    firestore.collection(cl_banks).doc(bankKey).collection(cl_branches).doc(branchKey).update({
+    firestore.collection(cl_branches).doc(branchKey).update({
         "name": branchData.name,
+        "lowerName": branchData.name.toLowerCase(),
         "street": branchData.street,
         "city": branchData.city,
+        "lowerCity": branchData.city.toLowerCase(),
         "district": branchData.district,
         "state": branchData.state,
         "pinCode": branchData.pinCode,
         "fullAddress": branchData.fullAddress,
         "contactNumber": branchData.contactNumber,
         "ifsc": branchData.ifscCode,
+        "lowerIfsc": branchData.ifscCode.toLowerCase(),
         "micr": branchData.micrCode,
         "updatedBy": user.uid,
         "updatedAt": firebase.firestore.FieldValue.serverTimestamp()
@@ -91,11 +98,12 @@ function addArrayToBranches(branchesArr, bankKey) {
     var user = firebase.auth().currentUser;
     firestore = firebase.firestore();
     var batch = firestore.batch();
-    var branchRef = firestore.collection(cl_banks).doc(bankKey).collection(cl_branches);
+    var branchRef = firestore.collection(cl_branches);
 
     for(var index in branchesArr) {
         branchData = branchesArr[index];
-        batch.set(branchRef.doc(branchData.ifscCode), {
+        batch.set(branchRef.doc(branchData.ifscCode.toUpperCase()), {
+            "bankKey": bankKey,
             "name": branchData.name,
             "lowerName": branchData.name.toLowerCase(),
             "street": branchData.street,
@@ -131,7 +139,7 @@ function addArrayToBranches(branchesArr, bankKey) {
  */
 function searchBankBranches(searchText, bankKey) {
     firestore = firebase.firestore();
-    branchesCollectionRef = firestore.collection(cl_banks).doc(bankKey).collection(cl_branches);
+    branchesCollectionRef = firestore.collection(cl_branches);
 
     searchText = searchText.toLowerCase();
 
