@@ -40,13 +40,10 @@ limitations under the License.
   <script src="firebase/collections/branches.js"></script>
   <script type="text/javascript">
 
-    var bankDetails = {};
     var banksBranches = [];
     var banksBranchesDict = {};
     var uploadingBranchesArr = [];
-    editingBranchKey = "";
-    var searchTypingTimer;                  //timer identifier
-    var typingDoneInterval = 2000;          //time in ms, 3 second for example
+    var editingBranchKey = "";
     var searchedBranches = [];
 
     /**
@@ -57,10 +54,6 @@ limitations under the License.
         document.getElementById('btn-sign-out').hidden = false;
         document.getElementById('panel-login').hidden = true;
         document.getElementById('panel-branch').hidden = false;
-        document.getElementById('search-view').hidden = false;
-        bankKey = getBankKey();
-        document.getElementById('spinner').classList.add("is-active");
-        getBankDetails(bankKey);
     }
 
     /**
@@ -71,90 +64,9 @@ limitations under the License.
         document.getElementById('btn-sign-out').hidden = true;
         document.getElementById('panel-login').hidden = false;
         document.getElementById('panel-branch').hidden = true;
-        document.getElementById('search-view').hidden = true;
 
         // Loading home page
         window.setTimeout(loadHomePage, 3000)
-    }
-
-    /**
-     *  Get bank-key from location
-     */
-    function getBankKey() {
-        params = getUrlParams()
-        if (!params.bank) {
-            alert('No bank selected.');
-            loadBanksPage();
-        }
-        return params.bank;
-    }
-
-    /**
-     *  Successfull Callback: all branches for banks
-     */
-    function successfullyFetchedBranches(branches) {
-        banksBranches = [];
-        document.getElementById('spinner').classList.remove("is-active");
-        console.log('total branches:'+branches.length)
-        banksBranches = branches;
-        // banksBranches = {};
-        branches.forEach(function (branch) {
-            banksBranchesDict[branch.key] = branch;
-        });
-        updateBranchList(branches);
-    }
-
-    /**
-     *  Failed Callback: getting all branches of bank
-     */
-    function failedToFetchedBranches(err) {
-        banksBranches = []
-        $("#branch-list > tbody").empty();
-        document.getElementById('spinner').classList.remove("is-active");
-        alert("Error while getting banks branches: "+err.name)
-    }
-
-    /**
-     *  After successful retrival of bank details
-     */
-    function successfullyFetchedBankDetails(bankData) {
-        document.getElementById('spinner').classList.remove("is-active");
-
-        bankDetails = bankData;
-        bankDetails.key = getBankKey();
-        document.getElementById("panel-title").innerHTML = bankDetails.bankName + " - Branches";
-
-        document.getElementById('spinner').classList.add("is-active");
-        getBranchesOfBank(bankDetails.key);
-    }
-
-    /**
-     *  After failure retrival of bank details
-     */
-    function failedToFetchBankDetails(err) {
-        document.getElementById('spinner').classList.remove("is-active");
-        console.log('Error while getting bank details:'+err.name);
-        alert("Error while getting bank details: "+err.name);
-    }
-
-    /**
-     *  Branch successfully created
-     */
-    function branchCreatedSuccessfully(branchData) {
-        document.getElementById('create-branch-spinner').classList.remove("is-active");
-        closeCreateBranchDialog();
-        document.getElementById('spinner').classList.add("is-active");
-        getBranchesOfBank(bankDetails.key);
-    }
-
-    /**
-     *  Branch creation failure
-     */
-    function errorWhileCreatingBranch(err) {
-        document.getElementById('create-branch-spinner').classList.remove("is-active");
-        closeCreateBranchDialog();
-        console.log('Error while getting branch details:'+err.name);
-        alert("Error while getting branch details: "+err.name);
     }
 
     /**
@@ -175,77 +87,6 @@ limitations under the License.
         closeCreateBranchDialog();
         console.log('Error while updating branch details:'+err.name);
         alert("Error while updating branch details: "+err.name);
-    }
-
-    /**
-     *  Branches uploaded successfully
-     */
-     function branchesUploadedSuccessfully() {
-        document.getElementById('upload-csv-spinner').classList.remove("is-active");
-        closeUploadBranchesDialog();
-        document.getElementById('spinner').classList.add("is-active");
-        getBranchesOfBank(bankDetails.key);
-    }
-
-    /**
-     *  Branches upload failed
-     */
-    function errorWhileUploadingBranches(err) {
-        document.getElementById('upload-csv-spinner').classList.remove("is-active");
-        closeUploadBranchesDialog();
-        console.log('Error while uploading branches:'+err.name);
-        alert("Error while uploading branches: "+err.name);
-    }
-
-    /**
-     *  Show upload csv dialog
-     */
-    function showUploadCSVDialog() {
-        var dialog = document.querySelector('#upload-branches');
-        dialog.showModal();
-        dialog.querySelector('.close').addEventListener('click', function() {
-            closeUploadBranchesDialog();
-        });
-    }
-
-    // Search Result
-    function successfullySearchedBranch(branches) {
-        document.getElementById('spinner').classList.remove("is-active");
-        branches.forEach(branch => {
-            searchedBranches.push(branch);
-        });
-        updateBranchList(searchedBranches);
-    }
-
-    /**
-     *  Close dialog of upload branches
-     */
-    function closeUploadBranchesDialog() {
-        var dialog = document.querySelector('#upload-branches');
-        clearCSVInput();
-        dialog.close();
-    }
-
-    /**
-     * 
-     */
-    function clearCSVInput() {
-        $('#files').val("");
-        document.getElementById('file-info').innerHTML = "";
-    } 
-
-    /**
-     * Show Dialog for create branch
-    */
-    function showCreateBranchDialog() {
-        isEditMode = false;
-        document.getElementById("modal-title").innerHTML = 'Create Branch';
-        var dialog = document.querySelector('dialog');
-        $('.mdl-textfield__input').parent().removeClass('is-focused');
-        dialog.showModal();
-        dialog.querySelector('.close').addEventListener('click', function() {
-            closeCreateBranchDialog();
-        });
     }
 
     /**
@@ -487,42 +328,10 @@ limitations under the License.
         
         // Event listeners
         document.getElementById('btn-sign-out').addEventListener('click', makeUserSignOut, false);
-        $('#btn-add-branch').click(function(){
-            showCreateBranchDialog();
-        });
+        
         $('#btn-save-branch').click(function(){
             sendDataToCreateBranch();
         });
-        $('#btn-upload-csv').click(function(){
-            showUploadCSVDialog();
-        });
-        $('#btn-upload-all').click(function(){
-            uploadBranchesDataToFirestore();
-        });
-
-        //on keyup, start the countdown
-        $('#search_input').on('keyup', function () {
-            clearTimeout(searchTypingTimer);
-            searchTypingTimer = setTimeout(searchBranch, typingDoneInterval);
-        });
-
-        //on keydown, clear the countdown 
-        $('#search_input').on('keydown', function () {
-            clearTimeout(searchTypingTimer);
-        });
-    }
-
-    // Searching branch
-    function searchBranch() {
-        let searchText = $('#search_input').val();
-        if(searchText.length > 0) {
-            console.log(searchText);
-            document.getElementById('spinner').classList.add("is-active");
-            searchedBranches = [];
-            searchBankBranches(searchText, bankDetails.key);
-        } else {
-            updateBranchList(banksBranches);
-        }
     }
 
     // Get pin-code from full-address
@@ -547,94 +356,6 @@ limitations under the License.
 
         return street;
     }
-
-    // Creating raw array to set values in firebase
-    function processCSVArray(dataArr) {
-        let headers = dataArr[0];
-        dataArr.splice(0, 1);
-        var branchArr = [];
-        for(var index in dataArr) {
-            var branchData = {};
-            branchData.ifscCode = dataArr[index][1].replace(/\s/g,'');
-            branchData.micrCode = dataArr[index][2].replace(/\s/g,'');
-            branchData.name = dataArr[index][3];
-            branchData.fullAddress = dataArr[index][4];
-            branchData.contactNumber = dataArr[index][5].replace(/\s/g,'');
-            branchData.city = dataArr[index][6].replace(/\s/g,'');
-            branchData.district = dataArr[index][7].replace(/\s/g,'');
-            branchData.state = dataArr[index][8].replace(/\s/g,'');
-            branchData.pinCode = getPinCodeFromFullAddress(branchData.fullAddress);
-            branchData.street = getStreetFromFullAddress(branchData.fullAddress, branchData.city);
-            branchArr.push(branchData);
-        }
-        console.log('Total items to add:'+branchArr.length);
-        uploadingBranchesArr = branchArr;
-    }
-
-    // Upload branches data to Firestore
-    function uploadBranchesDataToFirestore() {
-        document.getElementById('upload-csv-spinner').classList.add("is-active");
-        addArrayToBranches(uploadingBranchesArr, bankDetails.key);
-    }
-
-    function isAPIAvailable() {
-        // Check for the various File API support.
-        if (window.File && window.FileReader && window.FileList && window.Blob) {
-            // Great success! All the File APIs are supported.
-            return true;
-        } else {
-            // source: File API availability - http://caniuse.com/#feat=fileapi
-            // source: <output> availability - http://html5doctor.com/the-output-element/
-            document.writeln('The HTML5 APIs used in this form are only available in the following browsers:<br />');
-            // 6.0 File API & 13.0 <output>
-            document.writeln(' - Google Chrome: 13.0 or later<br />');
-            // 3.6 File API & 6.0 <output>
-            document.writeln(' - Mozilla Firefox: 6.0 or later<br />');
-            // 10.0 File API & 10.0 <output>
-            document.writeln(' - Internet Explorer: Not supported (partial support expected in 10.0)<br />');
-            // ? File API & 5.1 <output>
-            document.writeln(' - Safari: Not supported<br />');
-            // ? File API & 9.2 <output>
-            document.writeln(' - Opera: Not supported');
-            return false;
-        }
-    }
-
-    function handleFileSelect(evt) {
-        var files = evt.target.files; // FileList object
-        var file = files[0];
-
-        // read the file metadata
-        var output = ''
-            output += '<span style="font-weight:bold;">' + escape(file.name) + '</span><br />\n';
-            output += ' - FileType: ' + (file.type || 'n/a') + '<br />\n';
-            output += ' - FileSize: ' + file.size + ' bytes<br />\n';
-            output += ' - LastModified: ' + (file.lastModifiedDate ? file.lastModifiedDate.toLocaleDateString() : 'n/a') + '<br />\n';
-
-        document.getElementById('file-info').innerHTML = output;
-
-        // read the file contents
-        readCSV(file);
-    }
-
-    function readCSV(file) {
-        var reader = new FileReader();
-        reader.readAsText(file);
-        reader.onload = function(event){
-            var csv = event.target.result;
-            var data = $.csv.toArrays(csv);
-            processCSVArray(data);
-            //console.log(data);
-        };
-        reader.onerror = function(){ alert('Unable to read ' + file.fileName); };
-    }
-
-    // Handling file upload
-    $(document).ready(function() {
-        if(isAPIAvailable()) {
-            $('#files').bind('change', handleFileSelect);
-        }
-    });
   
     window.onload = function() {
         var firebaseApp;
@@ -672,19 +393,6 @@ limitations under the License.
     <main class="mdl-layout__content mdl-color--grey-100">
         <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
 
-            <!-- Search branch -->
-            <div id='search-view' class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop mdl-typography--text-right" style="margin-right: 5%;">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-                    <label class="mdl-button mdl-js-button mdl-button--icon" for="search_input">
-                        <i class="material-icons">search</i>
-                    </label>
-                    <div class="">
-                        <input class="mdl-textfield__input" type="text" id="search_input">
-                        <label class="mdl-textfield__label" for="search_input">Search</label>
-                    </div>
-                </div>
-            </div>
-
         <!-- Container for the Table of content -->
             <div id='panel-login' class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
                 <div class="mdl-card__title mdl-color--light-blue-600 mdl-color-text--white">
@@ -701,13 +409,9 @@ limitations under the License.
             <div id='panel-branch' class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
                 <div class="mdl-card__title mdl-color--light-blue-600 mdl-color-text--white">
                     <div class="mdl-cell mdl-cell--8-col mdl-card__title-text">
-                        <h4 id="panel-title" >Branches</h4>
+                        <h4 id="panel-title" >Search Branches</h4>
                     </div>
                     <div id="spinner" class="mdl-spinner mdl-js-spinner mdl-spinner--single-color"></div>
-                    <div class="mdl-cell mdl-cell--4-col">
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--white" id="btn-add-branch">ADD BRANCH</button>
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--white" id="btn-upload-csv">UPLOAD CSV</button>
-                    </div>
                 </div>
                 <table id="branch-list" class="mdl-data-table mdl-js-data-table mdl-cell mdl-cell--12-col" style="width:99%">
                     <thead>
@@ -772,23 +476,6 @@ limitations under the License.
             <div class="mdl-dialog__actions">
                 <div id="create-branch-spinner" class="mdl-spinner mdl-js-spinner"></div>
                 <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color-text--white mdl-color--light-blue-700" id="btn-save-branch">SAVE</button>
-                <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect close">Cancel</button>
-            </div>
-        </dialog>
-        <dialog id="upload-branches" class="mdl-dialog dialog-container">
-            <h4 id="modal-title" class="mdl-dialog__title mdl-cell mdl-cell--12-col mdl-typography--text-center">Upload CSV</h4>
-            <div class="mdl-dialog__content mdl-grid">
-                <input type="file" id='files' accept=".csv" multiple />
-            </div>
-            <div class="mdl-dialog__content mdl-grid">
-                File Info:<br>
-                <span id='file-info'>
-                    No file selected.
-                </span>
-            </div>
-            <div class="mdl-dialog__actions">
-                <div id="upload-csv-spinner" class="mdl-spinner mdl-js-spinner"></div>
-                <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color-text--white mdl-color--light-blue-700" id="btn-upload-all">UPLOAD</button>
                 <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect close">Cancel</button>
             </div>
         </dialog>
