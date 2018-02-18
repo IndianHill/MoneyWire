@@ -212,3 +212,43 @@ function searchBankBranches(searchText, bankKey) {
         console.log("Error name code matching documents: ", error.name);
     });
 }
+
+/*
+ *  Get search results for given search params
+ */
+function searchGlobalBranches(name, city, ifscCode, pincode) {
+    firestore = firebase.firestore();
+    var mainQuery = firestore.collection(cl_branches);
+
+    if (city.length > 0) {
+        mainQuery = mainQuery.where('lowerCity', '==', city.toLowerCase())
+    }
+
+    if (pincode.length > 0) {
+        mainQuery = mainQuery.where('pinCode', '==', pincode.toLowerCase())
+    }
+
+    if (ifscCode.length > 0) {
+        mainQuery = mainQuery.where('lowerIfsc', '==', ifscCode.toLowerCase())
+    }
+
+    if (name.length > 0) {
+        mainQuery = mainQuery.where('lowerName', '==', name.toLowerCase())
+    }
+
+    mainQuery.get()
+        .then(function(querySnapshot) {
+            queryBranch = []
+            console.log('=====Global Search====')
+            querySnapshot.forEach(function(doc) {
+                var branch = doc.data()
+                branch.key = doc.id
+                queryBranch.push(branch)
+                console.log(doc.id, " => ", doc.data());
+            });
+            successfullySearchedBranch(queryBranch);
+        })
+        .catch(function(error) {
+            console.log("Error name code matching documents: ", error.name);
+        });
+}
