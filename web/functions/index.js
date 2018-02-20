@@ -6,8 +6,23 @@ admin.initializeApp(functions.config().firebase);
 
 const BASE_URL = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDhrAm8bI3Eg2g1IzYMDFQAmZfb12RzxtQ&address='
 
-exports.updateBranchLatLng = functions.firestore.document('/branches/{branch}').onWrite((event)=>{
+exports.updateLatLng = functions.firestore.document('/branches/{branch}').onUpdate((event)=>{
 
+    fetchAndUpdateLatLng(event)
+    return true;
+});
+
+exports.addLatLng = functions.firestore.document('/branches/{branch}').onCreate((event)=>{
+
+    event.data.ref.set({
+        lat: 0,
+        lng: 0
+        }, {merge: true});
+    
+    return true;
+});
+
+function fetchAndUpdateLatLng(event) {
     fullAddress = event.data.data().fullAddress;
     console.log('Requesting lat lng for address:'+fullAddress);
     const get_url = encodeURI(BASE_URL+fullAddress);
@@ -28,5 +43,4 @@ exports.updateBranchLatLng = functions.firestore.document('/branches/{branch}').
             console.log('Error:'+JSON.stringify(error))
         }
     });
-    return true;
-});
+}
