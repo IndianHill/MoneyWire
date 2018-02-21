@@ -1,0 +1,66 @@
+{
+  "project_info": {
+    "project_number": "84141118544",
+    "firebase_url": "https://app-moneywire.firebaseio.com",
+    "project_id": "app-moneywire",
+    "storage_bucket": "app-moneywire.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84141118544:android:5d1cf7cd99be1c41",
+        "android_client_info": {
+          "package_name": "com.indianhill.moneywire"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "84141118544-fm6na9oan273ne96turgk233tpq6knln.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.indianhill.moneywire",
+            "certificate_hash": "1801ef1d08101573f66a4bec1db051e57c46c039"
+          }
+        },
+        {
+          "client_id": "84141118544-at14vq91qvhpgb3hlqhvaqmc63jd3pe5.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "84141118544-08996as7jvogp6sct4kj216vejaft58m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9tCRXOwb2pke9p4QBvl9GYrEi5OiWIKs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "84141118544-at14vq91qvhpgb3hlqhvaqmc63jd3pe5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "84141118544-9b09c2off0bsi7fooreubm1q5lea433p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.indianhill.moneywire"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
