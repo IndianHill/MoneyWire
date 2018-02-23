@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, StatusBar, Text, Image, Alert, 
     TouchableOpacity } from 'react-native';
-// import firebase from 'react-native-firebase';
+import firebase from 'react-native-firebase';
 
 // Styles
 import styles from './Styles/DashboardStyles'
@@ -17,12 +17,12 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
-        // user = firebase.auth().currentUser;
-        // if(user) {
-        //     this.setState({
-        //         currentUser: user
-        //     })
-        // }
+        user = firebase.auth().currentUser;
+        if(user) {
+            this.setState({
+                currentUser: user
+            })
+        }
     }
 
     //--------------------------- Render UI ---------------------------

@@ -6,7 +6,6 @@ target 'MoneyWire' do
   # use_frameworks!
 
   # Pods for MoneyWire
-#   pod 'Google/SignIn'
 
   # Required by RNFirebase
   pod 'Firebase/Core'
