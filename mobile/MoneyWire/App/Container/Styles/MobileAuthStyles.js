@@ -39,20 +39,21 @@ export default StyleSheet.create({
         justifyContent: 'center', 
         alignItems: 'center',
     },
-    getOTPView: {
+    getOTPBtn:{
+        width: '100%',
+        marginTop: '5%',
+        marginRight: '8%',
+        marginLeft: '8%',
+        height: 35,  
+        borderRadius: 10,
+        backgroundColor: Colors.primary,
         justifyContent: 'center', 
         alignItems: 'center',
-        marginTop: '5%',
-    },
-    getOTPBtn:{
-        backgroundColor: Colors.primary,
-        borderRadius: 10,
-        alignItems: 'center',
         alignSelf: 'center',
-        padding: '2%',
     },
     getOTPText: {
         color: Colors.white,
+        fontSize: 16,
     },
     verificationCodeView: {
         marginTop: '20%',

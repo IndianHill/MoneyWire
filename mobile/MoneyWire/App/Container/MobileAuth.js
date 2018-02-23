@@ -139,12 +139,10 @@ class MobileAuth extends Component {
                     maxLength={10}
                     onChangeText={ (phoneText) => this.setPhoneNumber(phoneText) }
                 />
-                <View style={styles.getOTPView}>
-                    <TouchableOpacity onPress={ () => { this.onGetOTP() }}
+                <TouchableOpacity onPress={ () => { this.onGetOTP() }}
                         style={styles.getOTPBtn}>
                         <Text style={styles.getOTPText}>Get OTP</Text>
                     </TouchableOpacity>
-                </View>
             </View>
         )
     }
