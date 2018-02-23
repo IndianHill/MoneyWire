@@ -19,7 +19,8 @@ export default StyleSheet.create({
         color: Colors.white,
         fontWeight: 'bold',
         textAlign: 'center',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        fontFamily: Fonts.semi_bold,
     },
     backImg:{
         height: 20, width: 15, marginLeft: 10, tintColor:Colors.white
@@ -38,6 +39,7 @@ export default StyleSheet.create({
         color: Colors.grey_dark,
         justifyContent: 'center', 
         alignItems: 'center',
+        fontFamily: Fonts.light,
     },
     getOTPBtn:{
         width: '100%',
@@ -54,6 +56,7 @@ export default StyleSheet.create({
     getOTPText: {
         color: Colors.white,
         fontSize: 16,
+        fontFamily: Fonts.regular,
     },
     verificationCodeView: {
         marginTop: '20%',

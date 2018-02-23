@@ -126,7 +126,7 @@ class Login extends Component {
     renderBottomView = () => {
         return (
             <View style={styles.bottomView}>
-                <TouchableOpacity onPress={()=> { this.fbLogin() }} style={styles.loginIconImgView}>
+                {/* <TouchableOpacity onPress={()=> { this.fbLogin() }} style={styles.loginIconImgView}>
                     <Image source={Images.fb_login} style={styles.loginIconImg} />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={()=> { this.googleLogin() }} style={styles.loginIconImgView}>
@@ -137,6 +137,9 @@ class Login extends Component {
                 </TouchableOpacity>
                 <TouchableOpacity onPress={()=> { this.mobileLogin() }} style={styles.loginIconImgView}>
                     <Image source={Images.mobile_login} style={styles.mobileLoginIconImg} />
+                </TouchableOpacity> */}
+                <TouchableOpacity onPress={()=> {  }} style={styles.loginIconImgView}>
+                    <Image source={Images.login} style={styles.emailLoginIconImg} />
                 </TouchableOpacity>
             </View>
         )

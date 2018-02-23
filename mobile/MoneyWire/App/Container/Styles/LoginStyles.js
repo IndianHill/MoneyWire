@@ -9,11 +9,11 @@ export default StyleSheet.create({
     },
     logoTitle: {
         top: '35%',
-        fontSize: 32,
+        fontSize: 40,
         color: Colors.white,
         justifyContent: 'center', 
         alignItems: 'center',
-        fontFamily: 'Averta-Semibold',
+        fontFamily: Fonts.semi_bold,
     },
     bottomView: {
         flex: 1,
@@ -28,6 +28,11 @@ export default StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    emailLoginIconImg: {
+        height: 48,
+        width: 48,
+        tintColor: Colors.white,
     },
     loginIconImg: {
         height: 32,
