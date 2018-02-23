@@ -13,7 +13,7 @@ export default StyleSheet.create({
         color: Colors.white,
         justifyContent: 'center', 
         alignItems: 'center',
-        // fontFamily: 'AvertaRegular',
+        fontFamily: 'Averta-Semibold',
     },
     bottomView: {
         flex: 1,

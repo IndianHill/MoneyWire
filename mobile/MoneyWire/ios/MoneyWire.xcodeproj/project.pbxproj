@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -40,6 +39,22 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		E75839722040CD9E000A65DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E75839712040CD9E000A65DB /* GoogleService-Info.plist */; };
+		2002DE6FC5634A61995E775D /* Averta-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0AD19FFD5BC74B57A835D8CA /* Averta-Black.ttf */; };
+		D1C7080732A5407391DDF083 /* Averta-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3C40144219DD4DC383A19B12 /* Averta-BlackItalic.ttf */; };
+		90FCA346DEB14C9AA7FB5A09 /* Averta-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6393A374D36542C9BA35A94B /* Averta-Bold.ttf */; };
+		9ACEF3ACDE6F41D3B3E3B940 /* Averta-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0C5A64393F8466F9819FD34 /* Averta-BoldItalic.ttf */; };
+		E71FF00789F248A79F3B17E4 /* Averta-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31047D6B401F4F879D50706D /* Averta-ExtraBold.ttf */; };
+		E41612DFE0224B8FB6C6E580 /* Averta-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 223EB707AE574F48A2EF164E /* Averta-ExtraBoldItalic.ttf */; };
+		69B7E8D819D549A1A0F77DB1 /* Averta-Extrathin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16913D27E7054AC7995322B3 /* Averta-Extrathin.ttf */; };
+		CC4FCF6785FB4124AC029FF0 /* Averta-ExtrathinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 71B5635E0B9A43FCB7083EA4 /* Averta-ExtrathinItalic.ttf */; };
+		E442A8A99EA14B13A85E0908 /* Averta-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3CEB59EAD414DF18A02E0C9 /* Averta-Light.ttf */; };
+		B0244B045988498F853A522F /* Averta-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 96071DB92F5F44ECABA92F2E /* Averta-LightItalic.ttf */; };
+		4D01270F1A4748E7AA82B42F /* Averta-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03E2C40867654166A48F69B7 /* Averta-Regular.ttf */; };
+		9EC506F14E1D40AEAB0866B4 /* Averta-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5076571E8F44EEF8428C5E3 /* Averta-RegularItalic.ttf */; };
+		99DEB38946804636802DFC62 /* Averta-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0321217216C846ADAB1D1D08 /* Averta-Semibold.ttf */; };
+		090398591AA64555B1F48279 /* Averta-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37D9954687234A4290798DAE /* Averta-SemiboldItalic.ttf */; };
+		559C527633744BEDB5EFA166 /* Averta-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D2E1360B06E4B30BAAC90FD /* Averta-Thin.ttf */; };
+		D170A53E37504E96A0BB48B3 /* Averta-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD7FEF1B2370453B83518BD1 /* Averta-ThinItalic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -358,6 +373,22 @@
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		DBF16913C98D3A54233AEEFA /* libPods-MoneyWire.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MoneyWire.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E75839712040CD9E000A65DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "MoneyWire/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0AD19FFD5BC74B57A835D8CA /* Averta-Black.ttf */ = {isa = PBXFileReference; name = "Averta-Black.ttf"; path = "../assets/fonts/Averta-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3C40144219DD4DC383A19B12 /* Averta-BlackItalic.ttf */ = {isa = PBXFileReference; name = "Averta-BlackItalic.ttf"; path = "../assets/fonts/Averta-BlackItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6393A374D36542C9BA35A94B /* Averta-Bold.ttf */ = {isa = PBXFileReference; name = "Averta-Bold.ttf"; path = "../assets/fonts/Averta-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B0C5A64393F8466F9819FD34 /* Averta-BoldItalic.ttf */ = {isa = PBXFileReference; name = "Averta-BoldItalic.ttf"; path = "../assets/fonts/Averta-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		31047D6B401F4F879D50706D /* Averta-ExtraBold.ttf */ = {isa = PBXFileReference; name = "Averta-ExtraBold.ttf"; path = "../assets/fonts/Averta-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		223EB707AE574F48A2EF164E /* Averta-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; name = "Averta-ExtraBoldItalic.ttf"; path = "../assets/fonts/Averta-ExtraBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		16913D27E7054AC7995322B3 /* Averta-Extrathin.ttf */ = {isa = PBXFileReference; name = "Averta-Extrathin.ttf"; path = "../assets/fonts/Averta-Extrathin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		71B5635E0B9A43FCB7083EA4 /* Averta-ExtrathinItalic.ttf */ = {isa = PBXFileReference; name = "Averta-ExtrathinItalic.ttf"; path = "../assets/fonts/Averta-ExtrathinItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C3CEB59EAD414DF18A02E0C9 /* Averta-Light.ttf */ = {isa = PBXFileReference; name = "Averta-Light.ttf"; path = "../assets/fonts/Averta-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		96071DB92F5F44ECABA92F2E /* Averta-LightItalic.ttf */ = {isa = PBXFileReference; name = "Averta-LightItalic.ttf"; path = "../assets/fonts/Averta-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		03E2C40867654166A48F69B7 /* Averta-Regular.ttf */ = {isa = PBXFileReference; name = "Averta-Regular.ttf"; path = "../assets/fonts/Averta-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C5076571E8F44EEF8428C5E3 /* Averta-RegularItalic.ttf */ = {isa = PBXFileReference; name = "Averta-RegularItalic.ttf"; path = "../assets/fonts/Averta-RegularItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0321217216C846ADAB1D1D08 /* Averta-Semibold.ttf */ = {isa = PBXFileReference; name = "Averta-Semibold.ttf"; path = "../assets/fonts/Averta-Semibold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		37D9954687234A4290798DAE /* Averta-SemiboldItalic.ttf */ = {isa = PBXFileReference; name = "Averta-SemiboldItalic.ttf"; path = "../assets/fonts/Averta-SemiboldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2D2E1360B06E4B30BAAC90FD /* Averta-Thin.ttf */ = {isa = PBXFileReference; name = "Averta-Thin.ttf"; path = "../assets/fonts/Averta-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FD7FEF1B2370453B83518BD1 /* Averta-ThinItalic.ttf */ = {isa = PBXFileReference; name = "Averta-ThinItalic.ttf"; path = "../assets/fonts/Averta-ThinItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -608,6 +639,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				3840B1BA7E92827FC170B505 /* Pods */,
 				E75839362040CBE3000A65DB /* Recovered References */,
+				FE6BB0F92F7545F592B2E229 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -649,6 +681,30 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		FE6BB0F92F7545F592B2E229 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				0AD19FFD5BC74B57A835D8CA /* Averta-Black.ttf */,
+				3C40144219DD4DC383A19B12 /* Averta-BlackItalic.ttf */,
+				6393A374D36542C9BA35A94B /* Averta-Bold.ttf */,
+				B0C5A64393F8466F9819FD34 /* Averta-BoldItalic.ttf */,
+				31047D6B401F4F879D50706D /* Averta-ExtraBold.ttf */,
+				223EB707AE574F48A2EF164E /* Averta-ExtraBoldItalic.ttf */,
+				16913D27E7054AC7995322B3 /* Averta-Extrathin.ttf */,
+				71B5635E0B9A43FCB7083EA4 /* Averta-ExtrathinItalic.ttf */,
+				C3CEB59EAD414DF18A02E0C9 /* Averta-Light.ttf */,
+				96071DB92F5F44ECABA92F2E /* Averta-LightItalic.ttf */,
+				03E2C40867654166A48F69B7 /* Averta-Regular.ttf */,
+				C5076571E8F44EEF8428C5E3 /* Averta-RegularItalic.ttf */,
+				0321217216C846ADAB1D1D08 /* Averta-Semibold.ttf */,
+				37D9954687234A4290798DAE /* Averta-SemiboldItalic.ttf */,
+				2D2E1360B06E4B30BAAC90FD /* Averta-Thin.ttf */,
+				FD7FEF1B2370453B83518BD1 /* Averta-ThinItalic.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -1111,6 +1167,22 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				E75839722040CD9E000A65DB /* GoogleService-Info.plist in Resources */,
+				2002DE6FC5634A61995E775D /* Averta-Black.ttf in Resources */,
+				D1C7080732A5407391DDF083 /* Averta-BlackItalic.ttf in Resources */,
+				90FCA346DEB14C9AA7FB5A09 /* Averta-Bold.ttf in Resources */,
+				9ACEF3ACDE6F41D3B3E3B940 /* Averta-BoldItalic.ttf in Resources */,
+				E71FF00789F248A79F3B17E4 /* Averta-ExtraBold.ttf in Resources */,
+				E41612DFE0224B8FB6C6E580 /* Averta-ExtraBoldItalic.ttf in Resources */,
+				69B7E8D819D549A1A0F77DB1 /* Averta-Extrathin.ttf in Resources */,
+				CC4FCF6785FB4124AC029FF0 /* Averta-ExtrathinItalic.ttf in Resources */,
+				E442A8A99EA14B13A85E0908 /* Averta-Light.ttf in Resources */,
+				B0244B045988498F853A522F /* Averta-LightItalic.ttf in Resources */,
+				4D01270F1A4748E7AA82B42F /* Averta-Regular.ttf in Resources */,
+				9EC506F14E1D40AEAB0866B4 /* Averta-RegularItalic.ttf in Resources */,
+				99DEB38946804636802DFC62 /* Averta-Semibold.ttf in Resources */,
+				090398591AA64555B1F48279 /* Averta-SemiboldItalic.ttf in Resources */,
+				559C527633744BEDB5EFA166 /* Averta-Thin.ttf in Resources */,
+				D170A53E37504E96A0BB48B3 /* Averta-ThinItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
