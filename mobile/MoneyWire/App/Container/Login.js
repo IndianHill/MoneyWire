@@ -35,7 +35,7 @@ class Login extends Component {
                 currentUser: user,
             });
             if (user) {
-                console.log('User authentication status: LOGGED_IN - '+JSON.stringify(user))
+                console.log('Authenticated User - '+JSON.stringify(user))
                 Actions.dashboard()
             }
         });
@@ -61,86 +61,32 @@ class Login extends Component {
         })
     }
 
-    //--------------------------- FB Login press ---------------------------
-    fbLogin = () => {
-        console.log('FBLogin');
-    }
-
-    //--------------------------- Google Login Press ---------------------------
-    googleLogin = () => {
-        console.log('GoogleLogin');
-        this.checkAndConfigureSignIn();
-    }
-
-    checkAndConfigureSignIn = () => {
-        // GoogleSignin.hasPlayServices({ autoResolve: true }).then(() => {
-        //     GoogleSignin.configure({
-        //         scopes: ["https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile"], // what API you want to access on behalf of the user, default is email and profile
-        //         iosClientId: "84141118544-etmgja8bevci3ibi5p1mh4n4psuq3sei.apps.googleusercontent.com"
-        //     }).then(() => {
-        //         this.signInGoogle();
-        //     })
-        // })
-        // .catch((err) => {
-        //     this.hideLoading()
-        //     console.log("Play services error", err.code, err.message);
-        // })
-    }
-
-    signInGoogle = () => {
-        this.showLoading()
-        // GoogleSignin.signIn()
-        // .then((data) => {
-        //     console.log('Getting google credentials..')
-        //     // create a new firebase credential with the token
-        //     const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, data.accessToken)
-
-        //     console.log('Google logging in with credentials..')
-        //     // login with credential
-        //     return firebase.auth().signInWithCredential(credential)
-        // })
-        // .then((currentUser) => {
-        //     this.hideLoading()
-        //     console.log('Google login successful..')
-        //     console.info(JSON.stringify(currentUser.toJSON()))
-        // })
-        // .catch((error) => {
-        //     this.hideLoading()
-        //     console.log('Google login fail with error:'+JSON.stringify(error))
-        // })
-    }
-
-    //--------------------------- Twitter Login Press ---------------------------
-    twitterLogin = () => {
-        console.log('TwitterLogin');
-    }
-
-    //--------------------------- Mobile Login Press ---------------------------
-    mobileLogin = () => {
-        console.log('MobileLogin');
-        Actions.mobile_auth();
-    }
-
     //--------------------------- Render UI ---------------------------
 
     renderBottomView = () => {
         return (
             <View style={styles.bottomView}>
-                {/* <TouchableOpacity onPress={()=> { this.fbLogin() }} style={styles.loginIconImgView}>
-                    <Image source={Images.fb_login} style={styles.loginIconImg} />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={()=> { this.googleLogin() }} style={styles.loginIconImgView}>
-                    <Image source={Images.google_login} style={styles.loginIconImg} />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={()=> { this.twitterLogin() }} style={styles.loginIconImgView}>
-                    <Image source={Images.twitter_login} style={styles.loginIconImg} />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={()=> { this.mobileLogin() }} style={styles.loginIconImgView}>
-                    <Image source={Images.mobile_login} style={styles.mobileLoginIconImg} />
-                </TouchableOpacity> */}
-                <TouchableOpacity onPress={()=> {  }} style={styles.loginIconImgView}>
+                <TouchableOpacity onPress={()=> { Actions.mobile_auth() }} style={styles.loginIconImgView}>
                     <Image source={Images.login} style={styles.emailLoginIconImg} />
                 </TouchableOpacity>
+            </View>
+        )
+    }
+
+    renderPrivacyPolicyBtn = () => {
+        return (
+            <TouchableOpacity onPress={()=> {  }} style={styles.privacyPolicyBtnView}>
+                <Text style={styles.privacyPolicyBtnText}>Privacy Policy</Text>
+            </TouchableOpacity>
+        )
+    }
+
+    renderTitleView = () => {
+        return (
+            <View style={styles.titleViewStyle}>
+                <Text style={styles.logoTitle}>MONEYWIRE</Text>
+                <Text style={styles.description}>BILLING, INVOICING & TAX RETURNS</Text>
+                <Text style={styles.centerDescription}>GST Complaint Cloud Solution</Text>
             </View>
         )
     }
@@ -156,9 +102,10 @@ class Login extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.logoTitle}>MONEYWIRE</Text>
+                { this.renderTitleView() }
                 { this.renderLoadingView() }
                 { this.renderBottomView() }
+                { this.renderPrivacyPolicyBtn() }
             </View>
         )
     }
