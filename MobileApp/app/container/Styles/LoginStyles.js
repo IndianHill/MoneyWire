@@ -1,0 +1,105 @@
+import { StyleSheet } from 'react-native'
+import { Colors, Fonts } from '../../theme/'
+
+export default StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems:'center',
+        backgroundColor: Colors.primary,
+    },
+    titleViewStyle: {
+        top: '20%',
+        marginLeft: '2%',
+        marginRight: '2%',
+        justifyContent: 'center', 
+        alignItems: 'center',
+    },
+    logoImg: {
+        height: 160,
+        width: 160,
+    },
+    logoTitle: {
+        marginTop: '10%',
+        fontSize: 40,
+        color: Colors.white,
+        justifyContent: 'center', 
+        alignItems: 'center',
+        fontFamily: Fonts.bold,
+        textAlign: 'center',
+    },
+    description: {
+        marginTop: '2%',
+        fontSize: 18,
+        color: Colors.white,
+        justifyContent: 'center', 
+        alignItems: 'center',
+        fontFamily: Fonts.light,
+    },
+    centerDescription: {
+        marginTop: '25%',
+        fontSize: 18,
+        color: Colors.white,
+        justifyContent: 'center', 
+        alignItems: 'center',
+        fontFamily: Fonts.light,
+    },
+    loginTextStyle:{
+        fontSize: 18,
+        color: Colors.white,
+        justifyContent: 'center', 
+        alignItems: 'center',
+        fontFamily: Fonts.light,
+        textAlign: 'center',
+    },
+    bottomView: {
+        flex: 1,
+        position: 'absolute',
+        bottom: '20%',
+        flexDirection:'column',
+        marginTop: '5%',
+        marginLeft: '8%',
+        marginRight: '8%',
+        justifyContent: 'space-between',
+    },
+    privacyPolicyBtnView: {
+        flex: 1,
+        position: 'absolute',
+        bottom:'5%',
+        flexDirection: 'row',
+        marginLeft: '8%',
+        marginRight: '8%',
+        justifyContent: 'center',
+    },
+    privacyPolicyBtnText: {
+        fontSize: 12,
+        color: Colors.white,
+        justifyContent: 'center', 
+        alignItems: 'center',
+        fontFamily: Fonts.regular,
+    },
+    loginIconImgView: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    emailLoginIconImg: {
+        height: 40,
+        width: 40,
+        tintColor: Colors.white,
+    },
+    loginIconImg: {
+        height: 40,
+        width: 40,
+        tintColor: Colors.white,
+    },
+    mobileLoginIconImg: {
+        height: 32,
+        width: 20,
+        tintColor: Colors.white,
+    },
+    loadingView: {
+        flex: 1,
+        justifyContent: 'center',
+        flexDirection: 'row',
+    },
+})
