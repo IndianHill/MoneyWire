@@ -29,7 +29,6 @@ class Login extends Component {
     * (logged out) or an Object (logged in)
     */
     componentDidMount() {
-        // this.setupGoogleSignin()
         this.authSubscription = firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.setState({
@@ -37,7 +36,7 @@ class Login extends Component {
                     currentUser: user,
                 });
                 console.log('Authenticated User - '+JSON.stringify(user))
-                Actions.dashboard()
+                // Actions.dashboard()
             }
         });
     }
@@ -65,6 +64,8 @@ class Login extends Component {
                 offlineAccess: false
             }).then(()=>{
                 this.onGoogleSignIn()
+            }).catch((err) => {
+                console.log("Error in sign-in", err.code, err.message);
             });
         })
         .catch((err) => {
@@ -143,7 +144,6 @@ class Login extends Component {
                 { this.renderTitleView() }
                 { this.renderLoadingView() }
                 { this.renderBottomView() }
-                { this.renderPrivacyPolicyBtn() }
             </View>
         )
     }
