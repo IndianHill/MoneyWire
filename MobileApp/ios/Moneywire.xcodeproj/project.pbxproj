@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -12,6 +13,10 @@
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* MoneywireTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MoneywireTests.m */; };
+		0190C59FC6D343D8B3065628 /* Averta-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AD8814F11F54B97BED675D8 /* Averta-Bold.ttf */; };
+		068270DC306740CC944A90AB /* Averta-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C21E0EA84C9430B92BA83A3 /* Averta-ExtraBold.ttf */; };
+		082AF6186A964D1EB21AAB6E /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9631A8A72F64B2BA3BC9430 /* AddressBook.framework */; };
+		0EE4E3239B8344CFB697A5EA /* Averta-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 091D0435D5F047758C95C748 /* Averta-SemiboldItalic.ttf */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -33,30 +38,29 @@
 		2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E991DF850E9000B6D8A /* libRCTWebSocket-tvOS.a */; };
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* MoneywireTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MoneywireTests.m */; };
-		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
-		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
-		B56ECDABD9E5452DB106AEE1 /* libRNGoogleSignin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1D28514D3341F888828A52 /* libRNGoogleSignin.a */; };
-		E352E882D09A4544A1703EF0 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAE24CF7E6B4E689419B465 /* libz.tbd */; };
-		87BF4F2D8A534AF994E77651 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5A1106396347B09ED75036 /* SafariServices.framework */; };
-		48183BC67EBD42BE912D700A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1FB8C4C2D314E52BADCE0C7 /* SystemConfiguration.framework */; };
-		082AF6186A964D1EB21AAB6E /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9631A8A72F64B2BA3BC9430 /* AddressBook.framework */; };
-		827A54D56F4046158618968C /* Averta-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60FC17720C8F4383A00EE26A /* Averta-Black.ttf */; };
-		C546512213154D418983AB5C /* Averta-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 51D9815C4BC749E78AA80389 /* Averta-BlackItalic.ttf */; };
-		0190C59FC6D343D8B3065628 /* Averta-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AD8814F11F54B97BED675D8 /* Averta-Bold.ttf */; };
-		F3D9CDA7C4034535BD1A6EF8 /* Averta-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5755DE7B6551410D9F584AE7 /* Averta-BoldItalic.ttf */; };
-		068270DC306740CC944A90AB /* Averta-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C21E0EA84C9430B92BA83A3 /* Averta-ExtraBold.ttf */; };
-		8A2A51A8B588466C8D15E486 /* Averta-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F789BA5ABAC746C0952BEC41 /* Averta-ExtraBoldItalic.ttf */; };
-		42A59FC936ED4D1FAF097E17 /* Averta-Extrathin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 302D3A9E98F34D79804AFA1C /* Averta-Extrathin.ttf */; };
-		79F6517EDE6C4DF2BB21D369 /* Averta-ExtrathinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE80461BAD1F47C7AB2DA02E /* Averta-ExtrathinItalic.ttf */; };
-		8E03BF6AC11A45038A0B84B7 /* Averta-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A16312219650499688ABC37A /* Averta-Light.ttf */; };
 		3A46F530D4A842498BC32A24 /* Averta-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5FC7A095C24424383EEA89C /* Averta-LightItalic.ttf */; };
-		AD3F127D617D4989AA605441 /* Averta-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 007EB62DFBFB461292F692E7 /* Averta-Regular.ttf */; };
-		9B7502C16F4D4F838707AAE0 /* Averta-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4A8022B7EFE48A2BA650CAC /* Averta-RegularItalic.ttf */; };
+		42A59FC936ED4D1FAF097E17 /* Averta-Extrathin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 302D3A9E98F34D79804AFA1C /* Averta-Extrathin.ttf */; };
+		48183BC67EBD42BE912D700A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1FB8C4C2D314E52BADCE0C7 /* SystemConfiguration.framework */; };
 		4B81C2E3ED3A4488954E098D /* Averta-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DAC334F028D344C782EB2A8A /* Averta-Semibold.ttf */; };
-		0EE4E3239B8344CFB697A5EA /* Averta-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 091D0435D5F047758C95C748 /* Averta-SemiboldItalic.ttf */; };
+		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		636FFEF23DBB40638697E5B6 /* Averta-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA999647D8B140C69D56FA91 /* Averta-Thin.ttf */; };
 		7335C162332E474087D90BF0 /* Averta-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2442FD0A16647C08D442678 /* Averta-ThinItalic.ttf */; };
+		79F6517EDE6C4DF2BB21D369 /* Averta-ExtrathinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE80461BAD1F47C7AB2DA02E /* Averta-ExtrathinItalic.ttf */; };
+		827A54D56F4046158618968C /* Averta-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60FC17720C8F4383A00EE26A /* Averta-Black.ttf */; };
+		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		87BF4F2D8A534AF994E77651 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5A1106396347B09ED75036 /* SafariServices.framework */; };
+		8A2A51A8B588466C8D15E486 /* Averta-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F789BA5ABAC746C0952BEC41 /* Averta-ExtraBoldItalic.ttf */; };
+		8E03BF6AC11A45038A0B84B7 /* Averta-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A16312219650499688ABC37A /* Averta-Light.ttf */; };
+		9B7502C16F4D4F838707AAE0 /* Averta-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4A8022B7EFE48A2BA650CAC /* Averta-RegularItalic.ttf */; };
+		AD3F127D617D4989AA605441 /* Averta-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 007EB62DFBFB461292F692E7 /* Averta-Regular.ttf */; };
+		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
+		B56ECDABD9E5452DB106AEE1 /* libRNGoogleSignin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1D28514D3341F888828A52 /* libRNGoogleSignin.a */; };
+		C546512213154D418983AB5C /* Averta-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 51D9815C4BC749E78AA80389 /* Averta-BlackItalic.ttf */; };
+		C5E004CA9A506ACB6DE21D97 /* libPods-Moneywire.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D08884912D8CDC22A783CA7 /* libPods-Moneywire.a */; };
+		E352E882D09A4544A1703EF0 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAE24CF7E6B4E689419B465 /* libz.tbd */; };
+		E707B7B020634C8600883FF3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E707B7AF20634C8500883FF3 /* GoogleService-Info.plist */; };
+		E707B7B220634CCE00883FF3 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E707B7B120634CCE00883FF3 /* GoogleSignIn.framework */; };
+		F3D9CDA7C4034535BD1A6EF8 /* Averta-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5755DE7B6551410D9F584AE7 /* Averta-BoldItalic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -277,9 +281,73 @@
 			remoteGlobalIDString = 358F4ED71D1E81A9004DF814;
 			remoteInfo = RCTBlob;
 		};
+		E707B79A20634C3A00883FF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EBF21BDC1FC498900052F4D5;
+			remoteInfo = jsinspector;
+		};
+		E707B79C20634C3A00883FF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EBF21BFA1FC4989A0052F4D5;
+			remoteInfo = "jsinspector-tvOS";
+		};
+		E707B79E20634C3A00883FF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 139D7ECE1E25DB7D00323FB7;
+			remoteInfo = "third-party";
+		};
+		E707B7A020634C3A00883FF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D383D3C1EBD27B6005632C8;
+			remoteInfo = "third-party-tvOS";
+		};
+		E707B7A220634C3A00883FF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 139D7E881E25C6D100323FB7;
+			remoteInfo = "double-conversion";
+		};
+		E707B7A420634C3A00883FF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D383D621EBD27B9005632C8;
+			remoteInfo = "double-conversion-tvOS";
+		};
+		E707B7A620634C3A00883FF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9936F3131F5F2E4B0010BF04;
+			remoteInfo = privatedata;
+		};
+		E707B7A820634C3A00883FF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9936F32F1F5F2E5B0010BF04;
+			remoteInfo = "privatedata-tvOS";
+		};
+		E707B7AD20634C3B00883FF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90387F2FCCB2490BBB85A5BE /* RNGoogleSignin.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9FD355121D3E4A2900D06170;
+			remoteInfo = RNGoogleSignin;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		007EB62DFBFB461292F692E7 /* Averta-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Averta-Regular.ttf"; path = "../app/assets/fonts/Averta-Regular.ttf"; sourceTree = "<group>"; };
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTActionSheet.xcodeproj; path = "../node_modules/react-native/Libraries/ActionSheetIOS/RCTActionSheet.xcodeproj"; sourceTree = "<group>"; };
 		00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTGeolocation.xcodeproj; path = "../node_modules/react-native/Libraries/Geolocation/RCTGeolocation.xcodeproj"; sourceTree = "<group>"; };
@@ -289,6 +357,8 @@
 		00E356EE1AD99517003FC87E /* MoneywireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoneywireTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* MoneywireTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoneywireTests.m; sourceTree = "<group>"; };
+		091D0435D5F047758C95C748 /* Averta-SemiboldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Averta-SemiboldItalic.ttf"; path = "../app/assets/fonts/Averta-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		0E5A1106396347B09ED75036 /* SafariServices.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Moneywire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moneywire.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -299,35 +369,37 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Moneywire/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Moneywire/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		2AD8814F11F54B97BED675D8 /* Averta-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Averta-Bold.ttf"; path = "../app/assets/fonts/Averta-Bold.ttf"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* Moneywire-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Moneywire-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* Moneywire-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Moneywire-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		302D3A9E98F34D79804AFA1C /* Averta-Extrathin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Averta-Extrathin.ttf"; path = "../app/assets/fonts/Averta-Extrathin.ttf"; sourceTree = "<group>"; };
+		4F9631EC33C28896B804CEED /* Pods-Moneywire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moneywire.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moneywire/Pods-Moneywire.release.xcconfig"; sourceTree = "<group>"; };
+		51D9815C4BC749E78AA80389 /* Averta-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Averta-BlackItalic.ttf"; path = "../app/assets/fonts/Averta-BlackItalic.ttf"; sourceTree = "<group>"; };
+		5755DE7B6551410D9F584AE7 /* Averta-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Averta-BoldItalic.ttf"; path = "../app/assets/fonts/Averta-BoldItalic.ttf"; sourceTree = "<group>"; };
+		5D08884912D8CDC22A783CA7 /* libPods-Moneywire.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Moneywire.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D1D28514D3341F888828A52 /* libRNGoogleSignin.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGoogleSignin.a; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
+		60FC17720C8F4383A00EE26A /* Averta-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Averta-Black.ttf"; path = "../app/assets/fonts/Averta-Black.ttf"; sourceTree = "<group>"; };
+		6C21E0EA84C9430B92BA83A3 /* Averta-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Averta-ExtraBold.ttf"; path = "../app/assets/fonts/Averta-ExtraBold.ttf"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
+		7AAE24CF7E6B4E689419B465 /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		88FF4F9FB7BFD770A15E1DAE /* Pods-Moneywire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moneywire.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Moneywire/Pods-Moneywire.debug.xcconfig"; sourceTree = "<group>"; };
+		90387F2FCCB2490BBB85A5BE /* RNGoogleSignin.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGoogleSignin.xcodeproj; path = "../node_modules/react-native-google-signin/ios/RNGoogleSignin.xcodeproj"; sourceTree = "<group>"; };
+		A16312219650499688ABC37A /* Averta-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Averta-Light.ttf"; path = "../app/assets/fonts/Averta-Light.ttf"; sourceTree = "<group>"; };
+		A4A8022B7EFE48A2BA650CAC /* Averta-RegularItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Averta-RegularItalic.ttf"; path = "../app/assets/fonts/Averta-RegularItalic.ttf"; sourceTree = "<group>"; };
+		A5FC7A095C24424383EEA89C /* Averta-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Averta-LightItalic.ttf"; path = "../app/assets/fonts/Averta-LightItalic.ttf"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
-		90387F2FCCB2490BBB85A5BE /* RNGoogleSignin.xcodeproj */ = {isa = PBXFileReference; name = "RNGoogleSignin.xcodeproj"; path = "../node_modules/react-native-google-signin/ios/RNGoogleSignin.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		5D1D28514D3341F888828A52 /* libRNGoogleSignin.a */ = {isa = PBXFileReference; name = "libRNGoogleSignin.a"; path = "libRNGoogleSignin.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		7AAE24CF7E6B4E689419B465 /* libz.tbd */ = {isa = PBXFileReference; name = "libz.tbd"; path = "usr/lib/libz.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
-		0E5A1106396347B09ED75036 /* SafariServices.framework */ = {isa = PBXFileReference; name = "SafariServices.framework"; path = "System/Library/Frameworks/SafariServices.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		B1FB8C4C2D314E52BADCE0C7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		B9631A8A72F64B2BA3BC9430 /* AddressBook.framework */ = {isa = PBXFileReference; name = "AddressBook.framework"; path = "System/Library/Frameworks/AddressBook.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		60FC17720C8F4383A00EE26A /* Averta-Black.ttf */ = {isa = PBXFileReference; name = "Averta-Black.ttf"; path = "../app/assets/fonts/Averta-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		51D9815C4BC749E78AA80389 /* Averta-BlackItalic.ttf */ = {isa = PBXFileReference; name = "Averta-BlackItalic.ttf"; path = "../app/assets/fonts/Averta-BlackItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		2AD8814F11F54B97BED675D8 /* Averta-Bold.ttf */ = {isa = PBXFileReference; name = "Averta-Bold.ttf"; path = "../app/assets/fonts/Averta-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		5755DE7B6551410D9F584AE7 /* Averta-BoldItalic.ttf */ = {isa = PBXFileReference; name = "Averta-BoldItalic.ttf"; path = "../app/assets/fonts/Averta-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		6C21E0EA84C9430B92BA83A3 /* Averta-ExtraBold.ttf */ = {isa = PBXFileReference; name = "Averta-ExtraBold.ttf"; path = "../app/assets/fonts/Averta-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		F789BA5ABAC746C0952BEC41 /* Averta-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; name = "Averta-ExtraBoldItalic.ttf"; path = "../app/assets/fonts/Averta-ExtraBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		302D3A9E98F34D79804AFA1C /* Averta-Extrathin.ttf */ = {isa = PBXFileReference; name = "Averta-Extrathin.ttf"; path = "../app/assets/fonts/Averta-Extrathin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		AE80461BAD1F47C7AB2DA02E /* Averta-ExtrathinItalic.ttf */ = {isa = PBXFileReference; name = "Averta-ExtrathinItalic.ttf"; path = "../app/assets/fonts/Averta-ExtrathinItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		A16312219650499688ABC37A /* Averta-Light.ttf */ = {isa = PBXFileReference; name = "Averta-Light.ttf"; path = "../app/assets/fonts/Averta-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		A5FC7A095C24424383EEA89C /* Averta-LightItalic.ttf */ = {isa = PBXFileReference; name = "Averta-LightItalic.ttf"; path = "../app/assets/fonts/Averta-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		007EB62DFBFB461292F692E7 /* Averta-Regular.ttf */ = {isa = PBXFileReference; name = "Averta-Regular.ttf"; path = "../app/assets/fonts/Averta-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		A4A8022B7EFE48A2BA650CAC /* Averta-RegularItalic.ttf */ = {isa = PBXFileReference; name = "Averta-RegularItalic.ttf"; path = "../app/assets/fonts/Averta-RegularItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		DAC334F028D344C782EB2A8A /* Averta-Semibold.ttf */ = {isa = PBXFileReference; name = "Averta-Semibold.ttf"; path = "../app/assets/fonts/Averta-Semibold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		091D0435D5F047758C95C748 /* Averta-SemiboldItalic.ttf */ = {isa = PBXFileReference; name = "Averta-SemiboldItalic.ttf"; path = "../app/assets/fonts/Averta-SemiboldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		EA999647D8B140C69D56FA91 /* Averta-Thin.ttf */ = {isa = PBXFileReference; name = "Averta-Thin.ttf"; path = "../app/assets/fonts/Averta-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		E2442FD0A16647C08D442678 /* Averta-ThinItalic.ttf */ = {isa = PBXFileReference; name = "Averta-ThinItalic.ttf"; path = "../app/assets/fonts/Averta-ThinItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AE80461BAD1F47C7AB2DA02E /* Averta-ExtrathinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Averta-ExtrathinItalic.ttf"; path = "../app/assets/fonts/Averta-ExtrathinItalic.ttf"; sourceTree = "<group>"; };
+		B1FB8C4C2D314E52BADCE0C7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B9631A8A72F64B2BA3BC9430 /* AddressBook.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		DAC334F028D344C782EB2A8A /* Averta-Semibold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Averta-Semibold.ttf"; path = "../app/assets/fonts/Averta-Semibold.ttf"; sourceTree = "<group>"; };
+		E2442FD0A16647C08D442678 /* Averta-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Averta-ThinItalic.ttf"; path = "../app/assets/fonts/Averta-ThinItalic.ttf"; sourceTree = "<group>"; };
+		E707B7AF20634C8500883FF3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E707B7B120634CCE00883FF3 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSignIn.framework; path = Pods/GoogleSignIn/Frameworks/GoogleSignIn.framework; sourceTree = "<group>"; };
+		EA999647D8B140C69D56FA91 /* Averta-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Averta-Thin.ttf"; path = "../app/assets/fonts/Averta-Thin.ttf"; sourceTree = "<group>"; };
+		F789BA5ABAC746C0952BEC41 /* Averta-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Averta-ExtraBoldItalic.ttf"; path = "../app/assets/fonts/Averta-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -343,6 +415,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E707B7B220634CCE00883FF3 /* GoogleSignIn.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -361,6 +434,7 @@
 				87BF4F2D8A534AF994E77651 /* SafariServices.framework in Frameworks */,
 				48183BC67EBD42BE912D700A /* SystemConfiguration.framework in Frameworks */,
 				082AF6186A964D1EB21AAB6E /* AddressBook.framework in Frameworks */,
+				C5E004CA9A506ACB6DE21D97 /* libPods-Moneywire.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +522,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		04420EA379F17A220222D654 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				88FF4F9FB7BFD770A15E1DAE /* Pods-Moneywire.debug.xcconfig */,
+				4F9631EC33C28896B804CEED /* Pods-Moneywire.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		139105B71AF99BAD00B5F7CC /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -486,13 +569,21 @@
 			isa = PBXGroup;
 			children = (
 				146834041AC3E56700842450 /* libReact.a */,
+				3DAD3EA31DF850E9000B6D8A /* libReact.a */,
 				3DAD3EA51DF850E9000B6D8A /* libyoga.a */,
 				3DAD3EA71DF850E9000B6D8A /* libyoga.a */,
 				3DAD3EA91DF850E9000B6D8A /* libcxxreact.a */,
 				3DAD3EAB1DF850E9000B6D8A /* libcxxreact.a */,
 				3DAD3EAD1DF850E9000B6D8A /* libjschelpers.a */,
 				3DAD3EAF1DF850E9000B6D8A /* libjschelpers.a */,
-				3DAD3EA31DF850E9000B6D8A /* libReact-tvOS.a */,
+				E707B79B20634C3A00883FF3 /* libjsinspector.a */,
+				E707B79D20634C3A00883FF3 /* libjsinspector-tvOS.a */,
+				E707B79F20634C3A00883FF3 /* libthird-party.a */,
+				E707B7A120634C3A00883FF3 /* libthird-party.a */,
+				E707B7A320634C3A00883FF3 /* libdouble-conversion.a */,
+				E707B7A520634C3A00883FF3 /* libdouble-conversion.a */,
+				E707B7A720634C3A00883FF3 /* libprivatedata.a */,
+				E707B7A920634C3A00883FF3 /* libprivatedata-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -500,11 +591,13 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E707B7B120634CCE00883FF3 /* GoogleSignIn.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
 				7AAE24CF7E6B4E689419B465 /* libz.tbd */,
 				0E5A1106396347B09ED75036 /* SafariServices.framework */,
 				B1FB8C4C2D314E52BADCE0C7 /* SystemConfiguration.framework */,
 				B9631A8A72F64B2BA3BC9430 /* AddressBook.framework */,
+				5D08884912D8CDC22A783CA7 /* libPods-Moneywire.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -559,12 +652,15 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				E707B7AF20634C8500883FF3 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* Moneywire */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* MoneywireTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BA7E8E2A016343EAB66E2041 /* Resources */,
+				04420EA379F17A220222D654 /* Pods */,
+				E707B77420634C3A00883FF3 /* Recovered References */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -592,7 +688,7 @@
 			sourceTree = "<group>";
 		};
 		BA7E8E2A016343EAB66E2041 /* Resources */ = {
-			isa = "PBXGroup";
+			isa = PBXGroup;
 			children = (
 				60FC17720C8F4383A00EE26A /* Averta-Black.ttf */,
 				51D9815C4BC749E78AA80389 /* Averta-BlackItalic.ttf */,
@@ -613,7 +709,22 @@
 			);
 			name = Resources;
 			sourceTree = "<group>";
-			path = "";
+		};
+		E707B77420634C3A00883FF3 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				5D1D28514D3341F888828A52 /* libRNGoogleSignin.a */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		E707B7AA20634C3B00883FF3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E707B7AE20634C3B00883FF3 /* libRNGoogleSignin.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -640,10 +751,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Moneywire" */;
 			buildPhases = (
+				5673E384F58878C1ED151766 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				55C08F78FB60E9472188F195 /* [CP] Embed Pods Frameworks */,
+				7988EEFB516A1C4811A80041 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -773,6 +887,10 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+				},
+				{
+					ProductGroup = E707B7AA20634C3B00883FF3 /* Products */;
+					ProjectRef = 90387F2FCCB2490BBB85A5BE /* RNGoogleSignin.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -905,10 +1023,10 @@
 			remoteRef = 3DAD3E981DF850E9000B6D8A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		3DAD3EA31DF850E9000B6D8A /* libReact-tvOS.a */ = {
+		3DAD3EA31DF850E9000B6D8A /* libReact.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = "libReact-tvOS.a";
+			path = libReact.a;
 			remoteRef = 3DAD3EA21DF850E9000B6D8A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -989,6 +1107,69 @@
 			remoteRef = ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		E707B79B20634C3A00883FF3 /* libjsinspector.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libjsinspector.a;
+			remoteRef = E707B79A20634C3A00883FF3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E707B79D20634C3A00883FF3 /* libjsinspector-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libjsinspector-tvOS.a";
+			remoteRef = E707B79C20634C3A00883FF3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E707B79F20634C3A00883FF3 /* libthird-party.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libthird-party.a";
+			remoteRef = E707B79E20634C3A00883FF3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E707B7A120634C3A00883FF3 /* libthird-party.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libthird-party.a";
+			remoteRef = E707B7A020634C3A00883FF3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E707B7A320634C3A00883FF3 /* libdouble-conversion.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libdouble-conversion.a";
+			remoteRef = E707B7A220634C3A00883FF3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E707B7A520634C3A00883FF3 /* libdouble-conversion.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libdouble-conversion.a";
+			remoteRef = E707B7A420634C3A00883FF3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E707B7A720634C3A00883FF3 /* libprivatedata.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libprivatedata.a;
+			remoteRef = E707B7A620634C3A00883FF3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E707B7A920634C3A00883FF3 /* libprivatedata-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libprivatedata-tvOS.a";
+			remoteRef = E707B7A820634C3A00883FF3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E707B7AE20634C3B00883FF3 /* libRNGoogleSignin.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNGoogleSignin.a;
+			remoteRef = E707B7AD20634C3B00883FF3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1014,6 +1195,7 @@
 				42A59FC936ED4D1FAF097E17 /* Averta-Extrathin.ttf in Resources */,
 				79F6517EDE6C4DF2BB21D369 /* Averta-ExtrathinItalic.ttf in Resources */,
 				8E03BF6AC11A45038A0B84B7 /* Averta-Light.ttf in Resources */,
+				E707B7B020634C8600883FF3 /* GoogleService-Info.plist in Resources */,
 				3A46F530D4A842498BC32A24 /* Averta-LightItalic.ttf in Resources */,
 				AD3F127D617D4989AA605441 /* Averta-Regular.ttf in Resources */,
 				9B7502C16F4D4F838707AAE0 /* Averta-RegularItalic.ttf in Resources */,
@@ -1069,6 +1251,59 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		55C08F78FB60E9472188F195 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Moneywire/Pods-Moneywire-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5673E384F58878C1ED151766 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Moneywire-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7988EEFB516A1C4811A80041 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Moneywire/Pods-Moneywire-resources.sh",
+				"${PODS_ROOT}/GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GTMOAuth2ViewTouch.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Moneywire/Pods-Moneywire-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1143,23 +1378,23 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
+				);
 				INFOPLIST_FILE = MoneywireTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moneywire.app/Moneywire";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
-				);
 			};
 			name = Debug;
 		};
@@ -1168,32 +1403,41 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
+				);
 				INFOPLIST_FILE = MoneywireTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moneywire.app/Moneywire";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
-				);
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88FF4F9FB7BFD770A15E1DAE /* Pods-Moneywire.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/GoogleSignIn/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
+				);
 				INFOPLIST_FILE = Moneywire/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -1201,20 +1445,26 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.indianhill.moneywire;
 				PRODUCT_NAME = Moneywire;
 				VERSIONING_SYSTEM = "apple-generic";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
-				);
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F9631EC33C28896B804CEED /* Pods-Moneywire.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/GoogleSignIn/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
+				);
 				INFOPLIST_FILE = Moneywire/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -1222,12 +1472,9 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.indianhill.moneywire;
 				PRODUCT_NAME = Moneywire;
 				VERSIONING_SYSTEM = "apple-generic";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
-				);
 			};
 			name = Release;
 		};
@@ -1243,8 +1490,16 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
+				);
 				INFOPLIST_FILE = "Moneywire-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1254,14 +1509,6 @@
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
-				);
 			};
 			name = Debug;
 		};
@@ -1277,8 +1524,16 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
+				);
 				INFOPLIST_FILE = "Moneywire-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1288,14 +1543,6 @@
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
-				);
 			};
 			name = Release;
 		};
@@ -1312,15 +1559,15 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Moneywire-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Moneywire-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moneywire-tvOS.app/Moneywire-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
 			};
 			name = Debug;
 		};
@@ -1337,15 +1584,15 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Moneywire-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Moneywire-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moneywire-tvOS.app/Moneywire-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
 			};
 			name = Release;
 		};

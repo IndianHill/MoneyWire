@@ -61,7 +61,7 @@ class Login extends Component {
         GoogleSignin.hasPlayServices({ autoResolve: true }).then(() => {
             GoogleSignin.configure({
                 scopes: ["https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile"],
-                iosClientId: "",
+                iosClientId: "84141118544-9b09c2off0bsi7fooreubm1q5lea433p.apps.googleusercontent.com",
                 offlineAccess: false
             }).then(()=>{
                 this.onGoogleSignIn()
