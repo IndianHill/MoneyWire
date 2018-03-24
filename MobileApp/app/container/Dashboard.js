@@ -5,6 +5,7 @@ import * as firebase from "firebase"
 
 // Styles
 import styles from './Styles/DashboardStyles'
+import { Colors, Images } from '../theme/'
 
 class Dashboard extends Component {
 
@@ -27,30 +28,10 @@ class Dashboard extends Component {
 
     //--------------------------- Render UI ---------------------------
 
-    renderWelcomeMsg = () => {
-
-        if (this.state.currentUser) {
-            return (
-                <View style={styles.welcomeNoteView}>
-                    <Text style={styles.welcomeNoteText}>Welcome {this.state.currentUser.displayName}</Text>
-                </View>
-            )
-        }
-
-    }
-
-    renderLogOutView = () => {
-        return (
-            <View style={styles.logoutViewStyle}>
-            </View>
-        )
-    }
-
     render () {
         return (
             <View style={styles.container}>
-                <StatusBar barStyle={'light-content'} />
-                { this.renderWelcomeMsg() }
+                
             </View>
         )
     }

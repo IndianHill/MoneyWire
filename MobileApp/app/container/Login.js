@@ -105,9 +105,15 @@ class Login extends Component {
         return (
             <View style={styles.bottomView}>
                 <Text style={styles.loginTextStyle}>Sign in here</Text>
-                <TouchableOpacity onPress={()=> { this.setupGoogleSignin() }} style={styles.loginIconImgView}>
-                    <Image source={Images.google_login} style={styles.loginIconImg} />
-                </TouchableOpacity>
+                <View style={styles.loginItemsView}>
+                    <TouchableOpacity onPress={()=> { this.setupGoogleSignin() }} style={styles.loginIconImgView}>
+                        <Image source={Images.google_login} style={styles.loginIconImg} />
+                    </TouchableOpacity>
+                    <View style={styles.verticalSeperatorStyle} />
+                    <TouchableOpacity onPress={()=> { Actions.email_login() }} style={styles.loginIconImgView}>
+                        <Image source={Images.login} style={styles.loginIconImg} />
+                    </TouchableOpacity>
+                </View>
             </View>
         )
     }

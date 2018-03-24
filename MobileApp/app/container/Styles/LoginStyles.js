@@ -37,11 +37,11 @@ export default StyleSheet.create({
     },
     centerDescription: {
         marginTop: '25%',
-        fontSize: 18,
+        fontSize: 20,
         color: Colors.white,
         justifyContent: 'center', 
         alignItems: 'center',
-        fontFamily: Fonts.light,
+        fontFamily: Fonts.regular,
     },
     loginTextStyle:{
         fontSize: 18,
@@ -59,6 +59,12 @@ export default StyleSheet.create({
         marginTop: '5%',
         marginLeft: '8%',
         marginRight: '8%',
+        justifyContent: 'space-between',
+    },
+    loginItemsView: {
+        flexDirection:'row',
+        marginTop: '4%',
+        alignItems: 'center',
         justifyContent: 'space-between',
     },
     privacyPolicyBtnView: {
@@ -101,5 +107,12 @@ export default StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         flexDirection: 'row',
+    },
+    verticalSeperatorStyle: {
+        width: 2,
+        height: 60,
+        backgroundColor: Colors.white,
+        marginLeft: '2%',
+        marginRight: '2%',
     },
 })
