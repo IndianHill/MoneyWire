@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, StatusBar, Text, Image, Alert, 
-    TouchableOpacity } from 'react-native';
+    TouchableOpacity, 
+    TouchableHighlight} from 'react-native';
 import * as firebase from "firebase"
 import { Actions } from 'react-native-router-flux';
 import { TextField } from 'react-native-material-textfield';
@@ -19,6 +20,7 @@ class EmailLogin extends Component {
             isNewUser: false,
             email: '',
             password: '',
+            secureTextEntry: true,
         };
     }
 
@@ -94,6 +96,12 @@ class EmailLogin extends Component {
         })
     }
 
+    toggleSecureTextEntry = () => {
+        this.setState({
+            secureTextEntry: !this.state.secureTextEntry
+        })
+    }
+
     //--------------------------- Render UI ---------------------------
 
     renderNavBar = () => {
@@ -134,6 +142,20 @@ class EmailLogin extends Component {
         )
     }
 
+    renderPasswordAccessoryView = () => {
+
+        let img = this.state.secureTextEntry ? Images.non_visible_txt : Images.visible_txt;
+
+        return (
+            <TouchableOpacity onPress={ () => { this.toggleSecureTextEntry() }}>
+                <Image 
+                    source={img} 
+                    style={styles.visiblityIconImg} />
+            </TouchableOpacity>
+        )
+        
+    }
+
     renderSignInView = () => {
         return (
             <View style={styles.signInViewStyle}>
@@ -152,9 +174,10 @@ class EmailLogin extends Component {
                     labelTextStyle={styles.signInTextViewStyle}
                     value={this.state.phone}
                     keyboardType='email-address'
-                    secureTextEntry
+                    secureTextEntry={this.state.secureTextEntry}
                     maxLength={10}
                     onChangeText={ (text) => this.setPwd(text) }
+                    renderAccessory={ () => this.renderPasswordAccessoryView() }
                 />
                 { this.getRetypePwdTextView() }
                 <TouchableOpacity onPress={ () => { this.emailLogin() }}

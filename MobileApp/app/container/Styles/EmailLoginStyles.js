@@ -87,5 +87,10 @@ export default StyleSheet.create({
         fontSize: 16,
         color: Colors.primary,
         fontFamily: Fonts.light,
-    }
+    },
+    visiblityIconImg: {
+        height: 24,
+        width: 24,
+        tintColor: Colors.primary,
+    },
 })
