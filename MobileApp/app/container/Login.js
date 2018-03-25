@@ -36,7 +36,9 @@ class Login extends Component {
                     currentUser: user,
                 });
                 console.log('Authenticated User - '+JSON.stringify(user))
-                // Actions.dashboard()
+                if (user.email) {
+                    // Actions.dashboard()
+                }
             }
         });
     }

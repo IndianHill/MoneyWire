@@ -20,17 +20,36 @@ class EmailLogin extends Component {
             isNewUser: false,
             email: '',
             password: '',
+            repassword: '',
             secureTextEntry: true,
         };
     }
 
     componentDidMount() {
-        user = firebase.auth().currentUser;
-        if(user) {
-            this.setState({
-                currentUser: user
-            })
-        }
+        this.authSubscription = firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                this.setState({
+                    isLoading: false,
+                    currentUser: user,
+                });
+                console.log('Authenticated User - '+JSON.stringify(user))
+                if (user.email) {
+                    Actions.dashboard()
+                }
+            }
+        });
+    }
+
+    showLoading = () => {
+        this.setState({
+            isLoading: true
+        })
+    }
+
+    hideLoading = () => {
+        this.setState({
+            isLoading: false
+        })
     }
 
     setEmailId = (text) => {
@@ -41,8 +60,51 @@ class EmailLogin extends Component {
 
     setPwd = (text) => {
         this.setState({
-            password: text
+            password: text.toLowerCase()
         })
+    }
+
+    setRePwd = (text) => {
+        this.setState({
+            repassword: text.toLowerCase()
+        })
+    }
+
+    showInvalidEmailPwdAlert = () => {
+
+        Alert.alert(
+            'Invalid Email/Password',
+            "Please enter valid email/Password. \n\n*Password should be at least 6 characters.",
+            [
+              {text: 'OK'},
+            ],
+            { cancelable: false }
+        )
+
+    }
+
+    showPasswordMatchErrorAlert = () => {
+
+        Alert.alert(
+            'Password match error',
+            'Please enter same password',
+            [
+              {text: 'OK'},
+            ],
+            { cancelable: false }
+        )
+
+    }
+
+    showAuthenticationError = (msg) => {
+        Alert.alert(
+            'Authentication Error',
+            msg,
+            [
+              {text: 'OK'},
+            ],
+            { cancelable: false }
+        )
     }
 
     emailLogin = () => {
@@ -52,9 +114,58 @@ class EmailLogin extends Component {
 
         console.log('Email:'+email+" pwd:"+pwd)
 
-        // TODO: Verify Email-id and password strength
+        if (!this.isEmailValid(email) || !this.isPwdValid(pwd)) {
+            this.showInvalidEmailPwdAlert()
+            return
+        }
 
+        if(this.state.isNewUser) {
 
+            if (this.state.repassword != pwd) {
+                this.showPasswordMatchErrorAlert()
+                return
+            }
+
+            this.performRegister(email, pwd)
+        } else {
+            this.performSignIn(email, pwd)
+        }
+
+    }
+
+    performSignIn = (email, password) => {
+        this.showLoading()
+        firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((user) => {
+            console.log('Successfully log in.')
+            this.hideLoading()
+        })
+        .catch((error) => {
+            this.hideLoading()
+            const { code, message } = error;
+            console.log('Error in login', code, message)
+            this.showAuthenticationError(message)
+        });
+    }
+
+    performRegister = (email, password) => {
+        this.showLoading()
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((user) => {
+            console.log('Successfully register.')
+            user.sendEmailVerification().then(function() {
+                console.log('Verification email sent')
+            }).catch(function(error) {
+                console.log('Error in sending verification email', code, message)
+            });
+            this.hideLoading()
+        })
+        .catch((error) => {
+            this.hideLoading()
+            const { code, message } = error;
+            console.log('Error in register', code, message)
+            this.showAuthenticationError(message)
+        });
     }
 
     getSignTitleText = () => {
@@ -102,6 +213,27 @@ class EmailLogin extends Component {
         })
     }
 
+    isEmailValid = (text) => {
+        
+        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        
+        if(reg.test(text) === false)
+        {
+            return false
+        }
+        
+        return true
+    }
+
+    isPwdValid = (text) => {
+
+        if (text.length < 6 || text.length > 20) {
+            return false
+        }
+
+        return true
+    }
+
     //--------------------------- Render UI ---------------------------
 
     renderNavBar = () => {
@@ -127,8 +259,8 @@ class EmailLogin extends Component {
                     value={this.state.phone}
                     keyboardType='email-address'
                     secureTextEntry
-                    maxLength={10}
-                    onChangeText={ (text) => this.setPwd(text) }
+                    maxLength={20}
+                    onChangeText={ (text) => this.setRePwd(text) }
                 />
             )
         }
@@ -165,7 +297,9 @@ class EmailLogin extends Component {
                     labelTextStyle={styles.signInTextViewStyle}
                     value={this.state.phone}
                     keyboardType='email-address'
-                    maxLength={10}
+                    maxLength={30}
+                    returnKeyType='next'
+                    enablesReturnKeyAutomatically={true}
                     onChangeText={ (text) => this.setEmailId(text) }
                 />
                 <TextField
@@ -175,8 +309,10 @@ class EmailLogin extends Component {
                     value={this.state.phone}
                     keyboardType='email-address'
                     secureTextEntry={this.state.secureTextEntry}
-                    maxLength={10}
+                    maxLength={20}
                     onChangeText={ (text) => this.setPwd(text) }
+                    returnKeyType='next'
+                    enablesReturnKeyAutomatically={true}
                     renderAccessory={ () => this.renderPasswordAccessoryView() }
                 />
                 { this.getRetypePwdTextView() }
