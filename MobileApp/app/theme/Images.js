@@ -7,6 +7,8 @@ const images = {
     login: require('../assets/images/ic_login.png'),
     visible_txt: require('../assets/images/ic_text_visible.png'),
     non_visible_txt: require('../assets/images/ic_text_non_visible.png'),
+    bg: require('../assets/images/bg.png'),
+    next: require('../assets/images/ic_next.png'),
 }
 
 export default images;

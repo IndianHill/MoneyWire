@@ -6,6 +6,7 @@ import RadioForm,
     { RadioButton, 
     RadioButtonInput, 
     RadioButtonLabel} from 'react-native-simple-radio-button'
+import { TextField } from 'react-native-material-textfield';
 
 // Styles
 import styles from './Styles/UserNameStyles'
@@ -25,6 +26,9 @@ class UserName extends Component {
                 {label: 'Dr', value: 2 },
                 {label: 'Miss', value: 3 },
             ],
+            selectedTitleIndex: 0,
+            selectedTitle: '',
+            fullName:'',
         };
     }
 
@@ -35,6 +39,12 @@ class UserName extends Component {
                 currentUser: user
             })
         }
+    }
+
+    setUserFullName = (text) => {
+        this.setState({
+            fullName: text
+        })
     }
 
     //--------------------------- Render UI ---------------------------
@@ -90,11 +100,43 @@ class UserName extends Component {
         )
     }
 
+    renderUserNameView = () => {
+        return (
+            <View style={styles.usernameView}>
+                <TextField
+                    label='Enter Full Name'
+                    tintColor={Colors.white}
+                    textColor={Colors.white}
+                    baseColor={Colors.white}
+                    labelFontSize={18}
+                    labelTextStyle={styles.fullNameTextViewStyle}
+                    value={this.state.fullName}
+                    fontSize={20}
+                    titleTextStyle={styles.fullNameTitle}
+                    keyboardType='email-address'
+                    maxLength={60}
+                    onChangeText={ (text) => this.setUserFullName(text) }
+                />
+            </View>
+        )
+    }
+
+    renderNextNav = () => {
+        return (
+            <TouchableOpacity onPress={ () => {  }}
+                    style={styles.nxtBtnStyle}>
+                <Image source={Images.next} style={styles.nxtImg} />
+            </TouchableOpacity>
+        )
+    }
+
     render () {
         return (
             <View style={styles.container}>
                 { this.renderTitleText() }
                 { this.renderRadioForm() }
+                { this.renderUserNameView() }
+                { this.renderNextNav() } 
             </View>
         )
     }
