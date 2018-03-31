@@ -1373,6 +1373,7 @@ babel-types@^6.18.0, babel-types@^6.19.0, babel-types@^6.24.1, babel-types@^6.26
     to-fast-properties "^1.0.3"
 
 "babylon7@npm:babylon@^7.0.0-beta", babylon@7.0.0-beta.42:
+  name babylon7
   version "7.0.0-beta.42"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-7.0.0-beta.42.tgz#67cfabcd4f3ec82999d29031ccdea89d0ba99657"
 
@@ -4707,6 +4708,10 @@ react-native-router-flux@^4.0.0-beta.28:
     path-to-regexp "^2.1.0"
     prop-types "^15.6.0"
     react-navigation "1.0.0-beta.22"
+
+react-native-simple-radio-button@^2.7.1:
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/react-native-simple-radio-button/-/react-native-simple-radio-button-2.7.1.tgz#4a4a5cae903b6bc680c5e4bd5931948aa7608da0"
 
 react-native-tab-view@^0.0.70:
   version "0.0.70"

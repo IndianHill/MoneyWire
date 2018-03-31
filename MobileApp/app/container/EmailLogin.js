@@ -34,7 +34,7 @@ class EmailLogin extends Component {
                 });
                 console.log('Authenticated User - '+JSON.stringify(user))
                 if (user.email) {
-                    Actions.dashboard()
+                    Actions.user_name()
                 }
             }
         });
