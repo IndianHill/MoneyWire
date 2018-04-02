@@ -6,7 +6,8 @@ import RadioForm,
     { RadioButton, 
     RadioButtonInput, 
     RadioButtonLabel} from 'react-native-simple-radio-button'
-import { TextField } from 'react-native-material-textfield';
+import { TextField } from 'react-native-material-textfield'
+import { Actions } from 'react-native-router-flux'
 
 // Styles
 import styles from './Styles/UserNameStyles'
