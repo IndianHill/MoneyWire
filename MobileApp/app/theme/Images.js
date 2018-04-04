@@ -9,6 +9,7 @@ const images = {
     non_visible_txt: require('../assets/images/ic_text_non_visible.png'),
     bg: require('../assets/images/bg.png'),
     next: require('../assets/images/ic_next.png'),
+    close: require('../assets/images/ic_close.png'),
 }
 
 export default images;

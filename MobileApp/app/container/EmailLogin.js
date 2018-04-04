@@ -236,30 +236,22 @@ class EmailLogin extends Component {
 
     //--------------------------- Render UI ---------------------------
 
-    renderNavBar = () => {
-        return (
-            <View style={styles.navBarStyle}>
-                <StatusBar barStyle={'light-content'} />
-                <TouchableOpacity onPress={ () => { Actions.pop() }}
-                    style={styles.backBtn}>
-                    <Image source={Images.back} style={styles.backImg} />
-                </TouchableOpacity>
-                <Text style={styles.navBarTitle}>EMAIL LOGIN</Text>
-            </View>
-        )
-    }
-
     getRetypePwdTextView = () => {
         if (this.state.isNewUser) {
             return (
                 <TextField
                     label='Retype Password'
+                    tintColor={Colors.white}
+                    textColor={Colors.white}
+                    baseColor={Colors.white}
                     textColor={Colors.grey_dark}
                     labelTextStyle={styles.signInTextViewStyle}
                     value={this.state.phone}
                     keyboardType='email-address'
                     secureTextEntry
                     maxLength={20}
+                    labelFontSize={16}
+                    fontSize={18}
                     onChangeText={ (text) => this.setRePwd(text) }
                 />
             )
@@ -296,8 +288,13 @@ class EmailLogin extends Component {
                     textColor={Colors.grey_dark}
                     labelTextStyle={styles.signInTextViewStyle}
                     value={this.state.phone}
+                    tintColor={Colors.white}
+                    textColor={Colors.white}
+                    baseColor={Colors.white}
                     keyboardType='email-address'
                     maxLength={30}
+                    labelFontSize={16}
+                    fontSize={18}
                     returnKeyType='next'
                     enablesReturnKeyAutomatically={true}
                     onChangeText={ (text) => this.setEmailId(text) }
@@ -307,19 +304,20 @@ class EmailLogin extends Component {
                     textColor={Colors.grey_dark}
                     labelTextStyle={styles.signInTextViewStyle}
                     value={this.state.phone}
+                    tintColor={Colors.white}
+                    textColor={Colors.white}
+                    baseColor={Colors.white}
                     keyboardType='email-address'
                     secureTextEntry={this.state.secureTextEntry}
                     maxLength={20}
+                    labelFontSize={16}
+                    fontSize={18}
                     onChangeText={ (text) => this.setPwd(text) }
                     returnKeyType='next'
                     enablesReturnKeyAutomatically={true}
                     renderAccessory={ () => this.renderPasswordAccessoryView() }
                 />
                 { this.getRetypePwdTextView() }
-                <TouchableOpacity onPress={ () => { this.emailLogin() }}
-                        style={styles.signInBtnStyle}>
-                    <Text style={styles.signInBtnTextStyle}>{ this.getSignInText() }</Text>
-                </TouchableOpacity>
             </View>
         )
     }
@@ -335,13 +333,32 @@ class EmailLogin extends Component {
         )
     }
 
+    renderNextNav = () => {
+        return (
+            <TouchableOpacity onPress={ () => { this.emailLogin() }}
+                    style={styles.nxtBtnStyle}>
+                <Image source={Images.next} style={styles.nxtImg} />
+            </TouchableOpacity>
+        )
+    }
+
+    renderClose = () => {
+        return (
+            <TouchableOpacity onPress={ () => { Actions.pop() }}
+                    style={styles.closeBtnStyle}>
+                <Image source={Images.close} style={styles.closeImg} />
+            </TouchableOpacity>
+        )
+    }
+
     render () {
         return (
             <View style={styles.container}>
-                { this.renderNavBar() }
+                { this.renderClose() }
                 { this.renderLoginMsg() }
                 { this.renderSignInView() }
                 { this.renderBottomView() }
+                { this.renderNextNav() } 
             </View>
         )
     }

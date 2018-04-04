@@ -4,72 +4,33 @@ import { Colors, Fonts } from '../../theme/'
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: Colors.white,
-    },
-    navBarStyle: {
-        height: 64,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingTop: 22,
-        backgroundColor: Colors.primary
-    },
-    navBarTitle: {
-        fontSize: 17,
-        color: Colors.white,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        alignSelf: 'center',
-        fontFamily: Fonts.semi_bold,
-    },
-    backImg:{
-        height: 20, width: 15, marginLeft: 10, tintColor:Colors.white
-    },
-    backBtn: {
-        position:'absolute', top: 28, left: 10
+        backgroundColor: Colors.primary,
     },
     loginMsgViewStyle:{
-        top: '10%',
+        top: '20%',
         marginRight: '8%',
         marginLeft: '8%',
         justifyContent: 'center', 
     },
     loginMsgText:{
         fontSize: 32,
-        color: Colors.primary,
+        color: Colors.white,
         justifyContent: 'center', 
         alignItems: 'center',
         fontFamily: Fonts.regular,
     },
     signInViewStyle: {
-        top: '15%',
+        top: '25%',
         marginRight: '8%',
         marginLeft: '8%',
         justifyContent: 'center', 
     },
     signInTextViewStyle: {
-        fontSize: 16,
+        fontSize: 24,
         color: Colors.grey_dark,
         justifyContent: 'center', 
         alignItems: 'center',
         fontFamily: Fonts.light,
-    },
-    signInBtnStyle:{
-        width: '100%',
-        marginTop: '5%',
-        marginRight: '8%',
-        marginLeft: '8%',
-        height: 35,  
-        borderRadius: 10,
-        backgroundColor: Colors.primary,
-        justifyContent: 'center', 
-        alignItems: 'center',
-        alignSelf: 'center',
-    },
-    signInBtnTextStyle: {
-        color: Colors.white,
-        fontSize: 16,
-        fontFamily: Fonts.regular,
     },
     bottomViewStyle: {
         bottom: '8%',
@@ -80,17 +41,45 @@ export default StyleSheet.create({
     },
     bottomMsgTextStyle:{
         fontSize: 16,
-        color: Colors.black,
-        fontFamily: Fonts.light,
+        color: Colors.grey,
+        fontFamily: Fonts.regular,
     },
     toggleTextStyle: {
         fontSize: 16,
-        color: Colors.primary,
-        fontFamily: Fonts.light,
+        color: Colors.secondary,
+        fontFamily: Fonts.regular,
     },
     visiblityIconImg: {
         height: 24,
         width: 24,
-        tintColor: Colors.primary,
+        tintColor: Colors.white,
+    },
+    nxtBtnStyle:{
+        position:'absolute',
+        bottom: '5%',
+        right: '8%',
+        height: 60,  
+        width: 60,
+        borderRadius: 30,
+        backgroundColor: Colors.secondary,
+        justifyContent: 'center', 
+        alignItems: 'center',
+        alignSelf: 'center',
+    },
+    nxtImg:{
+        height: 50, width: 35, tintColor:Colors.white
+    },
+    closeBtnStyle:{
+        position:'absolute',
+        top: '5%',
+        left: '5%',
+        height: 60,  
+        width: 60,
+        justifyContent: 'center', 
+        alignItems: 'center',
+        alignSelf: 'center',
+    },
+    closeImg:{
+        height: 32, width: 32, tintColor:Colors.white
     },
 })
