@@ -54,11 +54,42 @@ class Welcome extends Component {
         )
     }
 
+    renderMsgDescription = () => {
+        let str = "Your details are safe with us. We never share or sell our customer emails, phone numbers and other personal or business account details."
+        return (
+            <View style={styles.msgDescpView}>
+                <Text style={styles.msgDescpText}>{str}</Text>
+            </View>
+        )
+    }
+
+    renderReadPolicyView = () => {
+        return (
+            <View style={styles.bottomViewStyle}>
+                <Text style={styles.bottomMsgTextStyle}>Read </Text>
+                <TouchableOpacity onPress={ () => {  }}>
+                    <Text textDecorationLine='underline' style={styles.underlineTextStyle}>Privacy Policy</Text>
+                </TouchableOpacity>
+            </View>
+        )
+    }
+
+    renderNxtClickMsg = () => {
+        return (
+            <View style={styles.nxtClickMsgView}>
+                <Text style={styles.nxtMsgText}>Click the button to continue</Text>
+            </View>
+        )
+    }
+
     render () {
         return (
             <View style={styles.container}>
                 { this.renderBg() }
                 { this.renderMsgTitle() }
+                { this.renderMsgDescription() }
+                { this.renderReadPolicyView() }
+                { this.renderNxtClickMsg() }
                 { this.renderNextNav() } 
             </View>
         )

@@ -40,5 +40,41 @@ export default StyleSheet.create({
         fontSize: 32,
         color: Colors.white,
         fontFamily: Fonts.semi_bold,
-    }
+    },
+    msgDescpView:{
+        top: '22%',
+        marginLeft: '8%',
+        marginRight: '8%',
+    },
+    msgDescpText:{
+        fontSize: 16,
+        color: Colors.grey,
+        fontFamily: Fonts.regular,
+    },
+    bottomViewStyle: {
+        top: '45%',
+        marginRight: '8%',
+        marginLeft: '8%',
+        flexDirection: 'row',
+    },
+    bottomMsgTextStyle:{
+        fontSize: 16,
+        color: Colors.grey,
+        fontFamily: Fonts.regular,
+    },
+    underlineTextStyle: {
+        fontSize: 16,
+        color: Colors.secondary,
+        fontFamily: Fonts.regular,
+    },
+    nxtClickMsgView:{
+        bottom:'8%',
+        left: '8%',
+        position: 'absolute',
+    },
+    nxtMsgText:{
+        fontSize: 16,
+        color: Colors.grey,
+        fontFamily: Fonts.regular,
+    },
 })

@@ -18,8 +18,8 @@ export default StyleSheet.create({
     },
     radioButtonsView: {
         top: '25%',
-        marginRight: '8%',
-        marginLeft: '8%', 
+        marginRight: '5%',
+        marginLeft: '5%', 
     },
     radioBtnLabel: {
         fontSize: 20,

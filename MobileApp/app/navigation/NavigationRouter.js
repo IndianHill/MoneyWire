@@ -23,8 +23,8 @@ class NavigationRouter extends Component {
                     <Scene key="login" component={Login} title="Login" hideNavBar />
                     <Scene key="dashboard" component={Dashboard} title="Dashboard" hideNavBar />
                     <Scene key="mobile_auth" component={MobileAuth} title="MobileAuth" hideNavBar />
-                    <Scene key="email_login" component={EmailLogin} title="EmailLogin" hideNavBar />
-                    <Scene initial key="welcome" component={Welcome} title="Welcome" hideNavBar />
+                    <Scene initial key="email_login" component={EmailLogin} title="EmailLogin" hideNavBar />
+                    <Scene key="welcome" component={Welcome} title="Welcome" hideNavBar />
                     <Scene key="user_name" component={UserName} title="UserName" hideNavBar />
                 </Stack>
             </Router>
