@@ -54,4 +54,18 @@ export default StyleSheet.create({
         color: Colors.grey,
         fontFamily: Fonts.regular,
     },
+    rolesOptionsView:{
+        top: '30%',
+        marginRight: '8%',
+        marginLeft: '8%',
+    },
+    radioBtnLabel:{
+        fontSize: 20,
+        color: Colors.white,
+        fontFamily: Fonts.regular,
+    },
+    radioBtnStyle:{
+        alignItems: 'flex-start', 
+        alignSelf: 'flex-start',
+    },
 })

@@ -20,6 +20,14 @@ class UserRole extends Component {
         this.state = {
             isLoading: false,
             currentUser: {},
+            user_roles: [
+                { label: 'Business Owner', value: 0 },
+                { label: 'Tax Professional', value: 1 },
+                { label: 'Sales/Invoicing Executive', value: 2 },
+                { label: 'Independent Professional', value: 3 },
+            ],
+            selectedUserRoleIndex: 0,
+            selectedUserRole: '',
         };
     }
 
@@ -74,6 +82,49 @@ class UserRole extends Component {
         )
     }
 
+    renderRoleOptions = () => {
+        let roles = this.state.user_roles
+        return (
+            <View style={styles.rolesOptionsView}>
+                <RadioForm formHorizontal={false} animation={true} >
+                    { roles.map((obj, i) => {
+                        var onPress = (value, index) => {
+                            this.setState({
+                                selectedUserRole: value,
+                                selectedUserRoleIndex: index
+                            })
+                        }
+                    return (
+                        <RadioButton labelHorizontal={true} key={i} style={styles.radioBtnStyle}>
+                        {/*  You can set RadioButtonLabel before RadioButtonInput */}
+                            <RadioButtonInput
+                                obj={obj}
+                                index={i}
+                                isSelected={this.state.selectedUserRoleIndex === i}
+                                onPress={onPress}
+                                buttonInnerColor={Colors.secondary}
+                                buttonOuterColor={this.state.selectedUserRoleIndex === i ? Colors.secondary : Colors.white}
+                                buttonSize={18}
+                                buttonOuterSize={30}
+                                buttonStyle={{ marginTop:8 }}
+                                buttonWrapStyle={{marginLeft: 8}}
+                            />
+                            <RadioButtonLabel
+                                obj={obj}
+                                index={i}
+                                labelHorizontal={true}
+                                onPress={onPress}
+                                labelStyle={[styles.radioBtnLabel, {marginTop:8}]}
+                                labelWrapStyle={{marginTop:8}}
+                            />
+                        </RadioButton>
+                    )
+                    })}
+                </RadioForm>
+            </View>
+        )
+    }
+
     renderClose = () => {
         return (
             <TouchableOpacity onPress={ () => { Actions.pop() }}
@@ -89,6 +140,7 @@ class UserRole extends Component {
                 { this.renderClose() }
                 { this.renderTitleText() }
                 { this.renderTitleDescp() }
+                { this.renderRoleOptions() }
                 { this.renderNextNav() } 
             </View>
         )
