@@ -109,14 +109,15 @@ class UserName extends Component {
                     tintColor={Colors.white}
                     textColor={Colors.white}
                     baseColor={Colors.white}
-                    labelFontSize={18}
+                    labelFontSize={16}
                     labelTextStyle={styles.fullNameTextViewStyle}
                     value={this.state.fullName}
-                    fontSize={20}
+                    fontSize={18}
                     titleTextStyle={styles.fullNameTitle}
                     keyboardType='email-address'
                     maxLength={60}
                     onChangeText={ (text) => this.setUserFullName(text) }
+                    style={styles.textFieldStyle}
                 />
             </View>
         )
@@ -124,7 +125,7 @@ class UserName extends Component {
 
     renderNextNav = () => {
         return (
-            <TouchableOpacity onPress={ () => {  }}
+            <TouchableOpacity onPress={ () => { Actions.user_role() }}
                     style={styles.nxtBtnStyle}>
                 <Image source={Images.next} style={styles.nxtImg} />
             </TouchableOpacity>

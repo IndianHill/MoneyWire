@@ -58,7 +58,7 @@ class UserRole extends Component {
 
     renderNextNav = () => {
         return (
-            <TouchableOpacity onPress={ () => {  }}
+            <TouchableOpacity onPress={ () => { Actions.company_setup() }}
                     style={styles.nxtBtnStyle}>
                 <Image source={Images.next} style={styles.nxtImg} />
             </TouchableOpacity>

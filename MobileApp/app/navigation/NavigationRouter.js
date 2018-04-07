@@ -10,6 +10,7 @@ import EmailLogin from '../container/EmailLogin'
 import Welcome from '../container/user_enrollment/Welcome'
 import UserName from '../container/user_enrollment/UserName'
 import UserRole from '../container/user_enrollment/UserRole'
+import CompanySetup from '../container/business_enrollment/CompanySetup'
 
 class NavigationRouter extends Component {
 
@@ -27,7 +28,8 @@ class NavigationRouter extends Component {
                     <Scene key="email_login" component={EmailLogin} title="EmailLogin" hideNavBar />
                     <Scene key="welcome" component={Welcome} title="Welcome" hideNavBar />
                     <Scene key="user_name" component={UserName} title="UserName" hideNavBar />
-                    <Scene initial key="user_role" component={UserRole} title="UserRole" hideNavBar />
+                    <Scene key="user_role" component={UserRole} title="UserRole" hideNavBar />
+                    <Scene initial key="company_setup" component={CompanySetup} title="CompanySetup" hideNavBar />
                 </Stack>
             </Router>
         )

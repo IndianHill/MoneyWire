@@ -46,6 +46,11 @@ export default StyleSheet.create({
         alignItems: 'center',
         fontFamily: Fonts.semi_bold,
     },
+    textFieldStyle:{
+        fontSize: 20,
+        color: Colors.white,
+        fontFamily: Fonts.regular,
+    },
     nxtBtnStyle:{
         position:'absolute',
         bottom: '5%',
