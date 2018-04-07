@@ -9,6 +9,7 @@ import MobileAuth from '../container/MobileAuth'
 import EmailLogin from '../container/EmailLogin'
 import Welcome from '../container/user_enrollment/Welcome'
 import UserName from '../container/user_enrollment/UserName'
+import UserRole from '../container/user_enrollment/UserRole'
 
 class NavigationRouter extends Component {
 
@@ -20,12 +21,13 @@ class NavigationRouter extends Component {
         return (
             <Router>
                 <Stack key="root" >
-                    <Scene initial key="login" component={Login} title="Login" hideNavBar />
+                    <Scene key="login" component={Login} title="Login" hideNavBar />
                     <Scene key="dashboard" component={Dashboard} title="Dashboard" hideNavBar />
                     <Scene key="mobile_auth" component={MobileAuth} title="MobileAuth" hideNavBar />
                     <Scene key="email_login" component={EmailLogin} title="EmailLogin" hideNavBar />
                     <Scene key="welcome" component={Welcome} title="Welcome" hideNavBar />
                     <Scene key="user_name" component={UserName} title="UserName" hideNavBar />
+                    <Scene initial key="user_role" component={UserRole} title="UserRole" hideNavBar />
                 </Stack>
             </Router>
         )
