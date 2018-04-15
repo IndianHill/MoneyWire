@@ -6,6 +6,7 @@ import * as firebase from "firebase"
 import { Actions } from 'react-native-router-flux'
 import { Dropdown } from 'react-native-material-dropdown'
 import { TextField } from 'react-native-material-textfield'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 // Styles
 import styles from './Styles/CompanySetupStyles'
@@ -307,12 +308,12 @@ class CompanySetup extends Component {
 
     render () {
         return (
-            <ScrollView style={styles.container}>
+            <KeyboardAwareScrollView style={styles.container}>
                 { this.renderClose() }
                 { this.renderTitleTopView() }
                 { this.renderFormUI() }
                 { this.renderBottomView() }
-            </ScrollView>
+            </KeyboardAwareScrollView>
         )
     }
 }
