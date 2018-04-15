@@ -29,6 +29,11 @@ class CompanySetup extends Component {
             businessName:'',
             businessEmail:'',
             businessPhone:'',
+            primaryPOCName:'',
+            pocEmail:'',
+            pocNumber:'',
+            gstNumber:'',
+            address:'',
         };
     }
 
@@ -56,15 +61,6 @@ class CompanySetup extends Component {
     }
 
     //--------------------------- Render UI ---------------------------
-
-    renderNextNav = () => {
-        return (
-            <TouchableOpacity onPress={ () => {  }}
-                    style={styles.nxtBtnStyle}>
-                <Image source={Images.next} style={styles.nxtImg} />
-            </TouchableOpacity>
-        )
-    }
 
     renderClose = () => {
         return (
@@ -178,17 +174,144 @@ class CompanySetup extends Component {
         )
     }
 
-    render () {
+    renderPrimaryPOCName = () => {
         return (
-            <ScrollView style={styles.container}>
-                { this.renderClose() }
+            <View style={styles.formFieldView}>
+                <TextField
+                    label='Primary POC Name'
+                    tintColor={Colors.white}
+                    textColor={Colors.white}
+                    baseColor={Colors.white}
+                    labelFontSize={16}
+                    labelTextStyle={styles.fieldLabelStyle}
+                    value={this.state.primaryPOCName}
+                    fontSize={18}
+                    titleTextStyle={styles.fieldTextStyle}
+                    keyboardType='email-address'
+                    maxLength={60}
+                    onChangeText={ (text) => this.setState({primaryPOCName: text}) }
+                    style={styles.formFieldText}
+                />
+            </View>
+        )
+    }
+
+    renderPOCNumber = () => {
+        return (
+            <View style={styles.formFieldView}>
+                <TextField
+                    label='POC Number'
+                    tintColor={Colors.white}
+                    textColor={Colors.white}
+                    baseColor={Colors.white}
+                    labelFontSize={16}
+                    labelTextStyle={styles.fieldLabelStyle}
+                    value={this.state.pocNumber}
+                    fontSize={18}
+                    titleTextStyle={styles.fieldTextStyle}
+                    keyboardType='phone-pad'
+                    maxLength={13}
+                    onChangeText={ (text) => this.setState({pocNumber: text}) }
+                    style={styles.formFieldText}
+                />
+            </View>
+        )
+    }
+
+    renderGSTNumber = () => {
+        return (
+            <View style={styles.formFieldView}>
+                <TextField
+                    label='GSTIN'
+                    tintColor={Colors.white}
+                    textColor={Colors.white}
+                    baseColor={Colors.white}
+                    labelFontSize={16}
+                    labelTextStyle={styles.fieldLabelStyle}
+                    value={this.state.gstNumber}
+                    fontSize={18}
+                    titleTextStyle={styles.fieldTextStyle}
+                    keyboardType='email-address'
+                    maxLength={60}
+                    onChangeText={ (text) => this.setState({gstNumber: text}) }
+                    style={styles.formFieldText}
+                />
+            </View>
+        )
+    }
+
+    renderAddress = () => {
+        return (
+            <View style={styles.formFieldView}>
+                <TextField
+                    label='Address'
+                    tintColor={Colors.white}
+                    textColor={Colors.white}
+                    baseColor={Colors.white}
+                    labelFontSize={16}
+                    labelTextStyle={styles.fieldLabelStyle}
+                    value={this.state.address}
+                    fontSize={18}
+                    titleTextStyle={styles.fieldTextStyle}
+                    keyboardType='email-address'
+                    maxLength={120}
+                    onChangeText={ (text) => this.setState({address: text}) }
+                    style={styles.formFieldText}
+                />
+            </View>
+        )
+    }
+
+    renderBottomView = () => {
+        return (
+            <View style={styles.bottomView}>
+                <View>
+                    <TouchableOpacity onPress={ () => {  }}
+                            style={styles.addDelegateView}>
+                        <Text style={styles.addDelegateText}>Add Delegates</Text>
+                    </TouchableOpacity>
+                </View>
+                <View>
+                    <TouchableOpacity onPress={ () => {  }}
+                        style={styles.nxtBtnStyle}>
+                        <Image source={Images.next} style={styles.nxtImg} />
+                    </TouchableOpacity>
+                </View>
+            </View>
+        )
+    }
+
+    renderTitleTopView = () => {
+        return (
+            <View>
                 { this.renderTitleView() }
                 { this.renderTitleDescpView() }
+            </View>
+        )
+    }
+
+    renderFormUI = () => {
+        return (
+            <View>
                 { this.renderIndustryDropdown() }
                 { this.renderBusinessName() }
                 { this.renderBusinessEmail() }
                 { this.renderBusinessPhone() } 
-                { this.renderNextNav() }
+                { this.renderPrimaryPOCName() }
+                { this.renderPOCNumber() }
+                { this.renderGSTNumber() }
+                { this.renderAddress() }
+            </View>
+        )
+    }
+
+    render () {
+        return (
+            <ScrollView style={styles.container}>
+                { this.renderClose() }
+                { this.renderTitleTopView() }
+                { this.renderFormUI() }
+                { this.renderBottomView() }
             </ScrollView>
         )
     }
