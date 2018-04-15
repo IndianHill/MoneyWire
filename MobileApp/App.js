@@ -11,4 +11,4 @@ export default class App extends Component<{}> {
     }
 }
 
-AppRegistry.registerComponent('MediZone', () => App);
+AppRegistry.registerComponent('MoneyWire', () => App);
