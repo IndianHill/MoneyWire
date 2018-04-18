@@ -267,7 +267,7 @@ class CompanySetup extends Component {
         return (
             <View style={styles.bottomView}>
                 <View>
-                    <TouchableOpacity onPress={ () => {  }}
+                    <TouchableOpacity onPress={ () => { Actions.add_delegate() }}
                             style={styles.addDelegateView}>
                         <Text style={styles.addDelegateText}>Add Delegates</Text>
                     </TouchableOpacity>

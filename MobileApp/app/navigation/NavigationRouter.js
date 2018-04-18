@@ -11,6 +11,7 @@ import Welcome from '../container/user_enrollment/Welcome'
 import UserName from '../container/user_enrollment/UserName'
 import UserRole from '../container/user_enrollment/UserRole'
 import CompanySetup from '../container/business_enrollment/CompanySetup'
+import AddDelegate from '../container/business_enrollment/AddDelegate'
 
 class NavigationRouter extends Component {
 
@@ -30,6 +31,7 @@ class NavigationRouter extends Component {
                     <Scene key="user_name" component={UserName} title="UserName" hideNavBar />
                     <Scene key="user_role" component={UserRole} title="UserRole" hideNavBar />
                     <Scene initial key="company_setup" component={CompanySetup} title="CompanySetup" hideNavBar />
+                    <Scene key="add_delegate" component={AddDelegate} title="AddDelegate" hideNavBar />
                 </Stack>
             </Router>
         )

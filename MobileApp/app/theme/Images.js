@@ -10,6 +10,7 @@ const images = {
     bg: require('../assets/images/bg.png'),
     next: require('../assets/images/ic_next.png'),
     close: require('../assets/images/ic_close.png'),
+    add: require('../assets/images/ic_add.png'),
 }
 
 export default images;
