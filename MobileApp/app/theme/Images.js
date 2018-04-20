@@ -11,6 +11,7 @@ const images = {
     next: require('../assets/images/ic_next.png'),
     close: require('../assets/images/ic_close.png'),
     add: require('../assets/images/ic_add.png'),
+    thumbs_up: require('../assets/images/ic_thumbs_up.png'),
 }
 
 export default images;
