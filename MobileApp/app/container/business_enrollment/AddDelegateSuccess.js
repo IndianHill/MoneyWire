@@ -65,13 +65,39 @@ class AddDelegateSuccess extends Component {
         )
     }
 
-    
+    renderAddMoreDelegate = () => {
+        return (
+            <TouchableOpacity onPress={ () => {  }}
+                    style={styles.addMoreDelegateBtn}>
+                <Text style={styles.titleTextStyle}>ADD MORE DELEGATES</Text>
+            </TouchableOpacity>
+        )
+    }
+
+    renderGoBackView = () => {
+        return (
+            <TouchableOpacity onPress={ () => { Actions.pop() }}
+                    style={styles.goBackBtn}>
+                <Text style={styles.goBackTextStyle}>Go back and complete your profile</Text>
+            </TouchableOpacity>
+        )
+    }
+
+    renderBottomView = () => {
+        return (
+            <View style={styles.bottomView}>
+                { this.renderAddMoreDelegate() }
+                { this.renderGoBackView() }
+            </View>
+        )
+    }
 
     render () {
         return (
             <View style={styles.container}>
                 { this.renderClose() }
                 { this.renderTitleView() }
+                { this.renderBottomView() }
             </View>
         )
     }

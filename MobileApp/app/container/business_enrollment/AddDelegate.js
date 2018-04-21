@@ -143,7 +143,7 @@ class AddDelegate extends Component {
 
     renderAddNav = () => {
         return (
-            <TouchableOpacity onPress={ () => {  }}
+            <TouchableOpacity onPress={ () => { Actions.add_delegate_success() }}
                 style={styles.addBtnStyle}>
                 <Image source={Images.add} style={styles.addImg} />
             </TouchableOpacity>
