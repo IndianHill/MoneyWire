@@ -15,6 +15,7 @@ import AddDelegate from '../container/business_enrollment/AddDelegate'
 import AddDelegateSuccess from '../container/business_enrollment/AddDelegateSuccess'
 import AddClient from '../container/business_enrollment/AddClient'
 import BusinessService from '../container/business_enrollment/BusinessService'
+import ProfileCompleted from '../container/business_enrollment/ProfileCompleted'
 
 class NavigationRouter extends Component {
 
@@ -38,6 +39,7 @@ class NavigationRouter extends Component {
                     <Scene key="add_delegate_success" component={AddDelegateSuccess} title="AddDelegateSuccess" hideNavBar />
                     <Scene key="add_client" component={AddClient} title="AddClient" hideNavBar />
                     <Scene initial key="business_service" component={BusinessService} title="BusinessService" hideNavBar />
+                    <Scene key="profile_completed" component={ProfileCompleted} title="ProfileCompleted" hideNavBar />
                 </Stack>
             </Router>
         )

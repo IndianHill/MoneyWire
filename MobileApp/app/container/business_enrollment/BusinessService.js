@@ -294,7 +294,7 @@ class BusinessService extends Component {
                     </TouchableOpacity>
                 </View>
                 <View>
-                    <TouchableOpacity onPress={ () => {  }}
+                    <TouchableOpacity onPress={ () => { Actions.profile_completed() }}
                         style={styles.nxtBtnStyle}>
                         <Image source={Images.next} style={styles.nxtImg} />
                     </TouchableOpacity>

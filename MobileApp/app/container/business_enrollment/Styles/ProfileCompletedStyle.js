@@ -1,0 +1,88 @@
+import { StyleSheet } from 'react-native'
+import { Colors, Images, Fonts } from '../../../theme/'
+
+export default StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: Colors.primary,
+    },
+    closeBtnStyle:{
+        marginTop: '15%',
+        marginLeft: '8%',
+        height: 40,  
+        width: 40,
+        justifyContent: 'flex-start', 
+        alignItems: 'center',
+        alignSelf: 'flex-start',
+        flexDirection:'column',
+    },
+    closeImg:{
+        height: 32, 
+        width: 32, 
+        tintColor:Colors.white,
+        justifyContent: 'center', 
+        alignItems: 'center',
+        alignSelf: 'center',
+    },
+    titleView: {
+        flexDirection: 'column',
+        marginLeft:'8%',
+        marginRight:'8%',
+        alignItems:'center',
+        alignSelf:'center',
+        justifyContent:'center',
+        flex: 2,
+    },
+    titleText: {
+        marginTop: 40,
+        fontSize: 28,
+        color: Colors.white,
+        fontFamily: Fonts.semi_bold,
+        alignSelf:'center',
+        alignItems:'center',
+        textAlign: 'center',
+    },
+    thumbsUpImg:{
+        height: 180, width: 180, tintColor:Colors.white,
+    },
+    addMoreDelegateBtn:{
+        alignItems:'center',
+        alignSelf:'center',
+        justifyContent:'center',
+        borderRadius: 30,
+        borderWidth: 1,
+        paddingTop:16,
+        paddingBottom:8,
+        paddingLeft:16,
+        paddingRight:16,
+        borderColor: Colors.white,
+    },
+    titleTextStyle:{
+        fontSize: 20,
+        color: Colors.white,
+        fontFamily: Fonts.semi_bold,
+    },
+    goBackBtn:{
+        alignItems:'center',
+        alignSelf:'center',
+        justifyContent:'center',
+        marginTop: 20,
+    },
+    goBackTextStyle:{
+        fontSize: 18,
+        color: Colors.secondary,
+        fontFamily: Fonts.regular,
+        alignSelf: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+    },
+    bottomView: {
+        flexDirection: 'column',
+        marginLeft:'8%',
+        marginRight:'8%',
+        alignItems:'center',
+        alignSelf:'center',
+        justifyContent:'center',
+        flex: 1,
+    },
+})
