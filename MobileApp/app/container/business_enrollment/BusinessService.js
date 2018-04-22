@@ -9,10 +9,10 @@ import { TextField } from 'react-native-material-textfield'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 // Styles
-import styles from './Styles/CompanySetupStyles'
+import styles from './Styles/BusinessServiceStyle'
 import { Colors, Images } from '../../theme/'
 
-class CompanySetup extends Component {
+class BusinessService extends Component {
 
     constructor() {
         super();
@@ -73,104 +73,18 @@ class CompanySetup extends Component {
     }
 
     renderTitleView = () => {
-        let descpStr = "To setup account, your business profile and manage customer accounts (B2B, B2C), provision company data access"
         return (
             <View style={styles.titleView}>
-                <Text style={styles.titleText}>How is your business (company) setup</Text>
+                <Text style={styles.titleText}>Create your business services profile</Text>
             </View>
         )
     }
 
     renderTitleDescpView = () => {
-        let descpStr = "To setup account, your business profile and manage customer accounts (B2B, B2C), provision company data access"
+        let descpStr = "To setup your individual business profile and manage customer accounts (I2B)"
         return (
             <View style={styles.titleDescpView}>
                 <Text style={styles.descpText}>{descpStr}</Text>
-            </View>
-        )
-    }
-
-    renderIndustryDropdown = () => {
-        return (
-            <View style={styles.formFieldView}>
-                <Dropdown
-                    label='Industry'
-                    data={this.state.industry_types}
-                    baseColor={Colors.white}
-                    textColor={Colors.white}
-                    selectedItemColor={Colors.secondary}
-                    fontSize={18}
-                    labelFontSize={16}
-                    itemTextStyle={styles.dropdownItemTextStyle}
-                    style={styles.formFieldText}
-                    error={this.state.industry_error}
-                />
-            </View>
-        )
-    }
-
-    renderBusinessName = () => {
-        return (
-            <View style={styles.formFieldView}>
-                <TextField
-                    label='Business Name'
-                    tintColor={Colors.white}
-                    textColor={Colors.white}
-                    baseColor={Colors.white}
-                    labelFontSize={16}
-                    labelTextStyle={styles.fieldLabelStyle}
-                    value={this.state.businessName}
-                    fontSize={18}
-                    titleTextStyle={styles.fieldTextStyle}
-                    keyboardType='email-address'
-                    maxLength={60}
-                    onChangeText={ (text) => this.setState({businessName: text}) }
-                    style={styles.formFieldText}
-                />
-            </View>
-        )
-    }
-
-    renderBusinessEmail = () => {
-        return (
-            <View style={styles.formFieldView}>
-                <TextField
-                    label='Business Email address'
-                    tintColor={Colors.white}
-                    textColor={Colors.white}
-                    baseColor={Colors.white}
-                    labelFontSize={16}
-                    labelTextStyle={styles.fieldLabelStyle}
-                    value={this.state.businessEmail}
-                    fontSize={18}
-                    titleTextStyle={styles.fieldTextStyle}
-                    keyboardType='email-address'
-                    maxLength={60}
-                    onChangeText={ (text) => this.setState({businessEmail: text}) }
-                    style={styles.formFieldText}
-                />
-            </View>
-        )
-    }
-
-    renderBusinessPhone = () => {
-        return (
-            <View style={styles.formFieldView}>
-                <TextField
-                    label='Business Phone'
-                    tintColor={Colors.white}
-                    textColor={Colors.white}
-                    baseColor={Colors.white}
-                    labelFontSize={16}
-                    labelTextStyle={styles.fieldLabelStyle}
-                    value={this.state.businessPhone}
-                    fontSize={18}
-                    titleTextStyle={styles.fieldTextStyle}
-                    keyboardType='phone-pad'
-                    maxLength={13}
-                    onChangeText={ (text) => this.setState({businessPhone: text}) }
-                    style={styles.formFieldText}
-                />
             </View>
         )
     }
@@ -179,7 +93,7 @@ class CompanySetup extends Component {
         return (
             <View style={styles.formFieldView}>
                 <TextField
-                    label='Primary POC Name'
+                    label='Customer Account Primary POC Name'
                     tintColor={Colors.white}
                     textColor={Colors.white}
                     baseColor={Colors.white}
@@ -241,6 +155,91 @@ class CompanySetup extends Component {
         )
     }
 
+    renderIndustryDropdown = () => {
+        return (
+            <View style={styles.formFieldView}>
+                <Dropdown
+                    label='Industry Type (Optional)'
+                    data={this.state.industry_types}
+                    baseColor={Colors.white}
+                    textColor={Colors.white}
+                    selectedItemColor={Colors.secondary}
+                    fontSize={18}
+                    labelFontSize={16}
+                    itemTextStyle={styles.dropdownItemTextStyle}
+                    style={styles.formFieldText}
+                    error={this.state.industry_error}
+                />
+            </View>
+        )
+    }
+
+    renderBusinessName = () => {
+        return (
+            <View style={styles.formFieldView}>
+                <TextField
+                    label='Business Name (Optional)'
+                    tintColor={Colors.white}
+                    textColor={Colors.white}
+                    baseColor={Colors.white}
+                    labelFontSize={16}
+                    labelTextStyle={styles.fieldLabelStyle}
+                    value={this.state.businessName}
+                    fontSize={18}
+                    titleTextStyle={styles.fieldTextStyle}
+                    keyboardType='email-address'
+                    maxLength={60}
+                    onChangeText={ (text) => this.setState({businessName: text}) }
+                    style={styles.formFieldText}
+                />
+            </View>
+        )
+    }
+
+    renderBusinessEmail = () => {
+        return (
+            <View style={styles.formFieldView}>
+                <TextField
+                    label='Business Email address (Optional)'
+                    tintColor={Colors.white}
+                    textColor={Colors.white}
+                    baseColor={Colors.white}
+                    labelFontSize={16}
+                    labelTextStyle={styles.fieldLabelStyle}
+                    value={this.state.businessEmail}
+                    fontSize={18}
+                    titleTextStyle={styles.fieldTextStyle}
+                    keyboardType='email-address'
+                    maxLength={60}
+                    onChangeText={ (text) => this.setState({businessEmail: text}) }
+                    style={styles.formFieldText}
+                />
+            </View>
+        )
+    }
+
+    renderBusinessPhone = () => {
+        return (
+            <View style={styles.formFieldView}>
+                <TextField
+                    label='Business Phone (Optional)'
+                    tintColor={Colors.white}
+                    textColor={Colors.white}
+                    baseColor={Colors.white}
+                    labelFontSize={16}
+                    labelTextStyle={styles.fieldLabelStyle}
+                    value={this.state.businessPhone}
+                    fontSize={18}
+                    titleTextStyle={styles.fieldTextStyle}
+                    keyboardType='phone-pad'
+                    maxLength={13}
+                    onChangeText={ (text) => this.setState({businessPhone: text}) }
+                    style={styles.formFieldText}
+                />
+            </View>
+        )
+    }
+
     renderGSTNumber = () => {
         return (
             <View style={styles.formFieldView}>
@@ -289,13 +288,13 @@ class CompanySetup extends Component {
         return (
             <View style={styles.bottomView}>
                 <View>
-                    <TouchableOpacity onPress={ () => { Actions.add_delegate() }}
+                    <TouchableOpacity onPress={ () => {  }}
                             style={styles.addDelegateView}>
-                        <Text style={styles.addDelegateText}>Add Delegates</Text>
+                        <Text style={styles.addDelegateText}></Text>
                     </TouchableOpacity>
                 </View>
                 <View>
-                    <TouchableOpacity onPress={ () => { Actions.add_client() }}
+                    <TouchableOpacity onPress={ () => {  }}
                         style={styles.nxtBtnStyle}>
                         <Image source={Images.next} style={styles.nxtImg} />
                     </TouchableOpacity>
@@ -316,13 +315,13 @@ class CompanySetup extends Component {
     renderFormUI = () => {
         return (
             <View>
+                { this.renderPrimaryPOCName() }
+                { this.renderPOCEmail() }
+                { this.renderPOCNumber() }
                 { this.renderIndustryDropdown() }
                 { this.renderBusinessName() }
                 { this.renderBusinessEmail() }
                 { this.renderBusinessPhone() } 
-                { this.renderPrimaryPOCName() }
-                { this.renderPOCEmail() }
-                { this.renderPOCNumber() }
                 { this.renderGSTNumber() }
                 { this.renderAddress() }
             </View>
@@ -341,4 +340,4 @@ class CompanySetup extends Component {
     }
 }
 
-export default CompanySetup;
+export default BusinessService;
