@@ -6,41 +6,21 @@ admin.initializeApp(functions.config().firebase);
 
 const BASE_URL = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDhrAm8bI3Eg2g1IzYMDFQAmZfb12RzxtQ&address='
 
-exports.updateLatLng = functions.firestore.document('/branches/{branch}').onUpdate((event)=>{
-
-    fetchAndUpdateLatLng(event)
-    return true;
-});
-
-exports.addLatLng = functions.firestore.document('/branches/{branch}').onCreate((event)=>{
-
-    event.data.ref.set({
-        lat: 0,
-        lng: 0
-        }, {merge: true});
-    
-    return true;
-});
-
-function fetchAndUpdateLatLng(event) {
-    fullAddress = event.data.data().fullAddress;
-    console.log('Requesting lat lng for address:'+fullAddress);
-    const get_url = encodeURI(BASE_URL+fullAddress);
-    
-    var request = require("request");
-    request(get_url, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            jsonBody = JSON.parse(body)
-            const lat = jsonBody['results'][0]['geometry']['location']['lat'];
-            const lng = jsonBody['results'][0]['geometry']['location']['lng'];
-            console.log('Lat:'+lat+' Lng:'+lng+' FullAddress:'+fullAddress);
-
-            event.data.ref.set({
-                lat: lat,
-                lng: lng
-                }, {merge: true});
-        } else {
-            console.log('Error:'+JSON.stringify(error))
+exports.searchByIFSC = functions.https.onRequest((req, res) => {
+    const ifsc_code = req.query.ifsc;
+    console.log("Search for IFSC:", ifsc_code);
+    admin.firestore().collection('branches').doc(ifsc_code).get()
+    .then(doc => {
+        console.log('Found branch:' + JSON.stringify(doc.data()));
+        msg_json = {
+            "status": 200,
+            "branch": JSON.stringify(doc.data())
         }
+        res.status(200).send(msg_json);
+    })
+    .catch(err => {
+        console.log("Error in finding branch:", ifsc_code, err);
+        err_json = {"status": 200, "err":"Branch not found"}
+        res.status(200).send(err_json);
     });
-}
+});

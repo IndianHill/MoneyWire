@@ -294,7 +294,7 @@ class AddClient extends Component {
                     </TouchableOpacity>
                 </View>
                 <View>
-                    <TouchableOpacity onPress={ () => {  }}
+                    <TouchableOpacity onPress={ () => { Actions.business_service() }}
                         style={styles.nxtBtnStyle}>
                         <Image source={Images.next} style={styles.nxtImg} />
                     </TouchableOpacity>

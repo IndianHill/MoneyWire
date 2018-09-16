@@ -27,7 +27,7 @@ class NavigationRouter extends Component {
         return (
             <Router>
                 <Stack key="root" >
-                    <Scene key="login" component={Login} title="Login" hideNavBar />
+                    <Scene initial key="login" component={Login} title="Login" hideNavBar />
                     <Scene key="dashboard" component={Dashboard} title="Dashboard" hideNavBar />
                     <Scene key="mobile_auth" component={MobileAuth} title="MobileAuth" hideNavBar />
                     <Scene key="email_login" component={EmailLogin} title="EmailLogin" hideNavBar />
@@ -38,7 +38,7 @@ class NavigationRouter extends Component {
                     <Scene key="add_delegate" component={AddDelegate} title="AddDelegate" hideNavBar />
                     <Scene key="add_delegate_success" component={AddDelegateSuccess} title="AddDelegateSuccess" hideNavBar />
                     <Scene key="add_client" component={AddClient} title="AddClient" hideNavBar />
-                    <Scene initial key="business_service" component={BusinessService} title="BusinessService" hideNavBar />
+                    <Scene key="business_service" component={BusinessService} title="BusinessService" hideNavBar />
                     <Scene key="profile_completed" component={ProfileCompleted} title="ProfileCompleted" hideNavBar />
                 </Stack>
             </Router>
