@@ -12,9 +12,18 @@ exports.searchByIFSC = functions.https.onRequest((req, res) => {
     admin.firestore().collection('branches').doc(ifsc_code).get()
     .then(doc => {
         console.log('Found branch:' + JSON.stringify(doc.data()));
-        msg_json = {
-            "status": 200,
-            "branch": JSON.stringify(doc.data())
+        
+        msg_json = {}
+        if (doc.data()) {
+            msg_json = {
+                "status": 200,
+                "branch": JSON.stringify(doc.data())
+            }
+        } else {
+            msg_json = {
+                "status": 200,
+                "err": "Branch not found with IFSC:" + ifsc_code
+            }
         }
         res.status(200).send(msg_json);
     })
