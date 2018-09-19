@@ -39,25 +39,40 @@ exports.globalSearch = functions.https.onRequest((req, res) => {
     const bank_key = req.query.bank_key
     const state = req.query.state
     const city = req.query.city
+    const ifsc = req.query.ifsc
+    const pincode = req.query.pincode
 
     const firestore = admin.firestore();
     var mainQuery = firestore.collection(cl_branches);
 
+    var searchParams = ""
+
     if (city && city.length > 0) {
-        console.log("city:", city)
+        searchParams += " city=>"+city;
         mainQuery = mainQuery.where('lowerCity', '==', city.toLowerCase())
     }
 
     if (state && state.length > 0) {
-        console.log("state:", state)
+        searchParams += " state=>"+state;
         mainQuery = mainQuery.where('state', '==', state)
     }
 
     if (bank_key && bank_key.length > 0) {
-        console.log("bank_key:", bank_key)
+        searchParams += " bank_key=>"+bank_key;
         mainQuery = mainQuery.where('bankKey', '==', bank_key)
     }
 
+    if (ifsc && ifsc.length > 0) {
+        searchParams += " ifsc_code=>"+ifsc;
+        mainQuery = mainQuery.where('lowerIfsc', '==', ifsc.toLowerCase())
+    }
+
+    if (pincode && pincode.length > 0) {
+        searchParams += " pincode=>"+pincode;
+        mainQuery = mainQuery.where('pinCode', '==', pincode)
+    }
+
+    console.log("Searching for:", searchParams)
     mainQuery.get()
         .then(function(querySnapshot) {
             queryBranch = []
@@ -65,9 +80,8 @@ exports.globalSearch = functions.https.onRequest((req, res) => {
                 var branch = doc.data()
                 branch.key = doc.id
                 queryBranch.push(branch)
-                console.log(doc.id, " => ", JSON.stringify(doc.data()));
             });
-
+            console.log("Response count:", queryBranch.length)
             msg = {
                 "status": 200,
                 "count": queryBranch.length,
