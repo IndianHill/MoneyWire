@@ -29,8 +29,11 @@ exports.searchByIFSC = functions.https.onRequest((req, res) => {
         res.status(200).send(msg_json);
     })
     .catch(err => {
+        err_json = {
+            "status": 5000,
+            "err": "Internal server error.."
+        }
         console.log("Error in finding branch:", ifsc_code, err);
-        err_json = {"status": 200, "err":"Branch not found"}
         res.status(200).send(err_json);
     });
 });
@@ -41,11 +44,23 @@ exports.globalSearch = functions.https.onRequest((req, res) => {
     const city = req.query.city
     const ifsc = req.query.ifsc
     const pincode = req.query.pincode
+    const name = req.query.name
+    const district = req.query.district
 
     const firestore = admin.firestore();
     var mainQuery = firestore.collection(cl_branches);
 
     var searchParams = ""
+
+    if (district && district.length > 0) {
+        searchParams += " district=>"+district;
+        mainQuery = mainQuery.where('district', '==', district)
+    }
+
+    if (name && name.length > 0) {
+        searchParams += " name=>"+name;
+        mainQuery = mainQuery.where('lowerName', '==', name.toLowerCase())
+    }
 
     if (city && city.length > 0) {
         searchParams += " city=>"+city;
@@ -75,25 +90,32 @@ exports.globalSearch = functions.https.onRequest((req, res) => {
     console.log("Searching for:", searchParams)
     mainQuery.get()
         .then(function(querySnapshot) {
-            queryBranch = []
+            resBranches = []
             querySnapshot.forEach(function(doc) {
                 var branch = doc.data()
-                branch.key = doc.id
-                queryBranch.push(branch)
+                var branchDict = {}
+                branchDict.state = branch["state"]
+                branchDict.ifsc = branch["ifsc"]
+                branchDict.name = branch["name"]
+                branchDict.fullAddress = branch["fullAddress"]
+                branchDict.district = branch["district"]
+                branchDict.city = branch["city"]
+                branchDict.key = doc.id
+                resBranches.push(branchDict)
             });
-            console.log("Response count:", queryBranch.length)
             msg = {
                 "status": 200,
-                "count": queryBranch.length,
-                "branches": JSON.stringify(queryBranch)
+                "count": resBranches.length,
+                "branches": resBranches
             }
+            console.log("Match found for query:"+searchParams+", branch_count:"+resBranches.length)
             res.status(200).send(msg);
         })
         .catch(function(error) {
-            console.log("Error name code matching documents: ", error.name);
+            console.log("Err for branch serach:"+searchParams+", err:"+error.name);
             msg = {
-                "status": 200,
-                "err": "No branch found.."
+                "status": 5000,
+                "err": "Internal server error.."
             }
             res.status(200).send(msg);
         });
